@@ -3,18 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartDailyTools - Free Online Calculators</title>
+<title>SmartDailyTools - Free Online Calculators in India</title>
+<meta name="description" content="Free online SIP, EMI, GST, Age & finance calculators for India. Simple, fast and accurate tools.">
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-<h1>SmartDailyTools</h1>
-<p>Free Online Finance & Utility Calculators</p>
+<nav class="navbar">
+  <h1>SmartDailyTools</h1>
+  <div class="nav-links">
+    <a href="#sip">SIP</a>
+    <a href="#emi">EMI</a>
+    <a href="#age">Age</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h2>Free Online Financial & Utility Calculators</h2>
+  <p>Fast, Accurate & 100% Free Tools for Everyday Use</p>
 </header>
 
-<section class="tool">
+<section id="sip" class="tool">
 <h2>SIP Calculator</h2>
+<p>Calculate future value of your monthly SIP investment.</p>
 <input type="number" id="sipAmount" placeholder="Monthly Investment (₹)">
 <input type="number" id="sipRate" placeholder="Expected Return (%)">
 <input type="number" id="sipYears" placeholder="Years">
@@ -22,8 +34,9 @@
 <p id="sipResult"></p>
 </section>
 
-<section class="tool">
+<section id="emi" class="tool">
 <h2>EMI Calculator</h2>
+<p>Calculate your monthly loan EMI easily.</p>
 <input type="number" id="loanAmount" placeholder="Loan Amount (₹)">
 <input type="number" id="loanRate" placeholder="Interest Rate (%)">
 <input type="number" id="loanYears" placeholder="Years">
@@ -31,8 +44,9 @@
 <p id="emiResult"></p>
 </section>
 
-<section class="tool">
+<section id="age" class="tool">
 <h2>Age Calculator</h2>
+<p>Calculate your exact age in years instantly.</p>
 <input type="date" id="dob">
 <button onclick="calculateAge()">Calculate</button>
 <p id="ageResult"></p>
@@ -64,10 +78,17 @@
 </section>
 
 <footer>
-<p>© 2026 SmartDailyTools</p>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="contact.html">Contact</a>
+    <a href="disclaimer.html">Disclaimer</a>
+  </div>
+  <p>© 2026 SmartDailyTools.in | All Rights Reserved</p>
 </footer>
 
 <script src="script.js"></script>
 </body>
 </html>
+
 
