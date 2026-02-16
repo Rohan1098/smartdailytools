@@ -44,11 +44,4 @@ text-decoration: none;
 color: black;
 font-weight: bold;
 }
-.card {
-  background: #ffffff;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-width: 600px;
-}
+
