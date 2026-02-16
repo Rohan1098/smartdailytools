@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartDailyTools - Free Online Calculators</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>SmartDailyTools</h1>
+<p>Free Online Finance & Utility Calculators</p>
+</header>
+
+<section class="tool">
+<h2>SIP Calculator</h2>
+<input type="number" id="sipAmount" placeholder="Monthly Investment (₹)">
+<input type="number" id="sipRate" placeholder="Expected Return (%)">
+<input type="number" id="sipYears" placeholder="Years">
+<button onclick="calculateSIP()">Calculate</button>
+<p id="sipResult"></p>
+</section>
+
+<section class="tool">
+<h2>EMI Calculator</h2>
+<input type="number" id="loanAmount" placeholder="Loan Amount (₹)">
+<input type="number" id="loanRate" placeholder="Interest Rate (%)">
+<input type="number" id="loanYears" placeholder="Years">
+<button onclick="calculateEMI()">Calculate</button>
+<p id="emiResult"></p>
+</section>
+
+<section class="tool">
+<h2>Age Calculator</h2>
+<input type="date" id="dob">
+<button onclick="calculateAge()">Calculate</button>
+<p id="ageResult"></p>
+</section>
+
+<footer>
+<p>© 2026 SmartDailyTools</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
