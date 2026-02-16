@@ -100,4 +100,102 @@ button:hover {
 
 <div class="container">
     <h1>SSC / TCS Score Calculator</h1>
-    <p class="subtitle">
+    <p class="subtitle">Paste your response sheet content and calculate your score instantly</p>
+
+    <div class="card">
+
+        <label>Paste Response Sheet Link (Optional)</label>
+        <input type="text" id="sheetLink" placeholder="Paste SSC response sheet URL here">
+
+        <label>Paste Copied Response Sheet Text</label>
+        <textarea id="responseText" placeholder="Copy full response sheet text and paste here..."></textarea>
+
+        <label>Official Answer Key (Comma Separated)</label>
+        <textarea id="answerKey" placeholder="Example: A,B,C,D,A,B,C"></textarea>
+
+        <div class="input-row">
+            <div>
+                <label>Marks per Question</label>
+                <input type="number" id="marks" value="2">
+            </div>
+
+            <div>
+                <label>Negative Marking</label>
+                <input type="number" id="negative" value="0.5">
+            </div>
+        </div>
+
+        <button onclick="calculateScore()">Calculate Score</button>
+
+        <div id="resultBox" class="result-box"></div>
+
+        <div class="footer-note">
+            *This tool estimates your score based on provided answer key.
+        </div>
+
+    </div>
+</div>
+
+<script>
+function extractAnswers(text) {
+    let matches = text.toUpperCase().match(/[A-D]/g);
+    return matches || [];
+}
+
+function calculateScore() {
+
+    let responseText = document.getElementById("responseText").value;
+    let answerKeyInput = document.getElementById("answerKey").value;
+    let marks = parseFloat(document.getElementById("marks").value);
+    let negative = parseFloat(document.getElementById("negative").value);
+    let resultBox = document.getElementById("resultBox");
+
+    if (!responseText || !answerKeyInput) {
+        resultBox.innerHTML = "⚠ Please paste response sheet text and answer key.";
+        return;
+    }
+
+    let userAnswers = extractAnswers(responseText);
+    let correctAnswers = answerKeyInput.toUpperCase().split(",");
+
+    if (userAnswers.length !== correctAnswers.length) {
+        resultBox.innerHTML = "⚠ Answer count mismatch! Check your input.";
+        return;
+    }
+
+    let score = 0;
+    let correct = 0;
+    let wrong = 0;
+    let skipped = 0;
+
+    for (let i = 0; i < correctAnswers.length; i++) {
+        let user = userAnswers[i];
+        let correctAns = correctAnswers[i].trim();
+
+        if (!user) {
+            skipped++;
+        } 
+        else if (user === correctAns) {
+            score += marks;
+            correct++;
+        } 
+        else {
+            score -= negative;
+            wrong++;
+        }
+    }
+
+    let totalMarks = correctAnswers.length * marks;
+    let percentile = (score / totalMarks) * 100;
+
+    resultBox.innerHTML =
+        "✅ Correct: " + correct +
+        " | ❌ Wrong: " + wrong +
+        " | ⏭ Skipped: " + skipped +
+        "<br><br>🏆 Total Score: " + score.toFixed(2) +
+        "<br>📊 Estimated Percentile: " + percentile.toFixed(2) + "%";
+}
+</script>
+
+</body>
+</html>
