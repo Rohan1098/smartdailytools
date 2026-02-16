@@ -37,6 +37,31 @@
 <button onclick="calculateAge()">Calculate</button>
 <p id="ageResult"></p>
 </section>
+  <section id="gst" class="tool">
+<h2>GST Calculator</h2>
+<p>Calculate GST amount instantly.</p>
+<input type="number" id="gstAmount" placeholder="Amount (₹)">
+<input type="number" id="gstRate" placeholder="GST Rate (%)">
+<button onclick="calculateGST()">Calculate</button>
+<p id="gstResult"></p>
+</section>
+  <section id="percentage" class="tool">
+<h2>Percentage Calculator</h2>
+<p>Calculate percentage easily.</p>
+<input type="number" id="percentValue" placeholder="Value">
+<input type="number" id="percentTotal" placeholder="Total">
+<button onclick="calculatePercentage()">Calculate</button>
+<p id="percentageResult"></p>
+</section>
+ <section id="cagr" class="tool">
+<h2>CAGR Calculator</h2>
+<p>Calculate Compound Annual Growth Rate.</p>
+<input type="number" id="cagrStart" placeholder="Starting Value">
+<input type="number" id="cagrEnd" placeholder="Ending Value">
+<input type="number" id="cagrYears" placeholder="Years">
+<button onclick="calculateCAGR()">Calculate</button>
+<p id="cagrResult"></p>
+</section>
 
 <footer>
 <p>© 2026 SmartDailyTools</p>
@@ -45,3 +70,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
