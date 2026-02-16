@@ -29,3 +29,34 @@ let age = new Date(diff);
 document.getElementById("ageResult").innerText =
 "Age: " + Math.abs(age.getUTCFullYear() - 1970) + " years";
 }
+function calculateGST() {
+let amount = document.getElementById("gstAmount").value;
+let rate = document.getElementById("gstRate").value;
+let gst = (amount * rate) / 100;
+let total = parseFloat(amount) + parseFloat(gst);
+
+document.getElementById("gstResult").innerText =
+"GST: ₹" + gst.toFixed(2) + " | Total: ₹" + total.toFixed(2);
+}
+
+function calculatePercentage() {
+let value = document.getElementById("percentValue").value;
+let total = document.getElementById("percentTotal").value;
+
+let percent = (value / total) * 100;
+
+document.getElementById("percentageResult").innerText =
+"Percentage: " + percent.toFixed(2) + "%";
+}
+
+function calculateCAGR() {
+let start = document.getElementById("cagrStart").value;
+let end = document.getElementById("cagrEnd").value;
+let years = document.getElementById("cagrYears").value;
+
+let cagr = (Math.pow(end / start, 1 / years) - 1) * 100;
+
+document.getElementById("cagrResult").innerText =
+"CAGR: " + cagr.toFixed(2) + "%";
+}
+
