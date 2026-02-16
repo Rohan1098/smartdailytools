@@ -43,9 +43,36 @@ percent.toFixed(2) + "%";
 }
 
 function calculateAge() {
-let dob = new Date(document.getElementById("dob").value);
-let diff = Date.now() - dob.getTime();
-let age = new Date(diff);
-document.getElementById("ageResult").innerText =
-Math.abs(age.getUTCFullYear()-1970)+" years";
+    let dobInput = document.getElementById("dob").value;
+
+    if (!dobInput) {
+        document.getElementById("ageResult").innerText = "Please select a valid date.";
+        return;
+    }
+
+    let dob = new Date(dobInput);
+    let today = new Date();
+
+    if (dob > today) {
+        document.getElementById("ageResult").innerText = "Date of birth cannot be in the future.";
+        return;
+    }
+
+    let years = today.getFullYear() - dob.getFullYear();
+    let months = today.getMonth() - dob.getMonth();
+    let days = today.getDate() - dob.getDate();
+
+    if (days < 0) {
+        months--;
+        days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    document.getElementById("ageResult").innerText =
+        years + " years, " + months + " months, " + days + " days";
 }
+
