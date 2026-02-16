@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <url>
-      <loc>https://smartdailytools.in/</loc>
-   </url>
+
+<url><loc>https://smartdailytools.in/</loc></url>
+<url><loc>https://smartdailytools.in/sip-calculator.html</loc></url>
+<url><loc>https://smartdailytools.in/emi-calculator.html</loc></url>
+<url><loc>https://smartdailytools.in/gst-calculator.html</loc></url>
+<url><loc>https://smartdailytools.in/cagr-calculator.html</loc></url>
+<url><loc>https://smartdailytools.in/percentage-calculator.html</loc></url>
+<url><loc>https://smartdailytools.in/age-calculator.html</loc></url>
+<url><loc>https://smartdailytools.in/blog.html</loc></url>
+
 </urlset>
