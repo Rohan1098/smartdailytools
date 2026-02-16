@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSC / TCS Score Calculator</title>
+<meta name="description" content="Calculate your SSC and TCS exam score instantly by pasting your response sheet.">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 850px;
+    text-align: center;
+    color: white;
+}
+
+.subtitle {
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.card {
+    background: white;
+    color: #333;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+textarea {
+    width: 100%;
+    height: 110px;
+    margin: 10px 0 20px 0;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.input-row div {
+    flex: 1;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #243b55;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #141e30;
+}
+
+.result-box {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    background: #f4f4f4;
+    border-radius: 8px;
+}
+
+.footer-note {
+    margin-top: 15px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>SSC / TCS Score Calculator</h1>
+    <p class="subtitle">
