@@ -3,12 +3,12 @@
 ========================= */
 
 body {
-font-family: 'Segoe UI', sans-serif;
-margin: 0;
-background: #f4f7fb;
-color: #333;
-scroll-behavior: smooth;
-transition: background 0.3s, color 0.3s;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f4f7fb;
+  color: #333;
+  scroll-behavior: smooth;
+  transition: background 0.3s, color 0.3s;
 }
 
 /* =========================
@@ -16,40 +16,40 @@ transition: background 0.3s, color 0.3s;
 ========================= */
 
 .navbar {
-background: #111827;
-color: white;
-padding: 15px 40px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-position: sticky;
-top: 0;
-z-index: 1000;
+  background: #111827;
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar a {
-color: white;
-margin-left: 20px;
-text-decoration: none;
-transition: 0.3s;
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .navbar a:hover {
-color: #60a5fa;
+  color: #60a5fa;
 }
 
 .theme-btn {
-background: white;
-border: none;
-padding: 8px 12px;
-border-radius: 20px;
-cursor: pointer;
-margin-left: 20px;
-transition: 0.3s;
+  background: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: 0.3s;
 }
 
 .theme-btn:hover {
-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* =========================
@@ -57,26 +57,26 @@ transform: scale(1.1);
 ========================= */
 
 .hero {
-text-align: center;
-padding: 80px 20px;
-background: linear-gradient(135deg,#2563eb,#1e3a8a);
-color: white;
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg,#2563eb,#1e3a8a);
+  color: white;
 }
 
 .hero button {
-margin-top: 20px;
-padding: 12px 25px;
-border: none;
-border-radius: 30px;
-background: white;
-color: #1e3a8a;
-font-weight: bold;
-cursor: pointer;
-transition: 0.3s;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #1e3a8a;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .hero button:hover {
-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* =========================
@@ -84,22 +84,22 @@ transform: scale(1.05);
 ========================= */
 
 .search-box {
-text-align: center;
-margin-top: 40px;
+  text-align: center;
+  margin-top: 40px;
 }
 
 .search-box input {
-width: 300px;
-padding: 12px;
-border-radius: 30px;
-border: 1px solid #ccc;
-outline: none;
-transition: 0.3s;
+  width: 300px;
+  padding: 12px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.3s;
 }
 
 .search-box input:focus {
-border-color: #2563eb;
-box-shadow: 0 0 10px rgba(37,99,235,0.3);
+  border-color: #2563eb;
+  box-shadow: 0 0 10px rgba(37,99,235,0.3);
 }
 
 /* =========================
@@ -107,131 +107,97 @@ box-shadow: 0 0 10px rgba(37,99,235,0.3);
 ========================= */
 
 .tool-list {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 25px;
-padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 60px 40px;
 }
 
 .tool-card {
-background: white;
-padding: 25px;
-border-radius: 12px;
-text-align: center;
-box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-text-decoration: none;
-color: #111;
-font-weight: 600;
-transition: 0.3s;
-opacity: 0;
-transform: translateY(20px);
-animation: fadeUp 0.6s forwards;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
 .tool-card:hover {
-transform: translateY(-8px);
-box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-background: #eff6ff;
-}
-
-@keyframes fadeUp {
-to {
-opacity: 1;
-transform: translateY(0);
-}
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  background: #eff6ff;
 }
 
 /* =========================
-   PAGE CONTAINER (About + Blog)
+   PAGE CONTAINER
 ========================= */
 
 .page-container {
-max-width: 900px;
-margin: 60px auto;
-padding: 50px;
-background: white;
-border-radius: 20px;
-box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-animation: fadeUp 0.6s ease forwards;
-}
-
-.page-container h1 {
-font-size: 34px;
-text-align: center;
-margin-bottom: 30px;
-position: relative;
-}
-
-.page-container h1::after {
-content: "";
-width: 60px;
-height: 4px;
-background: #2563eb;
-display: block;
-margin: 10px auto 0;
-border-radius: 5px;
-}
-
-.page-container h2 {
-margin-top: 35px;
-margin-bottom: 10px;
-color: #2563eb;
-font-size: 22px;
-}
-
-.page-container p {
-line-height: 1.8;
-font-size: 16px;
-color: #444;
-}
-
-.page-container ul {
-margin-top: 15px;
-padding-left: 20px;
-}
-
-.page-container ul li {
-margin-bottom: 12px;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px;
 }
 
 /* =========================
-   BLOG + ABOUT CARDS
+   BLOG & ARTICLE CARDS
 ========================= */
 
 .blog-card,
 .about-card {
-background: white;
-padding: 25px;
-margin: 25px 0;
-border-radius: 15px;
-box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-transition: all 0.3s ease;
+  background: white;
+  padding: 30px;
+  margin: 25px 0;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  transition: 0.3s;
 }
 
 .blog-card:hover,
 .about-card:hover {
-transform: translateY(-8px);
-box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.12);
 }
 
 .blog-card h2,
 .about-card h2 {
-margin-bottom: 10px;
+  color: #2563eb;
+  margin-bottom: 10px;
 }
 
+.blog-card p,
+.about-card p {
+  line-height: 1.8;
+  color: #444;
+}
+
+.blog-card ul,
+.about-card ul {
+  padding-left: 20px;
+}
+
+.blog-card ul li,
+.about-card ul li {
+  margin-bottom: 10px;
+}
+
+/* Blog Buttons */
+
 .blog-card a {
-display: inline-block;
-margin-top: 10px;
-padding: 8px 15px;
-background: #2563eb;
-color: white;
-border-radius: 20px;
-text-decoration: none;
-transition: 0.3s;
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 15px;
+  background: #2563eb;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .blog-card a:hover {
-background: #1e40af;
+  background: #1e40af;
 }
 
 /* =========================
@@ -239,10 +205,10 @@ background: #1e40af;
 ========================= */
 
 footer {
-text-align: center;
-padding: 20px;
-background: #111827;
-color: white;
+  text-align: center;
+  padding: 20px;
+  background: #111827;
+  color: white;
 }
 
 /* =========================
@@ -250,63 +216,46 @@ color: white;
 ========================= */
 
 .dark-mode {
-background: #0f172a;
-color: #e2e8f0;
+  background: #0f172a;
+  color: #e2e8f0;
 }
 
-.dark-mode .navbar {
-background: #020617;
-}
-
+.dark-mode .navbar,
 .dark-mode footer {
-background: #020617;
+  background: #020617;
 }
 
 .dark-mode .tool-card {
-background: #1e293b;
-color: #f1f5f9;
+  background: #1e293b;
+  color: #f1f5f9;
 }
 
 .dark-mode .tool-card:hover {
-background: #334155;
-}
-
-.dark-mode .page-container {
-background: #1e293b;
-color: #f1f5f9;
-}
-
-.dark-mode .page-container p {
-color: #cbd5e1;
-}
-
-.dark-mode .page-container h2 {
-color: #60a5fa;
+  background: #334155;
 }
 
 .dark-mode .blog-card,
 .dark-mode .about-card {
-background: #334155;
-color: #f1f5f9;
-}
-
-.dark-mode .blog-card p,
-.dark-mode .about-card p {
-color: #e2e8f0;
+  background: #1e293b;
+  color: #e2e8f0;
 }
 
 .dark-mode .blog-card h2,
 .dark-mode .about-card h2 {
-color: #60a5fa;
+  color: #60a5fa;
+}
+
+.dark-mode .blog-card p,
+.dark-mode .about-card p {
+  color: #cbd5e1;
 }
 
 .dark-mode .blog-card a {
-background: #2563eb;
-color: white;
+  background: #2563eb;
 }
 
 .dark-mode .blog-card a:hover {
-background: #1d4ed8;
+  background: #1d4ed8;
 }
 
 /* =========================
@@ -314,59 +263,11 @@ background: #1d4ed8;
 ========================= */
 
 @media(max-width:600px){
-.navbar {
-flex-direction: column;
-}
-.search-box input {
-width: 90%;
-}
-}
-/* ===== About Page Card ===== */
+  .navbar {
+    flex-direction: column;
+  }
 
-.about-card {
-  background: white;
-  padding: 40px;
-  border-radius: 18px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  .search-box input {
+    width: 90%;
+  }
 }
-
-.about-card h1 {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.about-card h2 {
-  margin-top: 30px;
-  color: #2563eb;
-}
-
-.about-card p {
-  line-height: 1.8;
-  color: #444;
-}
-
-.about-card ul {
-  margin-top: 10px;
-  padding-left: 20px;
-}
-
-.about-card ul li {
-  margin-bottom: 10px;
-}
-
-/* ===== Dark Mode Support ===== */
-
-.dark-mode .about-card {
-  background: #1e293b;
-  color: #e2e8f0;
-}
-
-.dark-mode .about-card p {
-  color: #cbd5e1;
-}
-
-.dark-mode .about-card h2 {
-  color: #60a5fa;
-}
-
