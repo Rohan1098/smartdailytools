@@ -1,12 +1,20 @@
+/* =========================
+   BASE STYLES
+========================= */
+
 body {
 font-family: 'Segoe UI', sans-serif;
 margin: 0;
 background: #f4f7fb;
 color: #333;
 scroll-behavior: smooth;
+transition: background 0.3s, color 0.3s;
 }
 
-/* Navbar */
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
 background: #111827;
 color: white;
@@ -30,7 +38,24 @@ transition: 0.3s;
 color: #60a5fa;
 }
 
-/* Hero */
+.theme-btn {
+background: white;
+border: none;
+padding: 8px 12px;
+border-radius: 20px;
+cursor: pointer;
+margin-left: 20px;
+transition: 0.3s;
+}
+
+.theme-btn:hover {
+transform: scale(1.1);
+}
+
+/* =========================
+   HERO
+========================= */
+
 .hero {
 text-align: center;
 padding: 80px 20px;
@@ -54,62 +79,10 @@ transition: 0.3s;
 transform: scale(1.05);
 }
 
-/* Tools Grid */
-.tool-list {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 25px;
-padding: 60px 40px;
-}
+/* =========================
+   SEARCH
+========================= */
 
-.tool-card {
-background: white;
-padding: 25px;
-border-radius: 12px;
-text-align: center;
-box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-text-decoration: none;
-color: black;
-font-weight: 600;
-transition: 0.3s;
-}
-
-.tool-card:hover {
-transform: translateY(-8px);
-box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-background: #eff6ff;
-}
-
-/* Footer */
-footer {
-text-align: center;
-padding: 20px;
-background: #111827;
-color: white;
-}
-
-/* Responsive */
-@media(max-width:600px){
-.navbar {
-flex-direction: column;
-}
-}
-/* Theme Toggle Button */
-.theme-btn {
-background: white;
-border: none;
-padding: 8px 12px;
-border-radius: 20px;
-cursor: pointer;
-margin-left: 20px;
-transition: 0.3s;
-}
-
-.theme-btn:hover {
-transform: scale(1.1);
-}
-
-/* Search Box */
 .search-box {
 text-align: center;
 margin-top: 40px;
@@ -129,11 +102,36 @@ border-color: #2563eb;
 box-shadow: 0 0 10px rgba(37,99,235,0.3);
 }
 
-/* Fade In Animation */
+/* =========================
+   TOOL GRID
+========================= */
+
+.tool-list {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 25px;
+padding: 60px 40px;
+}
+
 .tool-card {
+background: white;
+padding: 25px;
+border-radius: 12px;
+text-align: center;
+box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+text-decoration: none;
+color: #111;
+font-weight: 600;
+transition: 0.3s;
 opacity: 0;
 transform: translateY(20px);
 animation: fadeUp 0.6s forwards;
+}
+
+.tool-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+background: #eff6ff;
 }
 
 @keyframes fadeUp {
@@ -143,136 +141,9 @@ transform: translateY(0);
 }
 }
 
-/* Dark Mode */
-.dark-mode {
-background: #0f172a;
-color: white;
-}
-
-.dark-mode .navbar {
-background: #020617;
-}
-
-.dark-mode .tool-card {
-background: #1e293b;
-color: white;
-}
-
-.dark-mode footer {
-background: #020617;
-}
-.page-container {
-max-width: 900px;
-margin: 60px auto;
-padding: 20px;
-}
-
-.page-container h1 {
-margin-bottom: 20px;
-}
-
-.page-container h2 {
-margin-top: 30px;
-color: #2563eb;
-}
-
-.page-container ul {
-padding-left: 20px;
-}
-
-.blog-card {
-background: white;
-padding: 20px;
-margin: 20px 0;
-border-radius: 12px;
-box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-transition: 0.3s;
-}
-
-.blog-card:hover {
-transform: translateY(-5px);
-}
-
-.blog-card a {
-text-decoration: none;
-color: #2563eb;
-font-weight: bold;
-}
-.page-container {
-max-width: 900px;
-margin: 60px auto;
-padding: 40px;
-background: white;
-border-radius: 20px;
-box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-animation: fadeUp 0.6s ease forwards;
-}
-
-.page-container h1 {
-font-size: 32px;
-margin-bottom: 20px;
-text-align: center;
-}
-
-.page-container h2 {
-margin-top: 35px;
-color: #2563eb;
-}
-
-.page-container p {
-line-height: 1.7;
-font-size: 16px;
-}
-
-.page-container ul li {
-margin-bottom: 10px;
-}
-
-/* Blog Cards Upgrade */
-.blog-card {
-background: white;
-padding: 25px;
-margin: 25px 0;
-border-radius: 15px;
-box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-transition: all 0.3s ease;
-}
-
-.blog-card:hover {
-transform: translateY(-8px);
-box-shadow: 0 20px 45px rgba(0,0,0,0.12);
-}
-
-.blog-card h2 {
-margin-bottom: 10px;
-}
-
-.blog-card a {
-display: inline-block;
-margin-top: 10px;
-padding: 8px 15px;
-background: #2563eb;
-color: white;
-border-radius: 20px;
-text-decoration: none;
-transition: 0.3s;
-}
-
-.blog-card a:hover {
-background: #1e40af;
-}
-
-/* Dark Mode Support for Pages */
-.dark-mode .page-container {
-background: #1e293b;
-color: white;
-}
-
-.dark-mode .blog-card {
-background: #334155;
-color: white;
-}
-/* ===== About Page Enhancements ===== */
+/* =========================
+   PAGE CONTAINER (About + Blog)
+========================= */
 
 .page-container {
 max-width: 900px;
@@ -321,14 +192,88 @@ padding-left: 20px;
 
 .page-container ul li {
 margin-bottom: 12px;
-font-size: 16px;
 }
 
-/* Dark Mode Support for About Page */
+/* =========================
+   BLOG + ABOUT CARDS
+========================= */
+
+.blog-card,
+.about-card {
+background: white;
+padding: 25px;
+margin: 25px 0;
+border-radius: 15px;
+box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+transition: all 0.3s ease;
+}
+
+.blog-card:hover,
+.about-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+}
+
+.blog-card h2,
+.about-card h2 {
+margin-bottom: 10px;
+}
+
+.blog-card a {
+display: inline-block;
+margin-top: 10px;
+padding: 8px 15px;
+background: #2563eb;
+color: white;
+border-radius: 20px;
+text-decoration: none;
+transition: 0.3s;
+}
+
+.blog-card a:hover {
+background: #1e40af;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+text-align: center;
+padding: 20px;
+background: #111827;
+color: white;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.dark-mode {
+background: #0f172a;
+color: #e2e8f0;
+}
+
+.dark-mode .navbar {
+background: #020617;
+}
+
+.dark-mode footer {
+background: #020617;
+}
+
+.dark-mode .tool-card {
+background: #1e293b;
+color: #f1f5f9;
+}
+
+.dark-mode .tool-card:hover {
+background: #334155;
+}
 
 .dark-mode .page-container {
 background: #1e293b;
-color: white;
+color: #f1f5f9;
 }
 
 .dark-mode .page-container p {
@@ -338,18 +283,20 @@ color: #cbd5e1;
 .dark-mode .page-container h2 {
 color: #60a5fa;
 }
-/* ===== Dark Mode Fix for Blog Page ===== */
 
-.dark-mode .blog-card {
+.dark-mode .blog-card,
+.dark-mode .about-card {
 background: #334155;
 color: #f1f5f9;
 }
 
-.dark-mode .blog-card p {
+.dark-mode .blog-card p,
+.dark-mode .about-card p {
 color: #e2e8f0;
 }
 
-.dark-mode .blog-card h2 {
+.dark-mode .blog-card h2,
+.dark-mode .about-card h2 {
 color: #60a5fa;
 }
 
@@ -362,7 +309,15 @@ color: white;
 background: #1d4ed8;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
 
-
-
-
+@media(max-width:600px){
+.navbar {
+flex-direction: column;
+}
+.search-box input {
+width: 90%;
+}
+}
