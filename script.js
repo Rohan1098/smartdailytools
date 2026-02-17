@@ -123,10 +123,31 @@ document.getElementById("ageResult").innerText =
 years + " years, " + months + " months, " + days + " days";
 }
 /* Dark Mode Toggle */
-document.getElementById("themeToggle")?.addEventListener("click", function(){
-document.body.classList.toggle("dark-mode");
-this.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+document.addEventListener("DOMContentLoaded", function(){
+
+    const toggleBtn = document.getElementById("themeToggle");
+
+    if(toggleBtn){
+        toggleBtn.addEventListener("click", function(){
+            document.body.classList.toggle("dark-mode");
+
+            const isDark = document.body.classList.contains("dark-mode");
+            toggleBtn.textContent = isDark ? "☀️" : "🌙";
+
+            // Save preference
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem("theme");
+        if(savedTheme === "dark"){
+            document.body.classList.add("dark-mode");
+            toggleBtn.textContent = "☀️";
+        }
+    }
+
 });
+
 
 /* Tool Search */
 function filterTools(){
@@ -154,4 +175,5 @@ clearInterval(interval);
 }
 }, 150);
 });
+
 
