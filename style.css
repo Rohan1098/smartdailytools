@@ -94,3 +94,72 @@ color: white;
 flex-direction: column;
 }
 }
+/* Theme Toggle Button */
+.theme-btn {
+background: white;
+border: none;
+padding: 8px 12px;
+border-radius: 20px;
+cursor: pointer;
+margin-left: 20px;
+transition: 0.3s;
+}
+
+.theme-btn:hover {
+transform: scale(1.1);
+}
+
+/* Search Box */
+.search-box {
+text-align: center;
+margin-top: 40px;
+}
+
+.search-box input {
+width: 300px;
+padding: 12px;
+border-radius: 30px;
+border: 1px solid #ccc;
+outline: none;
+transition: 0.3s;
+}
+
+.search-box input:focus {
+border-color: #2563eb;
+box-shadow: 0 0 10px rgba(37,99,235,0.3);
+}
+
+/* Fade In Animation */
+.tool-card {
+opacity: 0;
+transform: translateY(20px);
+animation: fadeUp 0.6s forwards;
+}
+
+@keyframes fadeUp {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+/* Dark Mode */
+.dark-mode {
+background: #0f172a;
+color: white;
+}
+
+.dark-mode .navbar {
+background: #020617;
+}
+
+.dark-mode .tool-card {
+background: #1e293b;
+color: white;
+}
+
+.dark-mode footer {
+background: #020617;
+}
+
+
