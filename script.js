@@ -122,3 +122,36 @@ months += 12;
 document.getElementById("ageResult").innerText =
 years + " years, " + months + " months, " + days + " days";
 }
+/* Dark Mode Toggle */
+document.getElementById("themeToggle")?.addEventListener("click", function(){
+document.body.classList.toggle("dark-mode");
+this.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+});
+
+/* Tool Search */
+function filterTools(){
+let input = document.getElementById("toolSearch").value.toLowerCase();
+let cards = document.querySelectorAll(".tool-card");
+
+cards.forEach(card => {
+let text = card.textContent.toLowerCase();
+card.style.display = text.includes(input) ? "block" : "none";
+});
+}
+
+/* Animated Counter */
+window.addEventListener("load", function(){
+let count = 0;
+let target = 6;
+let counter = document.getElementById("toolCount");
+
+let interval = setInterval(()=>{
+if(count < target){
+count++;
+counter.textContent = count;
+} else {
+clearInterval(interval);
+}
+}, 150);
+});
+
