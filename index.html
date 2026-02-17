@@ -16,6 +16,7 @@
 <nav class="navbar">
 <h1 class="logo">SmartDailyTools</h1>
 <div class="nav-links">
+<button id="themeToggle" class="theme-btn">🌙</button>
 <a href="blog.html">Blog</a>
 <a href="about.html">About</a>
 </div>
@@ -23,10 +24,14 @@
 
 <header class="hero">
   <h1>Smart Daily Tools</h1>
-  <p>Fast • Accurate • Free Online Calculators for India</p>
+  <p><span id="toolCount">6</span>+ Free Calculators for India</p>
   <button onclick="scrollToTools()">Explore Tools</button>
 </header>
-
+  
+<div class="search-box">
+<input type="text" id="toolSearch" placeholder="Search calculator..." onkeyup="filterTools()">
+</div>
+  
 <section class="tool-list" id="tools">
 <a href="sip-calculator.html" class="tool-card">SIP Calculator</a>
 <a href="emi-calculator.html" class="tool-card">EMI Calculator</a>
@@ -43,3 +48,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
