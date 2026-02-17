@@ -338,6 +338,30 @@ color: #cbd5e1;
 .dark-mode .page-container h2 {
 color: #60a5fa;
 }
+/* ===== Dark Mode Fix for Blog Page ===== */
+
+.dark-mode .blog-card {
+background: #334155;
+color: #f1f5f9;
+}
+
+.dark-mode .blog-card p {
+color: #e2e8f0;
+}
+
+.dark-mode .blog-card h2 {
+color: #60a5fa;
+}
+
+.dark-mode .blog-card a {
+background: #2563eb;
+color: white;
+}
+
+.dark-mode .blog-card a:hover {
+background: #1d4ed8;
+}
+
 
 
 
