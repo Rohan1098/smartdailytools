@@ -12,7 +12,8 @@ body {
 }
 
 .logo img {
-    height: 90px;
+    height: 150px;
+   width: 100px;
     
 }
 
@@ -276,6 +277,7 @@ footer {
     width: 90%;
   }
 }
+
 
 
 
