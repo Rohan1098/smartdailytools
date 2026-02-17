@@ -262,6 +262,10 @@ footer {
   background: #1d4ed8;
 }
 
+.logo img {
+    height: 45px;
+}
+
 /* =========================
    RESPONSIVE
 ========================= */
@@ -275,4 +279,5 @@ footer {
     width: 90%;
   }
 }
+
 
