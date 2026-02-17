@@ -12,8 +12,8 @@ body {
 }
 
 .logo img {
-    height: 5px;
-    width: 10px;
+    height: 20px;
+    width: 30px;
 }
 
 /* =========================
@@ -276,6 +276,7 @@ footer {
     width: 90%;
   }
 }
+
 
 
 
