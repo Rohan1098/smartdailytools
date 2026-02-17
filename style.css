@@ -11,6 +11,10 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+.logo img {
+    height: 45px;
+}
+
 /* =========================
    NAVBAR
 ========================= */
@@ -271,3 +275,4 @@ footer {
     width: 90%;
   }
 }
+
