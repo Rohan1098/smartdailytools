@@ -198,6 +198,80 @@ text-decoration: none;
 color: #2563eb;
 font-weight: bold;
 }
+.page-container {
+max-width: 900px;
+margin: 60px auto;
+padding: 40px;
+background: white;
+border-radius: 20px;
+box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+animation: fadeUp 0.6s ease forwards;
+}
+
+.page-container h1 {
+font-size: 32px;
+margin-bottom: 20px;
+text-align: center;
+}
+
+.page-container h2 {
+margin-top: 35px;
+color: #2563eb;
+}
+
+.page-container p {
+line-height: 1.7;
+font-size: 16px;
+}
+
+.page-container ul li {
+margin-bottom: 10px;
+}
+
+/* Blog Cards Upgrade */
+.blog-card {
+background: white;
+padding: 25px;
+margin: 25px 0;
+border-radius: 15px;
+box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+}
+
+.blog-card h2 {
+margin-bottom: 10px;
+}
+
+.blog-card a {
+display: inline-block;
+margin-top: 10px;
+padding: 8px 15px;
+background: #2563eb;
+color: white;
+border-radius: 20px;
+text-decoration: none;
+transition: 0.3s;
+}
+
+.blog-card a:hover {
+background: #1e40af;
+}
+
+/* Dark Mode Support for Pages */
+.dark-mode .page-container {
+background: #1e293b;
+color: white;
+}
+
+.dark-mode .blog-card {
+background: #334155;
+color: white;
+}
 
 
 
