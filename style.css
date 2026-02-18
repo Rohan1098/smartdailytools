@@ -37,8 +37,8 @@ body {
 /* Logo */
 .logo img {
   height: 70px;
-  /* width: auto;
-  display: block; */
+  width: auto;
+  display: block;
 }
 
 /* Nav Links */
@@ -330,6 +330,7 @@ footer {
     padding: 25px;
   }
 }
+
 
 
 
