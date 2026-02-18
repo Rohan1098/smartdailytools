@@ -11,10 +11,19 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-.logo img {
-    height: 45px;
-    width: 30px;
+/* logo */
+.site-header {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
 }
+
+.logo img {
+    max-height: 45px;
+    width: auto;
+    display: block;
+}
+
 
 
 /* =========================
@@ -277,6 +286,7 @@ footer {
     width: 90%;
   }
 }
+
 
 
 
