@@ -31,6 +31,16 @@
 <!-- Theme Color -->
 <meta name="theme-color" content="#000000">
 
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-ID"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'YOUR-ID');
+</script>
+
+
 </head>
 
 <body>
@@ -55,6 +65,13 @@
   <h1>Smart Daily Tools</h1>
   <p><span id="toolCount">6</span>+ Free Calculators for India</p>
   <button onclick="scrollToTools()">Explore Tools</button>
+
+ <meta property="og:title" content="SmartDailyTools - Free Online Calculators">
+<meta property="og:description" content="Free SIP, EMI, GST, CAGR and other financial calculators online.">
+<meta property="og:image" content="https://www.smartdailytools.in/favicon-96x96.png">
+<meta property="og:url" content="https://www.smartdailytools.in">
+<meta property="og:type" content="website">
+
 </header>
   
 <div class="search-box">
@@ -77,5 +94,6 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
