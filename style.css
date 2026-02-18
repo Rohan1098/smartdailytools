@@ -19,7 +19,7 @@ body {
 }
 
 .logo img {
-    height: 65px;   /* increase size */
+    height: 100px;   /* increase size */
     width: auto;
     display: block;
 }
@@ -287,6 +287,7 @@ footer {
     width: 90%;
   }
 }
+
 
 
 
