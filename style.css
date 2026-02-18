@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f4f7fb;
@@ -36,20 +41,20 @@ body {
 
 /* Logo */
 .logo img {
-  height: 70px;
+  height: 50px;
   width: auto;
-  display: block;
+  object-fit: contain;
 }
 
 /* Nav Links */
 .nav-links {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .nav-links a {
   color: white;
-  margin-left: 20px;
   text-decoration: none;
   font-weight: 500;
   transition: 0.3s;
@@ -63,10 +68,9 @@ body {
 .theme-btn {
   background: white;
   border: none;
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 20px;
   cursor: pointer;
-  margin-left: 20px;
   transition: 0.3s;
   font-size: 14px;
 }
@@ -167,75 +171,6 @@ body {
 }
 
 /* =========================
-   PAGE CONTAINER
-========================= */
-
-.page-container {
-  max-width: 900px;
-  margin: 70px auto;
-  padding: 40px;
-}
-
-/* =========================
-   BLOG & ABOUT CARDS
-========================= */
-
-.blog-card,
-.about-card {
-  background: white;
-  padding: 35px;
-  margin: 25px 0;
-  border-radius: 18px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  transition: 0.3s ease;
-}
-
-.blog-card:hover,
-.about-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.12);
-}
-
-.blog-card h2,
-.about-card h2 {
-  color: #2563eb;
-  margin-bottom: 15px;
-}
-
-.blog-card p,
-.about-card p {
-  line-height: 1.8;
-  color: #444;
-}
-
-.blog-card ul,
-.about-card ul {
-  padding-left: 20px;
-}
-
-.blog-card ul li,
-.about-card ul li {
-  margin-bottom: 10px;
-}
-
-/* Blog Buttons */
-
-.blog-card a {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 8px 16px;
-  background: #2563eb;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.blog-card a:hover {
-  background: #1e40af;
-}
-
-/* =========================
    FOOTER
 ========================= */
 
@@ -262,33 +197,13 @@ footer {
   background: #020617;
 }
 
-.dark-mode .tool-card,
-.dark-mode .blog-card,
-.dark-mode .about-card {
+.dark-mode .tool-card {
   background: #1e293b;
   color: #f1f5f9;
 }
 
 .dark-mode .tool-card:hover {
   background: #334155;
-}
-
-.dark-mode .blog-card h2,
-.dark-mode .about-card h2 {
-  color: #60a5fa;
-}
-
-.dark-mode .blog-card p,
-.dark-mode .about-card p {
-  color: #cbd5e1;
-}
-
-.dark-mode .blog-card a {
-  background: #2563eb;
-}
-
-.dark-mode .blog-card a:hover {
-  background: #1d4ed8;
 }
 
 /* =========================
@@ -302,12 +217,7 @@ footer {
   }
 
   .logo img {
-    height: 40px;
-  }
-
-  .nav-links a {
-    margin-left: 12px;
-    font-size: 14px;
+    height: 42px;
   }
 
   .hero h1 {
@@ -325,13 +235,4 @@ footer {
   .tool-list {
     padding: 40px 20px;
   }
-
-  .page-container {
-    padding: 25px;
-  }
 }
-
-
-
-
-
