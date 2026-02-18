@@ -1,14 +1,20 @@
 /* =========================
-   BASE STYLES
+   RESET & BASE
 ========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  margin: 0;
   background: #f4f7fb;
   color: #333;
   scroll-behavior: smooth;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
 }
 
 /* =========================
@@ -25,6 +31,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* Logo */
@@ -44,6 +51,7 @@ body {
   color: white;
   margin-left: 20px;
   text-decoration: none;
+  font-weight: 500;
   transition: 0.3s;
 }
 
@@ -51,18 +59,7 @@ body {
   color: #60a5fa;
 }
 
-
-.navbar a {
-  color: white;
-  margin-left: 20px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.navbar a:hover {
-  color: #60a5fa;
-}
-
+/* Theme Button */
 .theme-btn {
   background: white;
   border: none;
@@ -71,55 +68,68 @@ body {
   cursor: pointer;
   margin-left: 20px;
   transition: 0.3s;
+  font-size: 14px;
 }
 
 .theme-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 /* =========================
-   HERO
+   HERO SECTION
 ========================= */
 
 .hero {
   text-align: center;
-  padding: 80px 20px;
+  padding: 90px 20px;
   background: linear-gradient(135deg,#2563eb,#1e3a8a);
   color: white;
 }
 
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
 .hero button {
-  margin-top: 20px;
-  padding: 12px 25px;
+  margin-top: 25px;
+  padding: 12px 28px;
   border: none;
   border-radius: 30px;
   background: white;
   color: #1e3a8a;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .hero button:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* =========================
-   SEARCH
+   SEARCH BOX
 ========================= */
 
 .search-box {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 .search-box input {
-  width: 300px;
-  padding: 12px;
+  width: 320px;
+  padding: 12px 18px;
   border-radius: 30px;
   border: 1px solid #ccc;
   outline: none;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  font-size: 14px;
 }
 
 .search-box input:focus {
@@ -140,18 +150,18 @@ body {
 
 .tool-card {
   background: white;
-  padding: 25px;
-  border-radius: 12px;
+  padding: 30px;
+  border-radius: 14px;
   text-align: center;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   text-decoration: none;
   color: #111;
   font-weight: 600;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .tool-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.15);
   background: #eff6ff;
 }
@@ -162,34 +172,34 @@ body {
 
 .page-container {
   max-width: 900px;
-  margin: 60px auto;
+  margin: 70px auto;
   padding: 40px;
 }
 
 /* =========================
-   BLOG & ARTICLE CARDS
+   BLOG & ABOUT CARDS
 ========================= */
 
 .blog-card,
 .about-card {
   background: white;
-  padding: 30px;
+  padding: 35px;
   margin: 25px 0;
   border-radius: 18px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .blog-card:hover,
 .about-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   box-shadow: 0 20px 45px rgba(0,0,0,0.12);
 }
 
 .blog-card h2,
 .about-card h2 {
   color: #2563eb;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .blog-card p,
@@ -212,8 +222,8 @@ body {
 
 .blog-card a {
   display: inline-block;
-  margin-top: 12px;
-  padding: 8px 15px;
+  margin-top: 15px;
+  padding: 8px 16px;
   background: #2563eb;
   color: white;
   border-radius: 20px;
@@ -231,9 +241,11 @@ body {
 
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   background: #111827;
   color: white;
+  margin-top: 40px;
+  font-size: 14px;
 }
 
 /* =========================
@@ -250,19 +262,15 @@ footer {
   background: #020617;
 }
 
-.dark-mode .tool-card {
+.dark-mode .tool-card,
+.dark-mode .blog-card,
+.dark-mode .about-card {
   background: #1e293b;
   color: #f1f5f9;
 }
 
 .dark-mode .tool-card:hover {
   background: #334155;
-}
-
-.dark-mode .blog-card,
-.dark-mode .about-card {
-  background: #1e293b;
-  color: #e2e8f0;
 }
 
 .dark-mode .blog-card h2,
@@ -287,28 +295,38 @@ footer {
    RESPONSIVE
 ========================= */
 
-@media(max-width:600px){
+@media (max-width: 768px) {
+
   .navbar {
-    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .nav-links a {
+    margin-left: 12px;
+    font-size: 14px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero {
+    padding: 70px 20px;
   }
 
   .search-box input {
     width: 90%;
   }
+
+  .tool-list {
+    padding: 40px 20px;
+  }
+
+  .page-container {
+    padding: 25px;
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
