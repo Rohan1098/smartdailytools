@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://smartdailytools.in/sitemap.xml
+Sitemap: https://www.smartdailytools.in/sitemap.xml
+
