@@ -105,23 +105,12 @@ function calculateGST() {
    CAGR Calculator
 ================================= */
 function calculateCAGR() {
+  const initial = getNumber("cagrStart");
+  const finalVal = getNumber("cagrEnd");
+  const years = getNumber("cagrYears");
   const resultBox = document.getElementById("cagrResult");
 
-  const initialEl = document.getElementById("initialValue");
-  const finalEl = document.getElementById("finalValue");
-  const yearsEl = document.getElementById("cagrYears");
-
-  if (!initialEl || !finalEl || !yearsEl) {
-    showResult(resultBox, "Calculator configuration error.");
-    return;
-  }
-
-  const initial = parseFloat(initialEl.value);
-  const finalVal = parseFloat(finalEl.value);
-  const years = parseFloat(yearsEl.value);
-
-  if (isNaN(initial) || isNaN(finalVal) || isNaN(years) ||
-      initial <= 0 || finalVal <= 0 || years <= 0) {
+  if (initial <= 0 || finalVal <= 0 || years <= 0) {
     showResult(resultBox, "Please fill all fields correctly.");
     return;
   }
@@ -277,5 +266,6 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
