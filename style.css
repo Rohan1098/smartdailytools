@@ -155,7 +155,7 @@ body {
   padding: 60px 40px;
 }
 
-.tool-card {
+/* .tool-card {
   background: white;
   padding: 30px;
   border-radius: 14px;
@@ -165,7 +165,17 @@ body {
   color: #111;
   font-weight: 600;
   transition: 0.3s ease;
+} */
+.tool-card {
+  background: var(--card-bg);
+  padding: 32px;
+  border-radius: 18px;
+  max-width: 520px;
+  margin: 40px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: left;
 }
+
 
 .tool-card:hover {
   transform: translateY(-6px);
@@ -298,6 +308,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
