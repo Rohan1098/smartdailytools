@@ -414,3 +414,33 @@ footer {
   display: flex;
   justify-content: center;
 }
+/* =========================
+   RESULT ANIMATION — ALPHA
+========================= */
+
+.result-box {
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #111827;
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: all 0.35s ease;
+}
+
+/* when result shows */
+.result-box.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* subtle success glow */
+.result-box.success {
+  animation: resultGlow 0.6s ease;
+}
+
+@keyframes resultGlow {
+  0% { box-shadow: 0 0 0 rgba(79,70,229,0); }
+  50% { box-shadow: 0 0 20px rgba(79,70,229,0.25); }
+  100% { box-shadow: 0 0 0 rgba(79,70,229,0); }
+}
