@@ -39,17 +39,20 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Logo FIXED */
+/* ===== HEADER LOGO — HARD FIX ===== */
+
 .logo {
   display: flex;
   align-items: center;
-  height: 70px;
+  height: auto !important;
+  min-height: 90px;        /* 🔥 gives logo room to grow */
 }
 
 .logo img {
-  height: 64px !important;
+  height: 80px !important; /* 🔥 increase this freely */
   width: auto !important;
   max-width: none !important;
+  max-height: none !important;
   object-fit: contain;
   display: block;
 }
@@ -243,6 +246,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
