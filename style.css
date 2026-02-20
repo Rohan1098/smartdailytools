@@ -409,3 +409,8 @@ footer {
     transform: translateY(0);
   }
 }
+.page-container {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
