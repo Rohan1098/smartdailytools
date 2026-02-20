@@ -155,7 +155,7 @@ body {
   padding: 60px 40px;
 }
 
-/* .tool-card {
+.tool-card {
   background: white;
   padding: 30px;
   border-radius: 14px;
@@ -165,18 +165,20 @@ body {
   color: #111;
   font-weight: 600;
   transition: 0.3s ease;
-} */
-.tool-card {
+}
+/* .tool-card {
   background: white;
   padding: 30px;
   border-radius: 14px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   text-decoration: none;
   color: #111;
+  font-weight: 600;
   max-width: 520px;
-  margin: 40px auto; 
-}
+  margin: 40px auto;  
+   
+} */
 
 
 .tool-card:hover {
@@ -310,6 +312,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
