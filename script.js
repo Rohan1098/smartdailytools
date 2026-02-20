@@ -123,21 +123,25 @@ function calculateCAGR() {
    Percentage Calculator (FIXED)
 ================================= */
 function calculatePercentage() {
-  // 🔥 supports BOTH possible IDs safely
-  const part =
-    getNumber("percentPart") || getNumber("percentValue");
+  const part = getNumber("percentPart");
   const total = getNumber("percentTotal");
-  const resultBox = document.getElementById("percentageResult") ||
-                    document.getElementById("percentResult");
+  const resultBox = document.getElementById("percentResult");
 
-  if (total <= 0) {
-    showResult(resultBox, "Total must be greater than 0.");
+  // ✅ strong validation
+  if (total === 0) {
+    showResult(resultBox, "Total cannot be zero.");
+    return;
+  }
+
+  if (part < 0 || total < 0) {
+    showResult(resultBox, "Please enter valid positive numbers.");
     return;
   }
 
   const percent = (part / total) * 100;
 
-  showResult(resultBox, "Percentage: " + percent.toFixed(2) + "%");
+  // ✅ supports decimals properly
+  showResult(resultBox, `📊 Percentage: ${percent.toFixed(2)}%`);
 }
 
 /* =================================
@@ -266,6 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
