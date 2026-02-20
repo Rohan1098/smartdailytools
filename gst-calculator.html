@@ -1,31 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SIP Calculator India - SmartDailyTools</title>
-<meta name="description" content="Calculate GST amount instantly.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GST Calculator – SmartDailyTools</title>
+<meta name="description" content="Calculate GST amount online instantly for any rate in India.">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
 </head>
 
 <body>
-
 <nav class="navbar">
-<h1>SmartDailyTools</h1>
-<a href="index.html">Home</a>
+  <h1 class="logo">SmartDailyTools</h1>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+  </div>
+  <button id="themeToggle" class="theme-btn">🌙</button>
 </nav>
 
-</section>
-  <section id="gst" class="tool">
-<h2>GST Calculator</h2>
-<input type="number" id="gstAmount" placeholder="Amount (₹)">
-<input type="number" id="gstRate" placeholder="GST Rate (%)">
-<button onclick="calculateGST()">Calculate</button>
-<p id="gstResult"></p>
-    <p>
- Calculate GST on goods and services with different rate options and tax-inclusive or exclusive pricing.
-</p>
+<section class="page-container">
+  <div class="tool-card">
+    <h1>GST Calculator</h1>
+    <p class="tool-desc">Calculate GST inclusive or exclusive price instantly.</p>
 
+    <input type="number" id="gstAmount" placeholder="Amount (₹)">
+    <input type="number" id="gstRate" placeholder="GST Rate (%)">
+
+    <button class="primary-btn" onclick="calculateGST()">Calculate GST</button>
+    <div id="gstResult" class="result-box"></div>
+
+    <div class="tool-content">
+      <h2>About</h2>
+      <p>Useful for businesses and individuals to quickly compute GST on products and services.</p>
+    </div>
+  </div>
 </section>
 
+<footer>
+  <p>© 2026 SmartDailyTools.in</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
