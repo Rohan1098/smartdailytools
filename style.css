@@ -8,10 +8,10 @@
   box-sizing: border-box;
 }
 
-img {
+/* img {
   max-width: 100%;
   height: auto;
-}
+} */
 
 body {
   font-family: 'Segoe UI', sans-serif;
@@ -41,7 +41,7 @@ body {
 
 /* Logo */
 .logo img {
-  height: 64px;
+  height: 70px;
 }
 
 /* Nav Links */
@@ -234,4 +234,5 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
