@@ -40,19 +40,18 @@ body {
 }
 
 /* Logo FIXED */
-/* Logo container */
 .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  height: 70px;
 }
 
-/* Logo image — force proper scaling */
 .logo img {
-    height: 70px;        /* 🔥 adjust if needed (45–60px ideal) */
-    width: auto;         /* keeps aspect ratio */
-    max-height: 50px;    /* prevents stretching */
-    object-fit: contain;
-    display: block;
+  height: 64px !important;
+  width: auto !important;
+  max-width: none !important;
+  object-fit: contain;
+  display: block;
 }
 /* Nav Links */
 .nav-links {
@@ -244,6 +243,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
