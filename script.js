@@ -265,8 +265,6 @@
 //     observer.observe(el);
 //   });
 // });
-
-
 /* =================================
    Helper Function
 ================================= */
@@ -279,7 +277,7 @@ function getNumber(id) {
 }
 
 /* =================================
-   Result Animation Helper (NEW)
+   Result Animation Helper (Alpha)
 ================================= */
 function showResult(resultBox, text) {
   if (!resultBox) return;
@@ -287,7 +285,7 @@ function showResult(resultBox, text) {
   resultBox.innerText = text;
 
   resultBox.classList.remove("show", "success");
-  void resultBox.offsetWidth; // force reflow
+  void resultBox.offsetWidth;
   resultBox.classList.add("show", "success");
 }
 
@@ -366,4 +364,173 @@ function calculateGST() {
 
   showResult(
     resultBox,
-    "GST: ₹" + gst.toFixed
+    `GST: ₹${gst.toFixed(2)} | Total: ₹${total.toFixed(2)}`
+  );
+}
+
+/* =================================
+   CAGR Calculator
+================================= */
+function calculateCAGR() {
+  const initial = getNumber("initialValue");
+  const finalVal = getNumber("finalValue");
+  const years = getNumber("cagrYears");
+  const resultBox = document.getElementById("cagrResult");
+
+  if (initial <= 0 || finalVal <= 0 || years <= 0) {
+    showResult(resultBox, "Please fill all fields correctly.");
+    return;
+  }
+
+  const cagr = (Math.pow(finalVal / initial, 1 / years) - 1) * 100;
+
+  showResult(resultBox, "CAGR: " + cagr.toFixed(2) + "%");
+}
+
+/* =================================
+   Percentage Calculator (FIXED)
+================================= */
+function calculatePercentage() {
+  // 🔥 supports BOTH possible IDs safely
+  const part =
+    getNumber("percentPart") || getNumber("percentValue");
+  const total = getNumber("percentTotal");
+  const resultBox = document.getElementById("percentageResult") ||
+                    document.getElementById("percentResult");
+
+  if (total <= 0) {
+    showResult(resultBox, "Total must be greater than 0.");
+    return;
+  }
+
+  const percent = (part / total) * 100;
+
+  showResult(resultBox, "Percentage: " + percent.toFixed(2) + "%");
+}
+
+/* =================================
+   Age Calculator (ALPHA UPGRADE)
+   ✅ works for < 1 year
+================================= */
+function calculateAge() {
+  const dob = document.getElementById("dob")?.value;
+  const resultBox = document.getElementById("ageResult");
+
+  if (!dob) {
+    showResult(resultBox, "Please select your date of birth.");
+    return;
+  }
+
+  const birthDate = new Date(dob);
+  const today = new Date();
+
+  if (birthDate > today) {
+    showResult(resultBox, "DOB cannot be in the future.");
+    return;
+  }
+
+  let years = today.getFullYear() - birthDate.getFullYear();
+  let months = today.getMonth() - birthDate.getMonth();
+  let days = today.getDate() - birthDate.getDate();
+
+  if (days < 0) {
+    months--;
+    const prevMonth = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      0
+    ).getDate();
+    days += prevMonth;
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  showResult(
+    resultBox,
+    `Age: ${years} years, ${months} months, ${days} days`
+  );
+}
+
+/* =================================
+   Dark Mode Toggle
+================================= */
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleBtn = document.getElementById("themeToggle");
+  if (!toggleBtn) return;
+
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+  }
+
+  toggleBtn.addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+
+    const isDark = document.body.classList.contains("dark-mode");
+    toggleBtn.textContent = isDark ? "☀️" : "🌙";
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+});
+
+/* =================================
+   Tool Search
+================================= */
+function filterTools() {
+  const input =
+    document.getElementById("toolSearch")?.value.toLowerCase() || "";
+  const cards = document.querySelectorAll(".tool-card");
+
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(input) ? "" : "none";
+  });
+}
+
+/* =================================
+   Animated Counter
+================================= */
+window.addEventListener("load", function () {
+  const counter = document.getElementById("toolCount");
+  if (!counter) return;
+
+  let count = 0;
+  const target = 6;
+
+  const interval = setInterval(() => {
+    if (count < target) {
+      count++;
+      counter.textContent = count;
+    } else {
+      clearInterval(interval);
+    }
+  }, 120);
+});
+
+/* =================================
+   Fade-in Observer (Alpha)
+================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".fade-in-up");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = "running";
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  elements.forEach(el => {
+    el.style.animationPlayState = "paused";
+    observer.observe(el);
+  });
+});
