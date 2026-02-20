@@ -1,31 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SIP Calculator India - SmartDailyTools</title>
-<meta name="description" content="Calculate Compound Annual Growth Rate">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAGR Calculator – SmartDailyTools</title>
+<meta name="description" content="Calculate Compound Annual Growth Rate (CAGR) of your investments easily.">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
 </head>
 
 <body>
-
 <nav class="navbar">
-<h1>SmartDailyTools</h1>
-<a href="index.html">Home</a>
+  <h1 class="logo">SmartDailyTools</h1>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+  </div>
+  <button id="themeToggle" class="theme-btn">🌙</button>
 </nav>
- <section id="cagr" class="tool">
-<h2>CAGR Calculator</h2>
-<input type="number" id="cagrStart" placeholder="Starting Value">
-<input type="number" id="cagrEnd" placeholder="Ending Value">
-<input type="number" id="cagrYears" placeholder="Years">
-<button onclick="calculateCAGR()">Calculate</button>
-<p id="cagrResult"></p>
-   <p>
-Calculate Compound Annual Growth Rate (CAGR) of your investment easily.
-Our free CAGR Calculator helps you measure long-term investment growth accurately.
-</p>
 
+<section class="page-container">
+  <div class="tool-card">
+    <h1>CAGR Calculator</h1>
+    <p class="tool-desc">Measure your investment growth rate annually.</p>
+
+    <input type="number" id="cagrStart" placeholder="Starting Value">
+    <input type="number" id="cagrEnd" placeholder="Ending Value">
+    <input type="number" id="cagrYears" placeholder="Years">
+
+    <button class="primary-btn" onclick="calculateCAGR()">Calculate CAGR</button>
+    <div id="cagrResult" class="result-box"></div>
+
+    <div class="tool-content">
+      <h2>About</h2>
+      <p>CAGR helps investors understand the average yearly return of investments over time.</p>
+    </div>
+  </div>
 </section>
 
+<footer>
+  <p>© 2026 SmartDailyTools.in</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
