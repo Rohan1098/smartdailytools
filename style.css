@@ -41,9 +41,7 @@ body {
 
 /* Logo */
 .logo img {
-  height: 50px;
-  width: auto;
-  object-fit: contain;
+  height: 64px;
 }
 
 /* Nav Links */
@@ -236,3 +234,4 @@ footer {
     padding: 40px 20px;
   }
 }
+
