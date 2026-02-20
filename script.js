@@ -26,20 +26,29 @@ function scrollToTools() {
 ================================= */
 
 function calculateSIP() {
+  const monthly = parseFloat(document.getElementById("sipAmount").value);
+  const annualRate = parseFloat(document.getElementById("sipRate").value);
+  const years = parseFloat(document.getElementById("sipYears").value);
+  const resultBox = document.getElementById("sipResult");
 
-    const P = getNumber("sipAmount");
-    const r = getNumber("sipRate") / 100 / 12;
-    const n = getNumber("sipYears") * 12;
+  if (!monthly || !annualRate || !years) {
+    resultBox.innerText = "Please fill all fields.";
+    resultBox.classList.add("show");
+    return;
+  }
 
-    if (P <= 0 || r <= 0 || n <= 0) {
-        document.getElementById("sipResult").innerText = "Please enter valid values.";
-        return;
-    }
+  const r = annualRate / 12 / 100;
+  const n = years * 12;
 
-    const futureValue = P * (((Math.pow(1 + r, n) - 1) / r) * (1 + r));
+  const futureValue =
+    monthly * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
 
-    document.getElementById("sipResult").innerText =
-        "Future Value: ₹" + futureValue.toLocaleString("en-IN", { maximumFractionDigits: 2 });
+  resultBox.innerText =
+    "Future Value: ₹" + futureValue.toFixed(2);
+
+  resultBox.classList.remove("show", "success");
+  void resultBox.offsetWidth;
+  resultBox.classList.add("show", "success");
 }
 
 /* =================================
@@ -77,61 +86,72 @@ function calculateEMI() {
 ================================= */
 
 function calculateGST() {
+  const amount = parseFloat(document.getElementById("gstAmount").value);
+  const rate = parseFloat(document.getElementById("gstRate").value);
+  const resultBox = document.getElementById("gstResult");
 
-    const amount = getNumber("gstAmount");
-    const rate = getNumber("gstRate");
+  if (!amount || !rate) {
+    resultBox.innerText = "Please fill all fields.";
+    resultBox.classList.add("show");
+    return;
+  }
 
-    if (amount <= 0 || rate < 0) {
-        document.getElementById("gstResult").innerText = "Enter valid values.";
-        return;
-    }
+  const gst = (amount * rate) / 100;
+  const total = amount + gst;
 
-    const gst = (amount * rate) / 100;
+  resultBox.innerText =
+    "GST: ₹" + gst.toFixed(2) + " | Total: ₹" + total.toFixed(2);
 
-    document.getElementById("gstResult").innerText =
-        "GST Amount: ₹" + gst.toLocaleString("en-IN", { maximumFractionDigits: 2 });
+  resultBox.classList.remove("show", "success");
+  void resultBox.offsetWidth;
+  resultBox.classList.add("show", "success");
 }
-
 /* =================================
    CAGR Calculator
 ================================= */
 
 function calculateCAGR() {
+  const initial = parseFloat(document.getElementById("initialValue").value);
+  const finalVal = parseFloat(document.getElementById("finalValue").value);
+  const years = parseFloat(document.getElementById("cagrYears").value);
+  const resultBox = document.getElementById("cagrResult");
 
-    const start = getNumber("cagrStart");
-    const end = getNumber("cagrEnd");
-    const years = getNumber("cagrYears");
+  if (!initial || !finalVal || !years) {
+    resultBox.innerText = "Please fill all fields.";
+    resultBox.classList.add("show");
+    return;
+  }
 
-    if (start <= 0 || end <= 0 || years <= 0) {
-        document.getElementById("cagrResult").innerText = "Enter valid values.";
-        return;
-    }
+  const cagr = (Math.pow(finalVal / initial, 1 / years) - 1) * 100;
 
-    const cagr = (Math.pow(end / start, 1 / years) - 1) * 100;
+  resultBox.innerText = "CAGR: " + cagr.toFixed(2) + "%";
 
-    document.getElementById("cagrResult").innerText =
-        "CAGR: " + cagr.toFixed(2) + "%";
+  resultBox.classList.remove("show", "success");
+  void resultBox.offsetWidth;
+  resultBox.classList.add("show", "success");
 }
-
 /* =================================
    Percentage Calculator
 ================================= */
 
 function calculatePercentage() {
+  const part = parseFloat(document.getElementById("percentPart").value);
+  const total = parseFloat(document.getElementById("percentTotal").value);
+  const resultBox = document.getElementById("percentResult");
 
-    const value = getNumber("percentValue");
-    const total = getNumber("percentTotal");
+  if (!part || !total) {
+    resultBox.innerText = "Please fill all fields.";
+    resultBox.classList.add("show");
+    return;
+  }
 
-    if (total <= 0) {
-        document.getElementById("percentageResult").innerText =
-            "Total must be greater than zero.";
-        return;
-    }
+  const percent = (part / total) * 100;
 
-    const percent = (value / total) * 100;
+  resultBox.innerText = "Percentage: " + percent.toFixed(2) + "%";
 
-    document.getElementById("percentageResult").innerText =
-        percent.toFixed(2) + "%";
+  resultBox.classList.remove("show", "success");
+  void resultBox.offsetWidth;
+  resultBox.classList.add("show", "success");
 }
 
 /* =================================
@@ -139,40 +159,31 @@ function calculatePercentage() {
 ================================= */
 
 function calculateAge() {
+  const dob = document.getElementById("dob").value;
+  const resultBox = document.getElementById("ageResult");
 
-    const dobInput = document.getElementById("dob")?.value;
+  if (!dob) {
+    resultBox.innerText = "Please select your date of birth.";
+    resultBox.classList.add("show");
+    return;
+  }
 
-    if (!dobInput) {
-        document.getElementById("ageResult").innerText = "Select valid date.";
-        return;
-    }
+  const birthDate = new Date(dob);
+  const today = new Date();
 
-    const dob = new Date(dobInput);
-    const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
 
-    if (dob > today) {
-        document.getElementById("ageResult").innerText = "Date cannot be future.";
-        return;
-    }
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
 
-    let years = today.getFullYear() - dob.getFullYear();
-    let months = today.getMonth() - dob.getMonth();
-    let days = today.getDate() - dob.getDate();
+  resultBox.innerText = "Your Age: " + age + " years";
 
-    if (days < 0) {
-        months--;
-        days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-    }
-
-    if (months < 0) {
-        years--;
-        months += 12;
-    }
-
-    document.getElementById("ageResult").innerText =
-        `${years} years, ${months} months, ${days} days`;
+  resultBox.classList.remove("show", "success");
+  void resultBox.offsetWidth;
+  resultBox.classList.add("show", "success");
 }
-
 /* =================================
    Dark Mode Toggle (Improved)
 ================================= */
@@ -254,4 +265,5 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
