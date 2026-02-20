@@ -1,35 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SIP Calculator India - SmartDailyTools</title>
-<meta name="description" content="Calculate SIP returns easily using our free SIP Calculator for India.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIP Calculator – SmartDailyTools</title>
+<meta name="description" content="Free SIP Calculator India. Calculate mutual fund SIP returns, maturity value and wealth gained instantly.">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
 </head>
 
 <body>
 
 <nav class="navbar">
-<h1>SmartDailyTools</h1>
-<a href="index.html">Home</a>
+  <h1 class="logo">SmartDailyTools</h1>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+  </div>
+  <button id="themeToggle" class="theme-btn">🌙</button>
 </nav>
 
- 
+<section class="page-container">
+  <div class="tool-card">
+    <h1>SIP Calculator</h1>
+    <p class="tool-desc">
+      Calculate your mutual fund SIP returns and maturity value instantly.
+    </p>
 
-<section class="tool">
-<h2>SIP Calculator</h2>
-<input type="number" id="sipAmount" placeholder="Monthly Investment (₹)">
-<input type="number" id="sipRate" placeholder="Expected Return (%)">
-<input type="number" id="sipYears" placeholder="Years">
-<button onclick="calculateSIP()">Calculate</button>
-<p id="sipResult"></p>
+    <div class="input-group">
+      <label>Monthly Investment (₹)</label>
+      <input type="number" id="sipAmount" placeholder="e.g. 5000">
+    </div>
 
-<p>
-Estimate mutual fund SIP returns with inputs for monthly investment, rate of return, tenure, and final value. Useful for planning long‑term goals.
-</p>
+    <div class="input-group">
+      <label>Expected Return (% p.a.)</label>
+      <input type="number" id="sipRate" placeholder="e.g. 12">
+    </div>
 
+    <div class="input-group">
+      <label>Investment Period (Years)</label>
+      <input type="number" id="sipYears" placeholder="e.g. 10">
+    </div>
+
+    <button class="primary-btn" onclick="calculateSIP()">Calculate SIP</button>
+
+    <div id="sipResult" class="result-box"></div>
+
+    <div class="tool-content">
+      <h2>About SIP Calculator</h2>
+      <p>
+        SIP (Systematic Investment Plan) is one of the best ways to build wealth
+        in mutual funds. Our free SIP calculator helps you estimate the future
+        value of your monthly investments based on expected returns and tenure.
+      </p>
+
+      <p>
+        Use this tool for financial planning, retirement goals, and long-term
+        investment decisions. Results are instant, accurate and mobile friendly.
+      </p>
+    </div>
+  </div>
 </section>
- 
-</body>
 
+<footer>
+  <p>© 2026 SmartDailyTools.in</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
