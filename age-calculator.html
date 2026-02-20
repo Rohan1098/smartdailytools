@@ -1,31 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SIP Calculator India - SmartDailyTools</title>
-<meta name="description" content="Calculate your exact age in years instantly.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator – SmartDailyTools</title>
+<meta name="description" content="Free Age Calculator to find your exact age in years, months and days instantly.">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
 </head>
 
 <body>
-
 <nav class="navbar">
-<h1>SmartDailyTools</h1>
-<a href="index.html">Home</a>
+  <h1 class="logo">SmartDailyTools</h1>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+  </div>
+  <button id="themeToggle" class="theme-btn">🌙</button>
 </nav>
 
-<section id="age" class="tool">
-<h2>Age Calculator</h2>
-<p>Calculate your exact age in years instantly.</p>
-<input type="date" id="dob">
-<button onclick="calculateAge()">Calculate</button>
-<p id="ageResult"></p>
-  <p>
-Our Age Calculator helps you find your exact age in years, months, and days.
-Simply enter your date of birth and get instant and accurate results online.
-</p>
+<section class="page-container">
+  <div class="tool-card">
+    <h1>Age Calculator</h1>
+    <p class="tool-desc">Calculate your exact age in years, months and days.</p>
 
+    <div class="input-group">
+      <label>Date of Birth</label>
+      <input type="date" id="dob">
+    </div>
+
+    <button class="primary-btn" onclick="calculateAge()">Calculate Age</button>
+    <div id="ageResult" class="result-box"></div>
+
+    <div class="tool-content">
+      <h2>About</h2>
+      <p>This free age calculator gives accurate age breakdown instantly for forms, exams and personal use.</p>
+    </div>
+  </div>
 </section>
 
+<footer>
+  <p>© 2026 SmartDailyTools.in</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
