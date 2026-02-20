@@ -168,6 +168,7 @@ body {
    max-width: 520px;
   margin: 40px auto; 
 }
+
 /* .tool-card {
   background: white;
   padding: 30px;
@@ -315,6 +316,27 @@ footer {
   }
 }
 
+/* ===== FIX: Tool Grid Cards ===== */
+
+.tool-list {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.tool-card {
+  max-width: 100%;   /* remove narrow card issue */
+  margin: 0;         /* grid should control spacing */
+}
+/* ===== Premium Glass Effect ===== */
+
+.tool-card {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.primary-btn {
+  letter-spacing: 0.3px;
+}
 
 
 
