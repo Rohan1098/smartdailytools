@@ -39,9 +39,19 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Logo */
-.logo img {
+/* Logo FIXED */
+.logo {
+  display: flex;
+  align-items: center;
   height: 70px;
+}
+
+.logo img {
+  height: 64px !important;
+  width: auto !important;
+  max-width: none !important;
+  object-fit: contain;
+  display: block;
 }
 
 /* Nav Links */
@@ -234,6 +244,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
