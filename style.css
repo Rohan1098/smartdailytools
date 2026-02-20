@@ -329,3 +329,83 @@ footer {
     padding: 40px 20px;
   }
 }
+/* =========================
+   CODE ALPHA ANIMATIONS
+========================= */
+
+/* ---------- Fade In Up ---------- */
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.7s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Stagger Delay ---------- */
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* ---------- Premium Card Hover Glow ---------- */
+
+.tool-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left,
+    rgba(99,102,241,0.15),
+    transparent 40%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.tool-card:hover::before {
+  opacity: 1;
+}
+
+/* ---------- Button Press Effect ---------- */
+
+.primary-btn:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Smooth Input Focus Glow ---------- */
+
+.tool-card input:focus {
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
+/* ---------- Hero Text Animation ---------- */
+
+.hero h1,
+.hero p,
+.hero button {
+  animation: heroFade 0.9s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero p { animation-delay: 0.2s; }
+.hero button { animation-delay: 0.4s; }
+
+@keyframes heroFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
