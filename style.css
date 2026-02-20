@@ -172,6 +172,65 @@ body {
   box-shadow: 0 15px 35px rgba(0,0,0,0.15);
   background: #eff6ff;
 }
+/* Description */
+.tool-desc {
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.tool-card input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+}
+
+/* Button */
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: linear-gradient(135deg,#6366f1,#4f46e5);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(79,70,229,0.25);
+}
+
+/* Result */
+.result-box {
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #111827;
+}
+
+/* Content */
+.tool-content {
+  margin-top: 28px;
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+}
 
 /* =========================
    FOOTER
@@ -239,6 +298,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
