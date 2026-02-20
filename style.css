@@ -28,8 +28,8 @@ body {
 
 .navbar {
   background: #111827;
-  height: 70px;
-  padding: 0 40px;
+  min-height: 100px;          /* ✅ allows logo to grow */
+  padding: 10px 40px;         /* ✅ adds breathing space */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -246,6 +246,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
