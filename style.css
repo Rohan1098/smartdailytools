@@ -29,7 +29,7 @@ body {
 .navbar {
   background: #111827;
   height: 70px;
-  /* padding: 0 40px; */
+  padding: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -234,6 +234,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
