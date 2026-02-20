@@ -47,21 +47,29 @@ function calculateSIP() {
 ================================= */
 
 function calculateEMI() {
+  const P = parseFloat(document.getElementById("loanAmount").value);
+  const annualRate = parseFloat(document.getElementById("loanRate").value);
+  const years = parseFloat(document.getElementById("loanYears").value);
+  const resultBox = document.getElementById("emiResult");
 
-    const P = getNumber("loanAmount");
-    const r = getNumber("loanRate") / 100 / 12;
-    const n = getNumber("loanYears") * 12;
+  if (!P || !annualRate || !years) {
+    resultBox.innerText = "Please fill all fields.";
+    resultBox.classList.add("show");
+    return;
+  }
 
-    if (P <= 0 || r <= 0 || n <= 0) {
-        document.getElementById("emiResult").innerText = "Please enter valid values.";
-        return;
-    }
+  const r = annualRate / 12 / 100;
+  const n = years * 12;
 
-    const emi = (P * r * Math.pow(1 + r, n)) /
-        (Math.pow(1 + r, n) - 1);
+  const emi = (P * r * Math.pow(1 + r, n)) /
+              (Math.pow(1 + r, n) - 1);
 
-    document.getElementById("emiResult").innerText =
-        "Monthly EMI: ₹" + emi.toLocaleString("en-IN", { maximumFractionDigits: 2 });
+  resultBox.innerText = "Monthly EMI: ₹" + emi.toFixed(2);
+
+  // 🔥 animation trigger
+  resultBox.classList.remove("show", "success");
+  void resultBox.offsetWidth; // force reflow
+  resultBox.classList.add("show", "success");
 }
 
 /* =================================
@@ -246,3 +254,4 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
