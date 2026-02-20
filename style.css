@@ -26,18 +26,15 @@ body {
    NAVBAR
 ========================= */
 
-.navbar {
-  background: #111827;
-  min-height: 100px;          /* ✅ allows logo to grow */
-  padding: 10px 40px;         /* ✅ adds breathing space */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+.navbar { background: #111827; height: 70px;
+         padding: 0 40px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         position: sticky; top: 0;
+         z-index: 1000;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
 
 /* ===== HEADER LOGO — HARD FIX ===== */
 
@@ -246,6 +243,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
