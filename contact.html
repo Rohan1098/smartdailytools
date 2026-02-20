@@ -1,2 +1,59 @@
-<h1>Contact Us</h1>
-<p>Email: support@smartdailytools.in</p>
+<!-- ================= CONTACT.HTML ================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – SmartDailyTools</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h1 class="logo">SmartDailyTools</h1>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+  </div>
+  <button id="themeToggle" class="theme-btn">🌙</button>
+</nav>
+
+<section class="page-container">
+  <div class="tool-card fade-in-up">
+    <h1>Contact Us</h1>
+    <p class="tool-desc">Have questions, suggestions, or feedback? We'd love to hear from you.</p>
+
+    <form class="contact-form" onsubmit="event.preventDefault(); showContactSuccess();">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button class="primary-btn" type="submit">Send Message</button>
+    </form>
+
+    <div id="contactSuccess" class="result-box" style="display:none;">
+      ✅ Message sent successfully!
+    </div>
+
+    <div class="tool-content">
+      <h2>Email</h2>
+      <p>You can also reach us at: <strong>support@smartdailytools.in</strong></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 SmartDailyTools.in</p>
+</footer>
+
+<script>
+function showContactSuccess(){
+  const el = document.getElementById('contactSuccess');
+  el.style.display = 'block';
+  el.classList.add('result-animate');
+}
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
