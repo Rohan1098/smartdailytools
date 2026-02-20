@@ -167,13 +167,15 @@ body {
   transition: 0.3s ease;
 } */
 .tool-card {
-  background: var(--card-bg);
-  padding: 32px;
-  border-radius: 18px;
-  max-width: 520px;
-  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  text-align: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  text-align: left;
+  text-decoration: none;
+  color: #111;
+  max-width: 520px;
+  margin: 40px auto; 
 }
 
 
@@ -308,6 +310,7 @@ footer {
     padding: 40px 20px;
   }
 }
+
 
 
 
