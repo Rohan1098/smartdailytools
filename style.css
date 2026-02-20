@@ -29,11 +29,13 @@ body {
 
 .navbar {
   background: #111827;
-  min-height: 100px;
-  padding: 10px 40px;
+  min-height: 90px;
+  padding: 12px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* 🔥 mobile fix */
+  gap: 12px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -48,7 +50,7 @@ body {
 }
 
 .logo img {
-  height: 85px;
+  height: 80px;
   width: auto;
   object-fit: contain;
 }
@@ -59,6 +61,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap; /* 🔥 mobile fix */
 }
 
 .nav-links a {
@@ -100,12 +103,12 @@ body {
 }
 
 .hero h1 {
-  font-size: 42px;
+  font-size: clamp(28px, 5vw, 42px); /* 🔥 responsive */
   margin-bottom: 15px;
 }
 
 .hero p {
-  font-size: 18px;
+  font-size: clamp(15px, 2.5vw, 18px);
   opacity: 0.9;
 }
 
@@ -127,16 +130,55 @@ body {
 }
 
 /* =========================
+   PAGE CONTAINER
+========================= */
+
+.page-container {
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 🔥 BIG FIX for blog/about readability */
+.about-card {
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  padding: 40px 36px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  line-height: 1.75;
+}
+
+.about-card h1 {
+  margin-bottom: 18px;
+}
+
+.about-card h2 {
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+.about-card p {
+  margin-bottom: 16px;
+}
+
+.about-card ul {
+  margin: 12px 0 20px 20px;
+}
+
+/* =========================
    SEARCH BOX
 ========================= */
 
 .search-box {
   text-align: center;
   margin-top: 50px;
+  padding: 0 16px; /* 🔥 mobile fix */
 }
 
 .search-box input {
-  width: 320px;
+  width: min(420px, 100%);
   padding: 12px 18px;
   border-radius: 30px;
   border: 1px solid #ccc;
@@ -158,7 +200,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
-  padding: 60px 40px;
+  padding: 60px 24px; /* 🔥 was too tight */
   max-width: 1200px;
   margin: auto;
 }
@@ -167,7 +209,7 @@ body {
 
 .tool-card {
   background: #fff;
-  padding: 30px;
+  padding: 28px;
   border-radius: 16px;
   text-align: center;
   text-decoration: none;
@@ -175,10 +217,10 @@ body {
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-
-  /* premium glass */
   backdrop-filter: blur(10px);
   border: 1px solid rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
 }
 
 .tool-card:hover {
@@ -197,29 +239,20 @@ body {
   font-weight: 400;
 }
 
-.input-group {
-  margin-bottom: 18px;
-  text-align: left;
-}
-
-.input-group label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
 .tool-card input {
   width: 100%;
-  padding: 12px;
+  padding: 13px;
   border-radius: 10px;
   border: 1px solid #e5e7eb;
   font-size: 15px;
   transition: border 0.2s ease;
+  margin-bottom: 12px; /* 🔥 spacing fix */
 }
 
 .tool-card input:focus {
   outline: none;
   border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
 }
 
 /* Button */
@@ -227,7 +260,7 @@ body {
 .primary-btn {
   width: 100%;
   padding: 14px;
-  margin-top: 10px;
+  margin-top: 8px;
   background: linear-gradient(135deg, #6366f1, #4f46e5);
   color: #fff;
   border: none;
@@ -243,23 +276,37 @@ body {
   box-shadow: 0 8px 18px rgba(79,70,229,0.25);
 }
 
-/* Result */
+.primary-btn:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   RESULT ANIMATION — ALPHA
+========================= */
 
 .result-box {
   margin-top: 20px;
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: 20px;
   color: #111827;
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: all 0.35s ease;
 }
 
-/* Content */
+.result-box.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
 
-.tool-content {
-  margin-top: 28px;
-  font-size: 14px;
-  color: #4b5563;
-  line-height: 1.6;
-  font-weight: 400;
+.result-box.success {
+  animation: resultGlow 0.6s ease;
+}
+
+@keyframes resultGlow {
+  0% { box-shadow: 0 0 0 rgba(79,70,229,0); }
+  50% { box-shadow: 0 0 20px rgba(79,70,229,0.25); }
+  100% { box-shadow: 0 0 0 rgba(79,70,229,0); }
 }
 
 /* =========================
@@ -289,7 +336,8 @@ footer {
   background: #020617;
 }
 
-.dark-mode .tool-card {
+.dark-mode .tool-card,
+.dark-mode .about-card {
   background: #1e293b;
   color: #f1f5f9;
   border-color: rgba(255,255,255,0.06);
@@ -300,40 +348,8 @@ footer {
 }
 
 /* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-  .navbar {
-    min-height: 80px;
-    padding: 8px 20px;
-  }
-
-  .logo img {
-    height: 60px;
-  }
-
-  .hero {
-    padding: 70px 20px;
-  }
-
-  .hero h1 {
-    font-size: 30px;
-  }
-
-  .search-box input {
-    width: 90%;
-  }
-
-  .tool-list {
-    padding: 40px 20px;
-  }
-}
-/* =========================
    CODE ALPHA ANIMATIONS
 ========================= */
-
-/* ---------- Fade In Up ---------- */
 
 .fade-in-up {
   opacity: 0;
@@ -348,99 +364,44 @@ footer {
   }
 }
 
-/* ---------- Stagger Delay ---------- */
-
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 .delay-4 { animation-delay: 0.4s; }
 
-/* ---------- Premium Card Hover Glow ---------- */
-
-.tool-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.tool-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left,
-    rgba(99,102,241,0.15),
-    transparent 40%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
-}
-
-.tool-card:hover::before {
-  opacity: 1;
-}
-
-/* ---------- Button Press Effect ---------- */
-
-.primary-btn:active {
-  transform: scale(0.97);
-}
-
-/* ---------- Smooth Input Focus Glow ---------- */
-
-.tool-card input:focus {
-  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
-}
-
-/* ---------- Hero Text Animation ---------- */
-
-.hero h1,
-.hero p,
-.hero button {
-  animation: heroFade 0.9s ease forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.hero p { animation-delay: 0.2s; }
-.hero button { animation-delay: 0.4s; }
-
-@keyframes heroFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.page-container {
-  padding: 40px 20px;
-  display: flex;
-  justify-content: center;
-}
 /* =========================
-   RESULT ANIMATION — ALPHA
+   MOBILE — MAJOR FIX
 ========================= */
 
-.result-box {
-  margin-top: 20px;
-  font-weight: 700;
-  font-size: 20px;
-  color: #111827;
-  opacity: 0;
-  transform: translateY(10px) scale(0.98);
-  transition: all 0.35s ease;
-}
+@media (max-width: 768px) {
 
-/* when result shows */
-.result-box.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
+  .navbar {
+    min-height: auto;
+    padding: 10px 16px;
+  }
 
-/* subtle success glow */
-.result-box.success {
-  animation: resultGlow 0.6s ease;
-}
+  .logo img {
+    height: 56px;
+  }
 
-@keyframes resultGlow {
-  0% { box-shadow: 0 0 0 rgba(79,70,229,0); }
-  50% { box-shadow: 0 0 20px rgba(79,70,229,0.25); }
-  100% { box-shadow: 0 0 0 rgba(79,70,229,0); }
+  .hero {
+    padding: 60px 16px;
+  }
+
+  .tool-list {
+    padding: 36px 16px;
+    gap: 18px;
+  }
+
+  .tool-card {
+    padding: 22px;
+  }
+
+  .about-card {
+    padding: 26px 20px; /* 🔥 huge readability fix */
+  }
+
+  .page-container {
+    padding: 28px 14px;
+  }
 }
