@@ -105,21 +105,31 @@ function calculateGST() {
    CAGR Calculator
 ================================= */
 function calculateCAGR() {
-  const initial = getNumber("initialValue");
-  const finalVal = getNumber("finalValue");
-  const years = getNumber("cagrYears");
   const resultBox = document.getElementById("cagrResult");
 
-  if (initial <= 0 || finalVal <= 0 || years <= 0) {
+  const initialEl = document.getElementById("initialValue");
+  const finalEl = document.getElementById("finalValue");
+  const yearsEl = document.getElementById("cagrYears");
+
+  if (!initialEl || !finalEl || !yearsEl) {
+    showResult(resultBox, "Calculator configuration error.");
+    return;
+  }
+
+  const initial = parseFloat(initialEl.value);
+  const finalVal = parseFloat(finalEl.value);
+  const years = parseFloat(yearsEl.value);
+
+  if (isNaN(initial) || isNaN(finalVal) || isNaN(years) ||
+      initial <= 0 || finalVal <= 0 || years <= 0) {
     showResult(resultBox, "Please fill all fields correctly.");
     return;
   }
 
   const cagr = (Math.pow(finalVal / initial, 1 / years) - 1) * 100;
 
-  showResult(resultBox, "CAGR: " + cagr.toFixed(2) + "%");
+  showResult(resultBox, `📈 CAGR: ${cagr.toFixed(2)}% per year`);
 }
-
 /* =================================
    Percentage Calculator (FIXED)
 ================================= */
@@ -267,4 +277,5 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
