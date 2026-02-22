@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Income Tax Calculator India 2026 | SmartDailyTools</title>
+  <meta name="description" content="Free Income Tax Calculator for India FY 2025-26. Compare old vs new tax regime instantly.">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="income-tax.css">
+</head>
+
+<body>
+
+<div class="container">
+  <div class="tool-card fade-in-up">
+
+    <h1>Income Tax Calculator (India)</h1>
+    <p class="subtitle">FY 2025-26 • Compare Old vs New Regime</p>
+
+    <!-- Income -->
+    <label>Annual Income (₹)</label>
+    <input type="number" id="income" placeholder="Enter your annual income">
+
+    <!-- Regime -->
+    <label>Select Tax Regime</label>
+    <select id="regime">
+      <option value="new">New Tax Regime (Default)</option>
+      <option value="old">Old Tax Regime</option>
+    </select>
+
+    <!-- Old regime deductions -->
+    <div id="oldDeductions" style="display:none;">
+      <label>Total Deductions (₹)</label>
+      <input type="number" id="deductions" placeholder="80C, 80D etc.">
+    </div>
+
+    <button onclick="calculateTax()">Calculate Tax</button>
+
+    <!-- Results -->
+    <div class="result-box" id="resultBox" style="display:none;">
+      <h3>Tax Summary</h3>
+      <p id="taxableIncome"></p>
+      <p id="totalTax"></p>
+      <p id="monthlyIncome"></p>
+      <p id="regimeUsed"></p>
+    </div>
+
+  </div>
+</div>
+
+<script src="income-tax.js"></script>
+</body>
+</html>
