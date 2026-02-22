@@ -69,6 +69,8 @@ function calculateSIP() {
     monthly * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
 
   showResult(resultBox, "Future Value: ₹" + futureValue.toFixed(2));
+   trackCalculatorEvent('SIP Calculator', 'Calculate', 
+  `Amount: ${getNumber("sipAmount")}, Rate: ${getNumber("sipRate")}, Years: ${getNumber("sipYears")}`);
 }
 
 /* =================================
@@ -93,6 +95,8 @@ function calculateEMI() {
     (Math.pow(1 + r, n) - 1);
 
   showResult(resultBox, "Monthly EMI: ₹" + emi.toFixed(2));
+   trackCalculatorEvent('EMI Calculator', 'Calculate', 
+  `Principal: ${getNumber("loanAmount")}, Rate: ${getNumber("loanRate")}, Years: ${getNumber("loanYears")}`);
 }
 
 /* =================================
@@ -115,6 +119,8 @@ function calculateGST() {
     resultBox,
     `GST: ₹${gst.toFixed(2)} | Total: ₹${total.toFixed(2)}`
   );
+   trackCalculatorEvent('GST Calculator', 'Calculate', 
+  `Amount: ${getNumber("gstAmount")}, Rate: ${getNumber("gstRate")}`);
 }
 
 /* =================================
@@ -134,6 +140,8 @@ function calculateCAGR() {
   const cagr = (Math.pow(finalVal / initial, 1 / years) - 1) * 100;
 
   showResult(resultBox, `📈 CAGR: ${cagr.toFixed(2)}% per year`);
+   trackCalculatorEvent('CAGR Calculator', 'Calculate', 
+  `Start: ${getNumber("cagrStart")}, End: ${getNumber("cagrEnd")}, Years: ${getNumber("cagrYears")}`);
 }
 /* =================================
    Percentage Calculator (FIXED)
@@ -158,6 +166,8 @@ function calculatePercentage() {
 
   // ✅ supports decimals properly
   showResult(resultBox, `📊 Percentage: ${percent.toFixed(2)}%`);
+   trackCalculatorEvent('Percentage Calculator', 'Calculate', 
+  `Part: ${getNumber("percentPart")}, Total: ${getNumber("percentTotal")}`);
 }
 
 /* =================================
@@ -204,6 +214,7 @@ function calculateAge() {
     resultBox,
     `Age: ${years} years, ${months} months, ${days} days`
   );
+   trackCalculatorEvent('Age Calculator', 'Calculate', `DOB: ${document.getElementById("dob")?.value}`);
 }
 
 /* =================================
@@ -336,6 +347,8 @@ function calculateIncomeTax() {
 
   // ⭐⭐⭐ THIS MAKES RESULT VISIBLE ⭐⭐⭐
   resultBox.classList.add("show", "success");
+   trackCalculatorEvent('Income Tax Calculator', 'Calculate', 
+  `Income: ${getNumber("income")}, Regime: ${document.getElementById("taxRegime")?.value}`);
 }
 /* =================================
    Dark Mode Toggle
@@ -417,6 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
