@@ -190,6 +190,104 @@ function calculateAge() {
   );
 }
 
+ // ========= Income Tax Calculator====================
+// Show/hide deductions for old regime
+document.getElementById("regime").addEventListener("change", function () {
+  const oldBox = document.getElementById("oldDeductions");
+  oldBox.style.display = this.value === "old" ? "block" : "none";
+});
+
+function calculateTax() {
+  let income = Number(document.getElementById("income").value);
+  let regime = document.getElementById("regime").value;
+  let deductions = Number(document.getElementById("deductions").value) || 0;
+
+  if (!income || income <= 0) {
+    alert("Please enter valid income");
+    return;
+  }
+
+  let taxableIncome = income;
+  let tax = 0;
+
+  if (regime === "new") {
+    // standard deduction
+    taxableIncome = Math.max(0, income - 50000);
+
+    // rebate check
+    if (taxableIncome <= 700000) {
+      tax = 0;
+    } else {
+      tax = calculateNewRegimeTax(taxableIncome);
+    }
+  } else {
+    taxableIncome = Math.max(0, income - deductions);
+    tax = calculateOldRegimeTax(taxableIncome);
+  }
+
+  const monthlyIncome = ((income - tax) / 12).toFixed(0);
+
+  // show results
+  document.getElementById("resultBox").style.display = "block";
+  document.getElementById("taxableIncome").innerText =
+    "Taxable Income: ₹" + taxableIncome.toLocaleString();
+
+  document.getElementById("totalTax").innerText =
+    "Total Tax: ₹" + Math.round(tax).toLocaleString();
+
+  document.getElementById("monthlyIncome").innerText =
+    "Estimated Monthly Take Home: ₹" + monthlyIncome.toLocaleString();
+
+  document.getElementById("regimeUsed").innerText =
+    "Regime Used: " + (regime === "new" ? "New Regime" : "Old Regime");
+}
+
+// New regime slabs
+function calculateNewRegimeTax(income) {
+  let tax = 0;
+
+  if (income > 1500000) {
+    tax += (income - 1500000) * 0.30;
+    income = 1500000;
+  }
+  if (income > 1200000) {
+    tax += (income - 1200000) * 0.20;
+    income = 1200000;
+  }
+  if (income > 900000) {
+    tax += (income - 900000) * 0.15;
+    income = 900000;
+  }
+  if (income > 600000) {
+    tax += (income - 600000) * 0.10;
+    income = 600000;
+  }
+  if (income > 300000) {
+    tax += (income - 300000) * 0.05;
+  }
+
+  return tax;
+}
+
+// Old regime slabs
+function calculateOldRegimeTax(income) {
+  let tax = 0;
+
+  if (income > 1000000) {
+    tax += (income - 1000000) * 0.30;
+    income = 1000000;
+  }
+  if (income > 500000) {
+    tax += (income - 500000) * 0.20;
+    income = 500000;
+  }
+  if (income > 250000) {
+    tax += (income - 250000) * 0.05;
+  }
+
+  return tax;
+}
+
 /* =================================
    Dark Mode Toggle
 ================================= */
