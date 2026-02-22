@@ -279,6 +279,26 @@ body {
 .primary-btn:active {
   transform: scale(0.97);
 }
+/* Income Tax Calculator specific */
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.result-box {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  background: #f4f7ff;
+  border: 1px solid #e0e6ff;
+  animation: fadeInUp 0.4s ease;
+}
+
+.result-box p {
+  margin: 8px 0;
+  font-weight: 500;
+}
 
 /* =========================
    RESULT ANIMATION — ALPHA
@@ -405,3 +425,4 @@ footer {
     padding: 28px 14px;
   }
 }
+
