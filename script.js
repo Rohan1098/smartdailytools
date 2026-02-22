@@ -196,88 +196,99 @@ function calculateAge() {
 ================================= */
 
 function calculateIncomeTax() {
-  let income = parseFloat(document.getElementById("income").value) || 0;
-  let regime = document.getElementById("taxRegime").value;
-  let isSalaried = document.getElementById("isSalaried").checked;
+  const resultBox = document.getElementById("taxResult");
+  if (!resultBox) {
+    console.error("taxResult div not found");
+    return;
+  }
+
+  let incomeEl = document.getElementById("income");
+  let regimeEl = document.getElementById("taxRegime");
+  let salariedEl = document.getElementById("isSalaried");
+
+  if (!incomeEl || !regimeEl || !salariedEl) {
+    resultBox.innerHTML = "⚠️ Missing input fields.";
+    return;
+  }
+
+  let income = parseFloat(incomeEl.value) || 0;
+  let regime = regimeEl.value;
+  let isSalaried = salariedEl.checked;
 
   let taxableIncome = income;
   let tax = 0;
 
-  // ================= NEW REGIME =================
+  // ===== NEW REGIME =====
   if (regime === "new") {
 
-    // standard deduction
     if (isSalaried) taxableIncome -= 75000;
     if (taxableIncome < 0) taxableIncome = 0;
 
-    // rebate check (₹12.75L salaried zero tax)
     if (taxableIncome <= 1200000) {
       tax = 0;
     } else {
+      let remaining = taxableIncome;
 
-      if (taxableIncome > 2400000) {
-        tax += (taxableIncome - 2400000) * 0.30;
-        taxableIncome = 2400000;
+      if (remaining > 2400000) {
+        tax += (remaining - 2400000) * 0.30;
+        remaining = 2400000;
       }
-      if (taxableIncome > 2000000) {
-        tax += (taxableIncome - 2000000) * 0.25;
-        taxableIncome = 2000000;
+      if (remaining > 2000000) {
+        tax += (remaining - 2000000) * 0.25;
+        remaining = 2000000;
       }
-      if (taxableIncome > 1600000) {
-        tax += (taxableIncome - 1600000) * 0.20;
-        taxableIncome = 1600000;
+      if (remaining > 1600000) {
+        tax += (remaining - 1600000) * 0.20;
+        remaining = 1600000;
       }
-      if (taxableIncome > 1200000) {
-        tax += (taxableIncome - 1200000) * 0.15;
-        taxableIncome = 1200000;
+      if (remaining > 1200000) {
+        tax += (remaining - 1200000) * 0.15;
+        remaining = 1200000;
       }
-      if (taxableIncome > 800000) {
-        tax += (taxableIncome - 800000) * 0.10;
-        taxableIncome = 800000;
+      if (remaining > 800000) {
+        tax += (remaining - 800000) * 0.10;
+        remaining = 800000;
       }
-      if (taxableIncome > 400000) {
-        tax += (taxableIncome - 400000) * 0.05;
+      if (remaining > 400000) {
+        tax += (remaining - 400000) * 0.05;
       }
     }
-  }
 
-  // ================= OLD REGIME =================
-  else {
+  } else {
+    // ===== OLD REGIME =====
 
-    // standard deduction
     if (isSalaried) taxableIncome -= 50000;
 
-    // deductions
-    let d80c = Math.min(parseFloat(document.getElementById("deduction80C").value) || 0, 150000);
-    let d80d = parseFloat(document.getElementById("deduction80D").value) || 0;
-    let homeInt = Math.min(parseFloat(document.getElementById("homeInterest").value) || 0, 200000);
-    let hra = parseFloat(document.getElementById("hraLta").value) || 0;
+    let d80c = Math.min(parseFloat(document.getElementById("deduction80C")?.value) || 0, 150000);
+    let d80d = parseFloat(document.getElementById("deduction80D")?.value) || 0;
+    let homeInt = Math.min(parseFloat(document.getElementById("homeInterest")?.value) || 0, 200000);
+    let hra = parseFloat(document.getElementById("hraLta")?.value) || 0;
 
     taxableIncome -= (d80c + d80d + homeInt + hra);
     if (taxableIncome < 0) taxableIncome = 0;
 
-    // rebate under 5L
     if (taxableIncome <= 500000) {
       tax = 0;
     } else {
+      let remaining = taxableIncome;
 
-      if (taxableIncome > 1000000) {
-        tax += (taxableIncome - 1000000) * 0.30;
-        taxableIncome = 1000000;
+      if (remaining > 1000000) {
+        tax += (remaining - 1000000) * 0.30;
+        remaining = 1000000;
       }
-      if (taxableIncome > 500000) {
-        tax += (taxableIncome - 500000) * 0.20;
-        taxableIncome = 500000;
+      if (remaining > 500000) {
+        tax += (remaining - 500000) * 0.20;
+        remaining = 500000;
       }
-      if (taxableIncome > 250000) {
-        tax += (taxableIncome - 250000) * 0.05;
+      if (remaining > 250000) {
+        tax += (remaining - 250000) * 0.05;
       }
     }
   }
 
   let monthly = (income - tax) / 12;
 
-  document.getElementById("taxResult").innerHTML = `
+  resultBox.innerHTML = `
     <strong>Taxable Income:</strong> ₹${Math.round(taxableIncome).toLocaleString()}<br>
     <strong>Total Tax:</strong> ₹${Math.round(tax).toLocaleString()}<br>
     <strong>Monthly Take Home:</strong> ₹${Math.round(monthly).toLocaleString()}<br>
@@ -364,6 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
