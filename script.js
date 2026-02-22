@@ -196,110 +196,93 @@ function calculateAge() {
 ================================= */
 
 function calculateIncomeTax() {
-  const income = getNumber("incomeAmount");
-  const regime = document.getElementById("taxRegime")?.value || "new";
-  const isSalaried = document.getElementById("isSalaried")?.checked;
-  const resultBox = document.getElementById("taxResult");
-
-  if (income <= 0) {
-    showResult(resultBox, "Please enter valid income.");
-    return;
-  }
+  let income = parseFloat(document.getElementById("income").value) || 0;
+  let regime = document.getElementById("taxRegime").value;
+  let isSalaried = document.getElementById("isSalaried").checked;
 
   let taxableIncome = income;
   let tax = 0;
 
-  // ===============================
-  // NEW REGIME (DEFAULT)
-  // ===============================
+  // ================= NEW REGIME =================
   if (regime === "new") {
 
     // standard deduction
-    if (isSalaried) {
-      taxableIncome = Math.max(0, income - 75000);
-    }
+    if (isSalaried) taxableIncome -= 75000;
+    if (taxableIncome < 0) taxableIncome = 0;
 
-    // ✅ Section 87A rebate logic (CRITICAL FIX)
+    // rebate check (₹12.75L salaried zero tax)
     if (taxableIncome <= 1200000) {
       tax = 0;
     } else {
-      tax = calculateNewRegimeTax(taxableIncome);
+
+      if (taxableIncome > 2400000) {
+        tax += (taxableIncome - 2400000) * 0.30;
+        taxableIncome = 2400000;
+      }
+      if (taxableIncome > 2000000) {
+        tax += (taxableIncome - 2000000) * 0.25;
+        taxableIncome = 2000000;
+      }
+      if (taxableIncome > 1600000) {
+        tax += (taxableIncome - 1600000) * 0.20;
+        taxableIncome = 1600000;
+      }
+      if (taxableIncome > 1200000) {
+        tax += (taxableIncome - 1200000) * 0.15;
+        taxableIncome = 1200000;
+      }
+      if (taxableIncome > 800000) {
+        tax += (taxableIncome - 800000) * 0.10;
+        taxableIncome = 800000;
+      }
+      if (taxableIncome > 400000) {
+        tax += (taxableIncome - 400000) * 0.05;
+      }
     }
-
   }
 
-  // ===============================
-  // OLD REGIME (basic version)
-  // ===============================
+  // ================= OLD REGIME =================
   else {
-    tax = calculateOldRegimeTax(income);
+
+    // standard deduction
+    if (isSalaried) taxableIncome -= 50000;
+
+    // deductions
+    let d80c = Math.min(parseFloat(document.getElementById("deduction80C").value) || 0, 150000);
+    let d80d = parseFloat(document.getElementById("deduction80D").value) || 0;
+    let homeInt = Math.min(parseFloat(document.getElementById("homeInterest").value) || 0, 200000);
+    let hra = parseFloat(document.getElementById("hraLta").value) || 0;
+
+    taxableIncome -= (d80c + d80d + homeInt + hra);
+    if (taxableIncome < 0) taxableIncome = 0;
+
+    // rebate under 5L
+    if (taxableIncome <= 500000) {
+      tax = 0;
+    } else {
+
+      if (taxableIncome > 1000000) {
+        tax += (taxableIncome - 1000000) * 0.30;
+        taxableIncome = 1000000;
+      }
+      if (taxableIncome > 500000) {
+        tax += (taxableIncome - 500000) * 0.20;
+        taxableIncome = 500000;
+      }
+      if (taxableIncome > 250000) {
+        tax += (taxableIncome - 250000) * 0.05;
+      }
+    }
   }
 
-  const monthlyTakeHome = (income - tax) / 12;
+  let monthly = (income - tax) / 12;
 
-  showResult(
-    resultBox,
-    `Taxable Income: ₹${taxableIncome.toLocaleString()}
-Total Tax: ₹${Math.round(tax).toLocaleString()}
-Monthly Take Home: ₹${Math.round(monthlyTakeHome).toLocaleString()}
-Regime Used: ${regime === "new" ? "New Regime" : "Old Regime"}`
-  );
-}
-
-/* ===============================
-   NEW REGIME SLABS (FY26)
-=============================== */
-
-function calculateNewRegimeTax(income) {
-  let tax = 0;
-
-  if (income > 2400000) {
-    tax += (income - 2400000) * 0.30;
-    income = 2400000;
-  }
-  if (income > 2000000) {
-    tax += (income - 2000000) * 0.25;
-    income = 2000000;
-  }
-  if (income > 1600000) {
-    tax += (income - 1600000) * 0.20;
-    income = 1600000;
-  }
-  if (income > 1200000) {
-    tax += (income - 1200000) * 0.15;
-    income = 1200000;
-  }
-  if (income > 800000) {
-    tax += (income - 800000) * 0.10;
-    income = 800000;
-  }
-  if (income > 400000) {
-    tax += (income - 400000) * 0.05;
-  }
-
-  return tax;
-}
-
-/* ===============================
-   OLD REGIME (basic)
-=============================== */
-
-function calculateOldRegimeTax(income) {
-  let tax = 0;
-
-  if (income > 1000000) {
-    tax += (income - 1000000) * 0.30;
-    income = 1000000;
-  }
-  if (income > 500000) {
-    tax += (income - 500000) * 0.20;
-    income = 500000;
-  }
-  if (income > 250000) {
-    tax += (income - 250000) * 0.05;
-  }
-
-  return tax;
+  document.getElementById("taxResult").innerHTML = `
+    <strong>Taxable Income:</strong> ₹${Math.round(taxableIncome).toLocaleString()}<br>
+    <strong>Total Tax:</strong> ₹${Math.round(tax).toLocaleString()}<br>
+    <strong>Monthly Take Home:</strong> ₹${Math.round(monthly).toLocaleString()}<br>
+    <strong>Regime Used:</strong> ${regime === "new" ? "New Regime" : "Old Regime"}
+  `;
 }
 /* =================================
    Dark Mode Toggle
@@ -381,6 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
