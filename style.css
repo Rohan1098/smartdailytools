@@ -531,63 +531,6 @@ padding: 28px 14px;
   background: #1e293b;
   color: #e5e7eb;
 }
-/* ===== AI ASSISTANT ===== */
 
-.ai-assistant {
-  position: fixed;
-  bottom: 22px;
-  right: 22px;
-  z-index: 999;
-}
 
-.ai-fab {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  border: none;
-  background: var(--accent-color);
-  color: #fff;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-  transition: transform 0.2s ease;
-}
-
-.ai-fab:hover {
-  transform: scale(1.08);
-}
-
-.ai-chat {
-  width: 300px;
-  height: 380px;
-  background: var(--card-bg);
-  border-radius: 18px;
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-}
-
-.ai-header {
-  padding: 12px 14px;
-  font-weight: 600;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.ai-messages {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  font-size: 14px;
-}
-
-.ai-input {
-  border: none;
-  border-top: 1px solid var(--border-color);
-  padding: 10px;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
 
