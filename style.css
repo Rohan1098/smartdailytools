@@ -404,6 +404,69 @@ footer {
     padding: 28px 14px;
   }
 }
+/* =========================
+   TAX RESULT — UI POLISH (SAFE)
+   Only affects tax calculator
+========================= */
+
+/* Result container enhancement */
+.result-box {
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-top: 22px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Result rows spacing */
+.result-box div {
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+/* Highlight tax amount */
+.result-box .tax-highlight {
+  color: #dc2626;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* Highlight take home */
+.result-box .takehome-highlight {
+  color: #059669;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* Exemption breakdown card */
+.exemption-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px dashed #c7d2fe;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Exemption heading */
+.exemption-box strong {
+  color: #4f46e5;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Dark mode support */
+.dark-mode .result-box {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.dark-mode .exemption-box {
+  background: #0f172a;
+  border-color: rgba(99,102,241,0.4);
+}
 
 
 
