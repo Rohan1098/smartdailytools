@@ -248,11 +248,13 @@ function calculateTax() {
 
   const monthly = Math.round((income - tax) / 12);
 
-  resultEl.innerHTML =
-    "<strong>Taxable Income:</strong> ₹" + taxableIncome.toLocaleString() + "<br>" +
-    "<strong>Total Tax:</strong> ₹" + Math.round(tax).toLocaleString() + "<br>" +
-    "<strong>Monthly Take Home:</strong> ₹" + monthly.toLocaleString() + "<br>" +
-    "<strong>Regime Used:</strong> " + (regime === "new" ? "New Regime" : "Old Regime");
+ const outputText =
+  `Taxable Income: ₹${taxableIncome.toLocaleString()}\n` +
+  `Total Tax: ₹${Math.round(tax).toLocaleString()}\n` +
+  `Monthly Take Home: ₹${monthly.toLocaleString()}\n` +
+  `Regime Used: ${regime === "new" ? "New Regime" : "Old Regime"}`;
+
+showResult(resultEl, outputText);
 }
 
 // New regime slabs
@@ -380,6 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
