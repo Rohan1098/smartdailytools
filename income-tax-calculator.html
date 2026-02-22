@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Income Tax Calculator India 2026 | SmartDailyTools</title>
-  <meta name="description" content="Free Income Tax Calculator for India FY 2025-26. Compare old vs new tax regime instantly.">
-
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="income-tax.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Income Tax Calculator – SmartDailyTools</title>
+<meta name="description" content="Calculate income tax in India under old and new tax regime instantly.">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <nav class="navbar">
+<nav class="navbar">
   <h1 class="logo">SmartDailyTools</h1>
   <div class="nav-links">
     <a href="index.html">Home</a>
@@ -21,45 +19,37 @@
   <button id="themeToggle" class="theme-btn">🌙</button>
 </nav>
 
-<div class="container">
+<section class="page-container">
   <div class="tool-card fade-in-up">
-
     <h1>Income Tax Calculator (India)</h1>
-    <p class="subtitle">FY 2025-26 • Compare Old vs New Regime</p>
+    <p class="tool-desc">Compare tax under old vs new regime for FY 2025-26.</p>
 
-    <!-- Income -->
-    <label>Annual Income (₹)</label>
-    <input type="number" id="income" placeholder="Enter your annual income">
+    <input type="number" id="income" placeholder="Annual Income (₹)">
 
-    <!-- Regime -->
-    <label>Select Tax Regime</label>
     <select id="regime">
       <option value="new">New Tax Regime (Default)</option>
       <option value="old">Old Tax Regime</option>
     </select>
 
-    <!-- Old regime deductions -->
     <div id="oldDeductions" style="display:none;">
-      <label>Total Deductions (₹)</label>
-      <input type="number" id="deductions" placeholder="80C, 80D etc.">
+      <input type="number" id="deductions" placeholder="Total Deductions (₹)">
     </div>
 
-    <button onclick="calculateTax()">Calculate Tax</button>
+    <button class="primary-btn" onclick="calculateTax()">Calculate Tax</button>
 
-    <!-- Results -->
-    <div class="result-box" id="resultBox" style="display:none;">
-      <h3>Tax Summary</h3>
-      <p id="taxableIncome"></p>
-      <p id="totalTax"></p>
-      <p id="monthlyIncome"></p>
-      <p id="regimeUsed"></p>
+    <div id="taxResult" class="result-box"></div>
+
+    <div class="tool-content">
+      <h2>About</h2>
+      <p>
+        Use this free income tax calculator to estimate your tax liability in India.
+        Supports both tax regimes for better salary planning.
+      </p>
     </div>
-
   </div>
-</div>
+</section>
 
-<script src="script.js"></script>
-  <footer class="footer">
+<footer class="footer">
   <div class="footer-links">
     <a href="contact.html">Contact</a>
     <a href="privacy.html"> Privacy Policy</a>
@@ -67,5 +57,7 @@
   </div>
   <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
 </footer>
+
+<script src="script.js"></script>
 </body>
 </html>
