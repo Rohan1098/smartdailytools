@@ -190,20 +190,38 @@ function calculateAge() {
   );
 }
 
- // ========= Income Tax Calculator====================
-// Show/hide deductions for old regime
-document.getElementById("regime").addEventListener("change", function () {
-  const oldBox = document.getElementById("oldDeductions");
-  oldBox.style.display = this.value === "old" ? "block" : "none";
+/* ================================
+   Income Tax Calculator
+================================ */
+
+// safe regime listener (works only if element exists)
+document.addEventListener("DOMContentLoaded", function () {
+  const regimeEl = document.getElementById("regime");
+
+  if (regimeEl) {
+    regimeEl.addEventListener("change", function () {
+      const oldBox = document.getElementById("oldDeductions");
+      if (oldBox) {
+        oldBox.style.display = this.value === "old" ? "block" : "none";
+      }
+    });
+  }
 });
 
 function calculateTax() {
-  let income = Number(document.getElementById("income").value);
-  let regime = document.getElementById("regime").value;
-  let deductions = Number(document.getElementById("deductions").value) || 0;
+  const incomeEl = document.getElementById("income");
+  const regimeEl = document.getElementById("regime");
+  const deductionEl = document.getElementById("deductions");
+  const resultEl = document.getElementById("taxResult");
+
+  if (!incomeEl || !regimeEl || !resultEl) return;
+
+  let income = Number(incomeEl.value);
+  let regime = regimeEl.value;
+  let deductions = Number(deductionEl?.value) || 0;
 
   if (!income || income <= 0) {
-    alert("Please enter valid income");
+    resultEl.innerHTML = "⚠️ Please enter valid income.";
     return;
   }
 
@@ -211,39 +229,30 @@ function calculateTax() {
   let tax = 0;
 
   if (regime === "new") {
-    // standard deduction
     taxableIncome = Math.max(0, income - 50000);
 
-    // rebate check
     if (taxableIncome <= 700000) {
       tax = 0;
     } else {
-      tax = calculateNewRegimeTax(taxableIncome);
+      tax = calculateNewTax(taxableIncome);
     }
   } else {
     taxableIncome = Math.max(0, income - deductions);
-    tax = calculateOldRegimeTax(taxableIncome);
+    tax = calculateOldTax(taxableIncome);
   }
 
-  const monthlyIncome = ((income - tax) / 12).toFixed(0);
+  const monthly = Math.round((income - tax) / 12);
 
-  // show results
-  document.getElementById("resultBox").style.display = "block";
-  document.getElementById("taxableIncome").innerText =
-    "Taxable Income: ₹" + taxableIncome.toLocaleString();
-
-  document.getElementById("totalTax").innerText =
-    "Total Tax: ₹" + Math.round(tax).toLocaleString();
-
-  document.getElementById("monthlyIncome").innerText =
-    "Estimated Monthly Take Home: ₹" + monthlyIncome.toLocaleString();
-
-  document.getElementById("regimeUsed").innerText =
-    "Regime Used: " + (regime === "new" ? "New Regime" : "Old Regime");
+  resultEl.innerHTML = `
+    <strong>Taxable Income:</strong> ₹${taxableIncome.toLocaleString()}<br>
+    <strong>Total Tax:</strong> ₹${Math.round(tax).toLocaleString()}<br>
+    <strong>Monthly Take Home:</strong> ₹${monthly.toLocaleString()}<br>
+    <strong>Regime Used:</strong> ${regime === "new" ? "New Regime" : "Old Regime"}
+  `;
 }
 
 // New regime slabs
-function calculateNewRegimeTax(income) {
+function calculateNewTax(income) {
   let tax = 0;
 
   if (income > 1500000) {
@@ -270,7 +279,7 @@ function calculateNewRegimeTax(income) {
 }
 
 // Old regime slabs
-function calculateOldRegimeTax(income) {
+function calculateOldTax(income) {
   let tax = 0;
 
   if (income > 1000000) {
@@ -287,7 +296,6 @@ function calculateOldRegimeTax(income) {
 
   return tax;
 }
-
 /* =================================
    Dark Mode Toggle
 ================================= */
@@ -368,6 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
