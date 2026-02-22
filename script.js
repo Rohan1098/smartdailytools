@@ -258,27 +258,43 @@ showResult(resultEl, outputText);
 }
 
 // New regime slabs
-function calculateNewTax(income) {
+function calculateNewTax(taxableIncome) {
   let tax = 0;
 
-  if (income > 1500000) {
-    tax += (income - 1500000) * 0.30;
-    income = 1500000;
-  }
-  if (income > 1200000) {
-    tax += (income - 1200000) * 0.20;
-    income = 1200000;
-  }
-  if (income > 900000) {
-    tax += (income - 900000) * 0.15;
-    income = 900000;
-  }
-  if (income > 600000) {
-    tax += (income - 600000) * 0.10;
-    income = 600000;
-  }
-  if (income > 300000) {
-    tax += (income - 300000) * 0.05;
+  if (taxableIncome <= 400000) {
+    tax = 0;
+  } else if (taxableIncome <= 800000) {
+    tax = (taxableIncome - 400000) * 0.05;
+  } else if (taxableIncome <= 1200000) {
+    tax =
+      400000 * 0.05 +
+      (taxableIncome - 800000) * 0.10;
+  } else if (taxableIncome <= 1600000) {
+    tax =
+      400000 * 0.05 +
+      400000 * 0.10 +
+      (taxableIncome - 1200000) * 0.15;
+  } else if (taxableIncome <= 2000000) {
+    tax =
+      400000 * 0.05 +
+      400000 * 0.10 +
+      400000 * 0.15 +
+      (taxableIncome - 1600000) * 0.20;
+  } else if (taxableIncome <= 2400000) {
+    tax =
+      400000 * 0.05 +
+      400000 * 0.10 +
+      400000 * 0.15 +
+      400000 * 0.20 +
+      (taxableIncome - 2000000) * 0.25;
+  } else {
+    tax =
+      400000 * 0.05 +
+      400000 * 0.10 +
+      400000 * 0.15 +
+      400000 * 0.20 +
+      400000 * 0.25 +
+      (taxableIncome - 2400000) * 0.30;
   }
 
   return tax;
@@ -382,6 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
