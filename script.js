@@ -449,6 +449,38 @@ if (blogBtn) {
     resultBox.classList.remove("hidden");
   });
 }
+// ===== AI ASSISTANT =====
+
+const aiToggle = document.getElementById("aiToggle");
+const aiChatBox = document.getElementById("aiChatBox");
+const chatInput = document.getElementById("chatInput");
+const chatMessages = document.getElementById("chatMessages");
+
+aiToggle?.addEventListener("click", () => {
+  aiChatBox.classList.toggle("hidden");
+});
+
+chatInput?.addEventListener("keypress", (e) => {
+  if (e.key !== "Enter") return;
+
+  const text = chatInput.value.trim();
+  if (!text) return;
+
+  chatMessages.innerHTML += `<div><b>You:</b> ${text}</div>`;
+
+  let reply = "I can help you use SmartDailyTools calculators.";
+
+  if (text.toLowerCase().includes("sip"))
+    reply = "👉 Try our SIP Calculator for investment planning.";
+
+  if (text.toLowerCase().includes("gst"))
+    reply = "👉 Use the GST Calculator to compute tax instantly.";
+
+  chatMessages.innerHTML += `<div><b>AI:</b> ${reply}</div>`;
+
+  chatInput.value = "";
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+});
 
 
 
