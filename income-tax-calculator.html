@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Income Tax Calculator – SmartDailyTools</title>
-<meta name="description" content="Calculate income tax in India using the latest FY 2025-26 tax slabs.">
-
+<title>Income Tax Calculator (FY 2025-26) – SmartDailyTools</title>
+<meta name="description" content="Advanced Income Tax Calculator for FY 2025-26. Compare Old vs New tax regime instantly.">
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,27 +23,44 @@
 <section class="page-container">
   <div class="tool-card fade-in-up">
 
-    <h1>Income Tax Calculator</h1>
-    <p class="tool-desc">Calculate tax using FY 2025-26 New & Old regime.</p>
+    <h1>Income Tax Calculator PRO</h1>
+    <p class="tool-desc">FY 2025-26 (AY 2026-27) — Compare Old vs New Regime</p>
 
-    <input type="number" id="incomeAmount" placeholder="Annual Income (₹)">
-    
-    <select id="taxRegime" class="tool-card input">
-      <option value="new">New Regime</option>
-      <option value="old">Old Regime</option>
+    <!-- Income -->
+    <input type="number" id="income" placeholder="Enter Annual Income (₹)">
+
+    <!-- Regime -->
+    <select id="taxRegime">
+      <option value="new">New Tax Regime (Default)</option>
+      <option value="old">Old Tax Regime</option>
     </select>
 
-    <label style="display:block; margin:10px 0;">
-      <input type="checkbox" id="isSalaried"> Salaried (₹75k standard deduction)
-    </label>
+    <!-- Salaried -->
+    <div class="checkbox-row">
+      <label class="checkbox-label">
+        <input type="checkbox" id="isSalaried">
+        <span>Salaried (Standard Deduction)</span>
+      </label>
+    </div>
+
+    <!-- OLD REGIME DEDUCTIONS -->
+    <div id="oldDeductions" style="display:none;">
+      <input type="number" id="deduction80C" placeholder="80C Investments (₹)">
+      <input type="number" id="deduction80D" placeholder="80D Health Insurance (₹)">
+      <input type="number" id="homeInterest" placeholder="Home Loan Interest (₹)">
+      <input type="number" id="hraLta" placeholder="HRA / LTA Exemptions (₹)">
+    </div>
 
     <button class="primary-btn" onclick="calculateIncomeTax()">Calculate Tax</button>
 
     <div id="taxResult" class="result-box"></div>
 
     <div class="tool-content">
-      <h2>About</h2>
-      <p>This calculator follows latest Indian income tax rules for FY 2025-26.</p>
+      <h2>About This Calculator</h2>
+      <p>
+        This advanced calculator uses the latest income tax slabs for FY 2025-26.
+        It helps you compare both tax regimes and estimate take-home income.
+      </p>
     </div>
 
   </div>
@@ -61,5 +76,14 @@
 </footer>
 
 <script src="script.js"></script>
+
+<script>
+/* Show old regime fields */
+document.getElementById("taxRegime").addEventListener("change", function () {
+  document.getElementById("oldDeductions").style.display =
+    this.value === "old" ? "block" : "none";
+});
+</script>
+
 </body>
 </html>
