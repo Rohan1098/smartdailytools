@@ -334,7 +334,7 @@ window.addEventListener("load", function () {
   if (!counter) return;
 
   let count = 0;
-  const target = 6;
+  const target = 7;
 
   const interval = setInterval(() => {
     if (count < target) {
@@ -368,6 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
