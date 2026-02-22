@@ -8,7 +8,23 @@ function getNumber(id) {
   const value = parseFloat(el.value);
   return isNaN(value) ? 0 : value;
 }
-
+/* =================================
+   GA Event Tracking Helper
+================================= */
+function trackCalculatorEvent(calculatorName, action, label = '') {
+  if (window.gtag) {
+    gtag('event', action, {
+      event_category: 'Calculator',
+      event_label: label || calculatorName
+    });
+  }
+}
+document.querySelectorAll('.tool-card').forEach(card => {
+  card.addEventListener('click', function () {
+    const name = this.textContent.trim();
+    trackCalculatorEvent(name, 'Open');
+  });
+});
 /* =================================
    Result Animation Helper (Alpha)
 ================================= */
@@ -401,6 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
