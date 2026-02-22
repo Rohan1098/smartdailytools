@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Income Tax Calculator – SmartDailyTools</title>
-<meta name="description" content="Calculate income tax in India under old and new tax regime instantly.">
+<meta name="description" content="Calculate income tax in India using the latest FY 2025-26 tax slabs.">
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
 <nav class="navbar">
   <h1 class="logo">SmartDailyTools</h1>
   <div class="nav-links">
@@ -21,39 +24,38 @@
 
 <section class="page-container">
   <div class="tool-card fade-in-up">
-    <h1>Income Tax Calculator (India)</h1>
-    <p class="tool-desc">Compare tax under old vs new regime for FY 2025-26.</p>
 
-    <input type="number" id="income" placeholder="Annual Income (₹)">
+    <h1>Income Tax Calculator</h1>
+    <p class="tool-desc">Calculate tax using FY 2025-26 New & Old regime.</p>
 
-    <select id="regime">
-      <option value="new">New Tax Regime (Default)</option>
-      <option value="old">Old Tax Regime</option>
+    <input type="number" id="incomeAmount" placeholder="Annual Income (₹)">
+    
+    <select id="taxRegime" class="tool-card input">
+      <option value="new">New Regime</option>
+      <option value="old">Old Regime</option>
     </select>
 
-    <div id="oldDeductions" style="display:none;">
-      <input type="number" id="deductions" placeholder="Total Deductions (₹)">
-    </div>
+    <label style="display:block; margin:10px 0;">
+      <input type="checkbox" id="isSalaried"> Salaried (₹75k standard deduction)
+    </label>
 
-    <button class="primary-btn" onclick="calculateTax()">Calculate Tax</button>
+    <button class="primary-btn" onclick="calculateIncomeTax()">Calculate Tax</button>
 
     <div id="taxResult" class="result-box"></div>
 
     <div class="tool-content">
       <h2>About</h2>
-      <p>
-        Use this free income tax calculator to estimate your tax liability in India.
-        Supports both tax regimes for better salary planning.
-      </p>
+      <p>This calculator follows latest Indian income tax rules for FY 2025-26.</p>
     </div>
+
   </div>
 </section>
 
 <footer class="footer">
   <div class="footer-links">
     <a href="contact.html">Contact</a>
-    <a href="privacy.html"> Privacy Policy</a>
-    <a href="terms.html"> Terms & Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
   </div>
   <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
 </footer>
