@@ -196,37 +196,31 @@ function calculateAge() {
 ================================= */
 
 function calculateIncomeTax() {
+
+  const income = parseFloat(document.getElementById("income")?.value) || 0;
+  const regime = document.getElementById("taxRegime")?.value || "new";
+  const isSalaried = document.getElementById("isSalaried")?.checked;
+
   const resultBox = document.getElementById("taxResult");
-  if (!resultBox) {
-    console.error("taxResult div not found");
-    return;
-  }
+  const breakdownBox = document.getElementById("exemptionBreakdown");
 
-  let incomeEl = document.getElementById("income");
-  let regimeEl = document.getElementById("taxRegime");
-  let salariedEl = document.getElementById("isSalaried");
-
-  if (!incomeEl || !regimeEl || !salariedEl) {
-    resultBox.innerHTML = "⚠️ Missing input fields.";
-    return;
-  }
-
-  let income = parseFloat(incomeEl.value) || 0;
-  let regime = regimeEl.value;
-  let isSalaried = salariedEl.checked;
+  if (!resultBox) return;
 
   let taxableIncome = income;
   let tax = 0;
 
-  // ===== NEW REGIME =====
+  // ================= NEW REGIME =================
   if (regime === "new") {
 
+    // standard deduction
     if (isSalaried) taxableIncome -= 75000;
     if (taxableIncome < 0) taxableIncome = 0;
 
+    // rebate logic (₹12L taxable -> zero tax)
     if (taxableIncome <= 1200000) {
       tax = 0;
     } else {
+
       let remaining = taxableIncome;
 
       if (remaining > 2400000) {
@@ -254,19 +248,32 @@ function calculateIncomeTax() {
       }
     }
 
-  } else {
-    // ===== OLD REGIME =====
+    // hide old regime breakdown
+    if (breakdownBox) breakdownBox.style.display = "none";
+  }
 
-    if (isSalaried) taxableIncome -= 50000;
+  // ================= OLD REGIME =================
+  else {
 
-    let d80c = Math.min(parseFloat(document.getElementById("deduction80C")?.value) || 0, 150000);
-    let d80d = parseFloat(document.getElementById("deduction80D")?.value) || 0;
-    let homeInt = Math.min(parseFloat(document.getElementById("homeInterest")?.value) || 0, 200000);
-    let hra = parseFloat(document.getElementById("hraLta")?.value) || 0;
+    const standardDeduction = isSalaried ? 50000 : 0;
+    taxableIncome -= standardDeduction;
+
+    const input80c = parseFloat(document.getElementById("deduction80C")?.value) || 0;
+    const d80c = Math.min(input80c, 150000);
+
+    const d80d = parseFloat(document.getElementById("deduction80D")?.value) || 0;
+
+    const homeInput = parseFloat(document.getElementById("homeInterest")?.value) || 0;
+    const homeInt = Math.min(homeInput, 200000);
+
+    const hra = parseFloat(document.getElementById("hraLta")?.value) || 0;
+
+    const totalExemptions = standardDeduction + d80c + d80d + homeInt + hra;
 
     taxableIncome -= (d80c + d80d + homeInt + hra);
     if (taxableIncome < 0) taxableIncome = 0;
 
+    // rebate under 5L
     if (taxableIncome <= 500000) {
       tax = 0;
     } else {
@@ -284,17 +291,35 @@ function calculateIncomeTax() {
         tax += (remaining - 250000) * 0.05;
       }
     }
+
+    // ⭐ EXEMPTION BREAKDOWN ⭐
+    if (breakdownBox) {
+      breakdownBox.style.display = "block";
+      breakdownBox.innerHTML = `
+        <h2>Old Regime Exemption Breakdown</h2>
+        <p><strong>Standard Deduction:</strong> ₹${standardDeduction.toLocaleString()}</p>
+        <p><strong>Section 80C Used:</strong> ₹${Math.round(d80c).toLocaleString()}</p>
+        <p><strong>Section 80D:</strong> ₹${Math.round(d80d).toLocaleString()}</p>
+        <p><strong>Home Loan Interest:</strong> ₹${Math.round(homeInt).toLocaleString()}</p>
+        <p><strong>HRA/LTA:</strong> ₹${Math.round(hra).toLocaleString()}</p>
+        <hr>
+        <p><strong>Total Exemptions:</strong> ₹${Math.round(totalExemptions).toLocaleString()}</p>
+      `;
+    }
   }
 
-  let monthly = (income - tax) / 12;
+  const monthly = (income - tax) / 12;
 
+  // ✅ RESULT OUTPUT (CODE ALPHA SAFE)
   resultBox.innerHTML = `
     <strong>Taxable Income:</strong> ₹${Math.round(taxableIncome).toLocaleString()}<br>
     <strong>Total Tax:</strong> ₹${Math.round(tax).toLocaleString()}<br>
     <strong>Monthly Take Home:</strong> ₹${Math.round(monthly).toLocaleString()}<br>
     <strong>Regime Used:</strong> ${regime === "new" ? "New Regime" : "Old Regime"}
   `;
-   resultBox.classList.add("show", "success");
+
+  // ⭐⭐⭐ THIS MAKES RESULT VISIBLE ⭐⭐⭐
+  resultBox.classList.add("show", "success");
 }
 /* =================================
    Dark Mode Toggle
@@ -376,6 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
