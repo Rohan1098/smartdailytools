@@ -294,6 +294,7 @@ function calculateIncomeTax() {
     <strong>Monthly Take Home:</strong> ₹${Math.round(monthly).toLocaleString()}<br>
     <strong>Regime Used:</strong> ${regime === "new" ? "New Regime" : "Old Regime"}
   `;
+   resultBox.classList.add("show", "success");
 }
 /* =================================
    Dark Mode Toggle
@@ -375,6 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
