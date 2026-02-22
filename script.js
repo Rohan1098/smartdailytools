@@ -401,6 +401,54 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+// ===== AI BLOG GENERATOR =====
+const blogBtn = document.getElementById("generateBlog");
+
+if (blogBtn) {
+  blogBtn.addEventListener("click", async () => {
+    const topicEl = document.getElementById("blogTopic");
+    const resultBox = document.getElementById("blogResult");
+    const loader = document.getElementById("blogLoading");
+
+    const topic = topicEl.value.trim();
+
+    if (!topic) {
+      alert("Please enter a topic");
+      return;
+    }
+
+    loader.classList.remove("hidden");
+    resultBox.classList.add("hidden");
+
+    try {
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer YOUR_OPENAI_KEY",
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [
+            {
+              role: "user",
+              content: `Write a SEO optimized blog post about: ${topic}`,
+            },
+          ],
+        }),
+      });
+
+      const data = await res.json();
+      resultBox.textContent =
+        data?.choices?.[0]?.message?.content || "No response received.";
+    } catch (err) {
+      resultBox.textContent = "⚠️ Error generating blog.";
+    }
+
+    loader.classList.add("hidden");
+    resultBox.classList.remove("hidden");
+  });
+}
 
 
 
