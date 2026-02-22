@@ -101,6 +101,7 @@ text-align: center;
 padding: 90px 20px;
 background: linear-gradient(135deg, #2563eb, #1e3a8a);
 color: #fff;
+min-height: 260px;
 }
 
 .hero h1 {
@@ -493,3 +494,4 @@ padding: 28px 14px;
 .dark-mode .result-box {
   background: linear-gradient(135deg, #1e293b, #020617);
 }
+
