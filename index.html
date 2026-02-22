@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,37 +10,32 @@
 <meta name="keywords" content="SIP calculator India, EMI calculator, GST calculator, CAGR calculator, percentage calculator, age calculator">
 
 <link rel="stylesheet" href="style.css">
- <!-- Basic Favicon -->
+
+<!-- Favicons -->
+
 <link rel="icon" href="/favicon.ico" sizes="any">
-
-<!-- SVG Favicon (Modern Browsers) -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-<!-- PNG Icons -->
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-
-<!-- Apple Touch Icon -->
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-<!-- Web App Manifest -->
 <link rel="manifest" href="/site.webmanifest">
-
-<!-- Android Icons -->
 <link rel="icon" type="image/png" sizes="192x192" href="/web-app-manifest-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/web-app-manifest-512x512.png">
-
-<!-- Theme Color -->
 <meta name="theme-color" content="#000000">
 
- <!-- Google tag (gtag.js) -->
+<!-- Google Analytics (replace YOUR-ID) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-ID"></script>
+
 <script>
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+function gtag(){dataLayer.push(arguments);} 
 gtag('js', new Date());
 gtag('config', 'YOUR-ID');
 </script>
- <meta property="og:title" content="SmartDailyTools - Free Online Calculators">
+
+<!-- Open Graph -->
+
+<meta property="og:title" content="SmartDailyTools - Free Online Calculators">
 <meta property="og:description" content="Free SIP, EMI, GST, CAGR and other financial calculators online.">
 <meta property="og:image" content="https://www.smartdailytools.in/favicon-96x96.png">
 <meta property="og:url" content="https://www.smartdailytools.in">
@@ -49,61 +45,101 @@ gtag('config', 'YOUR-ID');
 
 <body>
 
+<!-- ================= NAVBAR ================= -->
+
 <nav class="navbar">
 
-    <div class="logo">
-        <a href="/">
-            <img src="logo.png" alt="SmartDailyTools Logo">
-        </a>
-    </div>
+  <div class="logo">
+    <a href="/">
+      <img src="logo.png" alt="SmartDailyTools Logo">
+    </a>
+  </div>
 
-    <div class="nav-links">
-        <button id="themeToggle" class="theme-btn">🌙</button>
-        <a href="blog.html">Blog</a>
-        <a href="about.html">About</a>
-    </div>
+  <div class="nav-links">
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <button id="themeToggle" class="theme-btn" title="Toggle theme">🌙</button>
+  </div>
 
 </nav>
 
+<!-- ================= HERO ================= -->
+
 <header class="hero">
-  <h1>Smart Daily Tools</h1>
-  <p><span id="toolCount">7</span>+ Free Calculators for India</p>
-  <button onclick="scrollToTools()">Explore Tools</button>
+  <h1 class="fade-in-up">Smart Daily Tools</h1>
+  <p class="fade-in-up delay-1">
+    <strong><span id="toolCount">7</span>+</strong> Free Financial Calculators for India
+  </p>
+
+  <div class="fade-in-up delay-2" style="margin-top:20px;">
+    <button onclick="scrollToTools()">🚀 Explore Tools</button>
+  </div>
 </header>
-  
-<div class="search-box">
-<input type="text" id="toolSearch" placeholder="Search calculator..." onkeyup="filterTools()">
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-box fade-in-up">
+  <input 
+    type="text" 
+    id="toolSearch" 
+    placeholder="🔍 Search calculator (e.g., SIP, EMI...)" 
+    onkeyup="filterTools()">
 </div>
-  
+
+<!-- ================= TOOL GRID ================= -->
+
 <section class="tool-list" id="tools">
-<a href="sip-calculator.html" class="tool-card">SIP Calculator</a>
-<a href="emi-calculator.html" class="tool-card">EMI Calculator</a>
-<a href="gst-calculator.html" class="tool-card">GST Calculator</a>
-<a href="cagr-calculator.html" class="tool-card">CAGR Calculator</a>
-<a href="percentage-calculator.html" class="tool-card">Percentage Calculator</a>
-<a href="age-calculator.html" class="tool-card">Age Calculator</a>
-<a href="income-tax-calculator.html" class="tool-card">Income Tax Calculator</a>
+
+  <a href="sip-calculator.html" class="tool-card fade-in-up">
+    📈 SIP Calculator
+  </a>
+
+  <a href="emi-calculator.html" class="tool-card fade-in-up delay-1">
+    🏦 EMI Calculator
+  </a>
+
+  <a href="gst-calculator.html" class="tool-card fade-in-up delay-2">
+    🧾 GST Calculator
+  </a>
+
+  <a href="cagr-calculator.html" class="tool-card fade-in-up delay-3">
+    📊 CAGR Calculator
+  </a>
+
+  <a href="percentage-calculator.html" class="tool-card fade-in-up">
+    ➗ Percentage Calculator
+  </a>
+
+  <a href="age-calculator.html" class="tool-card fade-in-up delay-1">
+    🎂 Age Calculator
+  </a>
+
+  <a href="income-tax-calculator.html" class="tool-card fade-in-up delay-2">
+    💰 Income Tax Calculator
+  </a>
 
 </section>
+
+<!-- ================= TRUST STRIP ================= -->
+
+<section style="text-align:center; padding:30px 20px; max-width:900px; margin:auto;">
+  <p style="color:#6b7280; font-size:15px;">
+    ⚡ Fast • 🎯 Accurate • 🇮🇳 Made for India • 🔒 No Data Stored
+  </p>
+</section>
+
+<!-- ================= FOOTER ================= -->
 
 <footer class="footer">
   <div class="footer-links">
     <a href="contact.html">Contact</a>
-    <a href="privacy.html"> Privacy Policy</a>
-    <a href="terms.html"> Terms & Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
   </div>
   <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
 </footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
