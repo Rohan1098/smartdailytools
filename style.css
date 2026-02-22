@@ -460,3 +460,36 @@ padding: 26px 20px;
 padding: 28px 14px;
 }
 }
+/* =========================
+   DARK MODE — RESULT VISIBILITY FIX
+========================= */
+
+/* Make result text bright in dark mode */
+.dark-mode .result-box {
+  color: #f1f5f9; /* light text */
+}
+
+/* Labels inside result */
+.dark-mode .result-box div {
+  color: #e2e8f0;
+}
+
+/* Tax highlight stays visible */
+.dark-mode .tax-highlight {
+  color: #f87171; /* softer red for dark bg */
+}
+
+/* Take home highlight */
+.dark-mode .takehome-highlight {
+  color: #34d399; /* bright green */
+}
+
+/* Exemption box readability */
+.dark-mode .exemption-box {
+  color: #e2e8f0;
+}
+
+/* Optional: slightly stronger background contrast */
+.dark-mode .result-box {
+  background: linear-gradient(135deg, #1e293b, #020617);
+}
