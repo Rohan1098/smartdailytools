@@ -218,7 +218,12 @@ function calculateTax() {
 
   let income = Number(incomeEl.value);
   let regime = regimeEl.value;
-  let deductions = Number(deductionEl?.value) || 0;
+
+  // ✅ SAFE deductions handling
+  let deductions = 0;
+  if (deductionEl && deductionEl.value) {
+    deductions = Number(deductionEl.value);
+  }
 
   if (!income || income <= 0) {
     resultEl.innerHTML = "⚠️ Please enter valid income.";
@@ -243,12 +248,11 @@ function calculateTax() {
 
   const monthly = Math.round((income - tax) / 12);
 
-  resultEl.innerHTML = `
-    <strong>Taxable Income:</strong> ₹${taxableIncome.toLocaleString()}<br>
-    <strong>Total Tax:</strong> ₹${Math.round(tax).toLocaleString()}<br>
-    <strong>Monthly Take Home:</strong> ₹${monthly.toLocaleString()}<br>
-    <strong>Regime Used:</strong> ${regime === "new" ? "New Regime" : "Old Regime"}
-  `;
+  resultEl.innerHTML =
+    "<strong>Taxable Income:</strong> ₹" + taxableIncome.toLocaleString() + "<br>" +
+    "<strong>Total Tax:</strong> ₹" + Math.round(tax).toLocaleString() + "<br>" +
+    "<strong>Monthly Take Home:</strong> ₹" + monthly.toLocaleString() + "<br>" +
+    "<strong>Regime Used:</strong> " + (regime === "new" ? "New Regime" : "Old Regime");
 }
 
 // New regime slabs
@@ -376,6 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 });
+
 
 
 
