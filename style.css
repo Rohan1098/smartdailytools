@@ -494,4 +494,41 @@ padding: 28px 14px;
 .dark-mode .result-box {
   background: linear-gradient(135deg, #1e293b, #020617);
 }
+/* ===== AI BLOG ===== */
+
+.loader {
+  margin-top: 16px;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-color),
+    transparent
+  );
+  animation: loadingBar 1.2s infinite;
+  border-radius: 10px;
+}
+
+@keyframes loadingBar {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.result-card {
+  margin-top: 20px;
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  line-height: 1.8;
+  white-space: pre-line;
+  font-size: 15px;
+}
+
+/* Dark mode visibility fix */
+[data-theme="dark"] .result-card {
+  background: #1e293b;
+  color: #e5e7eb;
+}
 
