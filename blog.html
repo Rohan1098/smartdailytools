@@ -40,40 +40,6 @@
 </script>
 
 <link rel="stylesheet" href="style.css">
-
-<!-- ================================
-     BLOG DARK MODE FIX (page only)
-================================ -->
-
-<style>
-.blog-table th,
-.blog-table td {
-  border: 1px solid var(--border-color);
-}
-
-.blog-table th {
-  background: var(--card-bg);
-}
-
-.blog-soft-card {
-  background: var(--card-bg);
-}
-
-.blog-cta {
-  background: linear-gradient(
-    135deg,
-    var(--card-bg),
-    var(--card-bg)
-  );
-}
-
-body.dark .blog-soft-card,
-body.dark .blog-cta,
-body.dark .blog-table th {
-  background: #1f2937;
-}
-</style>
-
 </head>
 
 <body>
@@ -100,7 +66,7 @@ body.dark .blog-table th {
 
 <!-- TABLE OF CONTENTS -->
 
-<div class="tool-card blog-soft-card" style="text-align:left; margin-bottom:28px;">
+<div class="tool-card" style="text-align:left; margin-bottom:28px;">
 <strong>📚 In This Guide</strong>
 <ul style="margin-top:10px; padding-left:18px; line-height:1.7;">
 <li>✔ SIP Calculator (Wealth Building)</li>
@@ -133,7 +99,7 @@ A Systematic Investment Plan (SIP) is the most popular investment method among I
 Instead of investing a lump sum, you invest a fixed amount monthly into mutual funds.
 </p>
 
-<div class="tool-card blog-soft-card" style="margin:18px 0;">
+<div class="tool-card" style="margin:18px 0;">
 <strong>💡 Why SIP Works:</strong><br>
 • Power of compounding<br>
 • Rupee cost averaging<br>
@@ -163,7 +129,7 @@ The EMI calculator instantly computes your monthly payment using:
 <li>Loan tenure</li>
 </ul>
 
-<div class="tool-card blog-soft-card" style="margin:18px 0;">
+<div class="tool-card" style="margin:18px 0;">
 <strong>📊 Quick Example:</strong><br>
 ₹10,00,000 loan • 9% interest • 5 years → EMI ≈ ₹20,758/month
 </div>
@@ -174,41 +140,29 @@ The EMI calculator instantly computes your monthly payment using:
 
 <!-- TAX -->
 
-
 <h2>🧾 Income Tax Calculator — Old vs New Regime</h2>
 
 <p>
 India currently offers two tax regimes. Choosing the wrong one can increase your tax liability.
 </p>
 
-<div class="tax-table-wrapper">
-  <table class="tax-table">
-    <thead>
-      <tr>
-        <th>Feature</th>
-        <th>Old Regime</th>
-        <th>New Regime</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Deductions</td>
-        <td>Available</td>
-        <td>Limited</td>
-      </tr>
-      <tr>
-        <td>Tax Rates</td>
-        <td>Higher</td>
-        <td>Lower</td>
-      </tr>
-      <tr>
-        <td>Best For</td>
-        <td>High deductions investors</td>
-        <td>Low deduction salaried</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table style="width:100%; margin:18px 0; border-collapse:collapse; font-size:14px;">z
+<tr style="background:#eef2ff;">
+<th style="padding:10px; border:1px solid #e5e7eb;">Feature</th>
+<th style="padding:10px; border:1px solid #e5e7eb;">Old Regime</th>
+<th style="padding:10px; border:1px solid #e5e7eb;">New Regime</th>
+</tr>
+<tr>
+<td style="padding:10px; border:1px solid #e5e7eb;">Deductions</td>
+<td style="padding:10px; border:1px solid #e5e7eb;">Available</td>
+<td style="padding:10px; border:1px solid #e5e7eb;">Limited</td>
+</tr>
+<tr>
+<td style="padding:10px; border:1px solid #e5e7eb;">Tax Rates</td>
+<td style="padding:10px; border:1px solid #e5e7eb;">Higher</td>
+<td style="padding:10px; border:1px solid #e5e7eb;">Lower</td>
+</tr>
+</table>
 
 <a class="primary-btn" href="income-tax-calculator.html" style="display:inline-block;">🧮 Calculate Tax</a>
 
@@ -258,7 +212,7 @@ It is far more accurate than simple returns when comparing investments.
 
 <!-- FINAL CTA -->
 
-<div class="tool-card blog-cta" style="text-align:center;">
+<div class="tool-card" style="text-align:center; background:linear-gradient(135deg,#eef2ff,#f8fafc);">
 <h3 style="margin-bottom:10px;">🚀 Start Using SmartDailyTools</h3>
 <p style="margin-bottom:14px;">
 All calculators are free, fast and built for Indian users.
