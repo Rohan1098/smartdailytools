@@ -71,6 +71,13 @@ function calculateSIP() {
   showResult(resultBox, "Future Value: ₹" + futureValue.toFixed(2));
    trackCalculatorEvent('SIP Calculator', 'Calculate', 
   `Amount: ${getNumber("sipAmount")}, Rate: ${getNumber("sipRate")}, Years: ${getNumber("sipYears")}`);
+  // ===== AI Insight: SIP =====
+
+const yearsToDouble = (72 / annualRate).toFixed(1);
+
+showAIInsight(
+  `💡 At <b>${annualRate}%</b> return, your investment may double in approximately <b>${yearsToDouble} years</b>.`
+);
 }
 
 /* =================================
