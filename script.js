@@ -200,6 +200,10 @@ function calculatePercentage() {
   showResult(resultBox, `📊 Percentage: ${percent.toFixed(2)}%`);
    trackCalculatorEvent('Percentage Calculator', 'Calculate', 
   `Part: ${getNumber("percentPart")}, Total: ${getNumber("percentTotal")}`);
+  
+  showAIInsight(
+  `💡 ${part}% of ${total} equals <b>${percent}</b>.`
+);
 }
 
 /* =================================
