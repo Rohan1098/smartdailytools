@@ -179,7 +179,7 @@ function calculateCAGR() {
    Percentage Calculator (FIXED)
 ================================= */
 function calculatePercentage() {
-  const part = getNumber("percentPart");
+  const part = getNumber("percentValue");
   const total = getNumber("percentTotal");
   const resultBox = document.getElementById("percentResult");
 
