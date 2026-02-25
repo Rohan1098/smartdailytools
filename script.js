@@ -94,9 +94,23 @@ function calculateEMI() {
     (P * r * Math.pow(1 + r, n)) /
     (Math.pow(1 + r, n) - 1);
 
+  // ✅ Show result
   showResult(resultBox, "Monthly EMI: ₹" + emi.toFixed(2));
-   trackCalculatorEvent('EMI Calculator', 'Calculate', 
-  `Principal: ${getNumber("loanAmount")}, Rate: ${getNumber("loanRate")}, Years: ${getNumber("loanYears")}`);
+
+  // ✅ GA tracking (optimized)
+  trackCalculatorEvent(
+    'EMI Calculator',
+    'Calculate',
+    `Principal: ${P}, Rate: ${annualRate}, Years: ${years}`
+  );
+
+  // ===== AI Insight: EMI =====
+  const totalPayment = emi * n;
+  const totalInterest = totalPayment - P;
+
+  showAIInsight(
+    `💡 You will pay approximately <b>₹${Math.round(totalInterest).toLocaleString()}</b> as interest over the loan tenure.`
+  );
 }
 
 //  =================================

@@ -1,77 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIP Calculator – SmartDailyTools</title>
-<meta name="description" content="Free SIP Calculator India. Calculate mutual fund SIP returns, maturity value and wealth gained instantly.">
-<link rel="stylesheet" href="style.css">
-<link rel="canonical" href="https://www.smartdailytools.in/sip-calculator.html">  
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIP Calculator – SmartDailyTools</title>
+    <meta
+      name="description"
+      content="Free SIP Calculator India. Calculate mutual fund SIP returns, maturity value and wealth gained instantly."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="canonical"
+      href="https://www.smartdailytools.in/sip-calculator.html"
+    />
+  </head>
 
-<body>
+  <body>
+    <nav class="navbar">
+      <h1 class="logo">SmartDailyTools</h1>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </div>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
 
-<nav class="navbar">
-  <h1 class="logo">SmartDailyTools</h1>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="blog.html">Blog</a>
-    <a href="about.html">About</a>
-  </div>
-  <button id="themeToggle" class="theme-btn">🌙</button>
-</nav>
+    <section class="page-container">
+      <div class="tool-card fade-in-up">
+        <h1>SIP Calculator</h1>
+        <p class="tool-desc">
+          Calculate your mutual fund SIP returns and maturity value instantly.
+        </p>
 
-<section class="page-container">
-  <div class="tool-card fade-in-up">
-    <h1>SIP Calculator</h1>
-    <p class="tool-desc">
-      Calculate your mutual fund SIP returns and maturity value instantly.
-    </p>
+        <div class="input-group">
+          <label>Monthly Investment (₹)</label>
+          <input type="number" id="sipAmount" placeholder="e.g. 5000" />
+        </div>
 
-    <div class="input-group">
-      <label>Monthly Investment (₹)</label>
-      <input type="number" id="sipAmount" placeholder="e.g. 5000">
-    </div>
+        <div class="input-group">
+          <label>Expected Return (% p.a.)</label>
+          <input type="number" id="sipRate" placeholder="e.g. 12" />
+        </div>
 
-    <div class="input-group">
-      <label>Expected Return (% p.a.)</label>
-      <input type="number" id="sipRate" placeholder="e.g. 12">
-    </div>
+        <div class="input-group">
+          <label>Investment Period (Years)</label>
+          <input type="number" id="sipYears" placeholder="e.g. 10" />
+        </div>
 
-    <div class="input-group">
-      <label>Investment Period (Years)</label>
-      <input type="number" id="sipYears" placeholder="e.g. 10">
-    </div>
+        <button class="primary-btn" onclick="calculateSIP()">
+          Calculate SIP
+        </button>
 
-    <button class="primary-btn" onclick="calculateSIP()">Calculate SIP</button>
+        <div id="sipResult" class="result-box"></div>
+        <div id="aiInsight" class="ai-insight hidden">
+          <div class="ai-icon">🤖</div>
+          <div class="ai-text" id="aiInsightText"></div>
+        </div>
 
-    <div id="sipResult" class="result-box"></div>
+        <div class="tool-content">
+          <h2>About SIP Calculator</h2>
+          <p>
+            SIP (Systematic Investment Plan) is one of the best ways to build
+            wealth in mutual funds. Our free SIP calculator helps you estimate
+            the future value of your monthly investments based on expected
+            returns and tenure.
+          </p>
 
-    <div class="tool-content">
-      <h2>About SIP Calculator</h2>
-      <p>
-        SIP (Systematic Investment Plan) is one of the best ways to build wealth
-        in mutual funds. Our free SIP calculator helps you estimate the future
-        value of your monthly investments based on expected returns and tenure.
-      </p>
+          <p>
+            Use this tool for financial planning, retirement goals, and
+            long-term investment decisions. Results are instant, accurate and
+            mobile friendly.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <p>
-        Use this tool for financial planning, retirement goals, and long-term
-        investment decisions. Results are instant, accurate and mobile friendly.
-      </p>
-    </div>
-  </div>
-</section>
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html"> Privacy Policy</a>
+        <a href="terms.html"> Terms & Conditions</a>
+      </div>
+      <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
+    </footer>
 
-<footer class="footer">
-  <div class="footer-links">
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html"> Privacy Policy</a>
-    <a href="terms.html"> Terms & Conditions</a>
-  </div>
-  <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
