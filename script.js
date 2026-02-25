@@ -30,11 +30,32 @@ function smartFormat(num) {
 function switchPercentMode() {
   const mode = document.getElementById("percentMode").value;
 
+  // hide all modes
   document.querySelectorAll(".percent-mode").forEach(el => {
     el.style.display = "none";
   });
 
+  // show selected mode
   document.getElementById("mode-" + mode).style.display = "block";
+
+  // ✅ CLEAR ALL INPUTS (important fix)
+  document
+    .querySelectorAll(".percent-mode input")
+    .forEach(input => (input.value = ""));
+
+  // ✅ CLEAR RESULT
+  const resultBox = document.getElementById("percentageResult");
+  if (resultBox) resultBox.innerHTML = "";
+
+  // ✅ RESET AI INSIGHT
+  resetAIInsight();
+}
+function resetAIInsight() {
+  const aiBox = document.getElementById("aiInsight");
+  const aiText = document.getElementById("aiInsightText");
+
+  if (aiBox) aiBox.classList.add("hidden");
+  if (aiText) aiText.innerHTML = "";
 }
 /* =================================
    GA Event Tracking Helper
@@ -203,7 +224,11 @@ function calculateCAGR() {
    trackCalculatorEvent('CAGR Calculator', 'Calculate', 
   `Start: ${getNumber("cagrStart")}, End: ${getNumber("cagrEnd")}, Years: ${getNumber("cagrYears")}`);
 }
+/* =================================
+   Percentage Calculator (ALPHA++)
+================================= */
 function calculatePercentage() {
+  resetAIInsight();
   const mode = document.getElementById("percentMode").value;
   const resultBox = document.getElementById("percentageResult");
 
