@@ -9,6 +9,25 @@ function getNumber(id) {
   return isNaN(value) ? 0 : value;
 }
 /* =================================
+   Smart Number Formatter (Alpha++)
+   - shows exact if clean
+   - max 3 decimals if long
+================================= */
+function smartFormat(num) {
+  if (!isFinite(num)) return "0";
+
+  // check if number is clean (terminating nicely)
+  const rounded = Number(num.toFixed(3));
+
+  // if rounding doesn't change value much → show clean
+  if (Math.abs(num - rounded) < 0.000001) {
+    return rounded.toString();
+  }
+
+  // otherwise limit to 3 decimals
+  return num.toFixed(3);
+}
+/* =================================
    GA Event Tracking Helper
 ================================= */
 function trackCalculatorEvent(calculatorName, action, label = '') {
@@ -176,14 +195,14 @@ function calculateCAGR() {
   `Start: ${getNumber("cagrStart")}, End: ${getNumber("cagrEnd")}, Years: ${getNumber("cagrYears")}`);
 }
 /* =================================
-   Percentage Calculator (FIXED)
+   Percentage Calculator (ALPHA++)
 ================================= */
 function calculatePercentage() {
   const part = getNumber("percentValue");
   const total = getNumber("percentTotal");
   const resultBox = document.getElementById("percentResult");
 
-  // ✅ strong validation
+  // ✅ validation
   if (total === 0) {
     showResult(resultBox, "Total cannot be zero.");
     return;
@@ -196,21 +215,27 @@ function calculatePercentage() {
 
   const percent = (part / total) * 100;
 
-  // ✅ supports decimals properly
-  showResult(resultBox, `📊 Percentage: ${percent.toFixed(2)}%`);
-   // analytics (cleaner)
-trackCalculatorEvent(
-  'Percentage Calculator',
-  'Calculate',
-  `Part: ${part}, Total: ${total}`
-);
+  // ✅ smart formatting (exact or max 3 decimals)
+  const formattedPercent = smartFormat(percent);
 
-// ===== AI Insight: Percentage =====
-showAIInsight(
-  `💡 <b>${part.toLocaleString()}</b> is 
-   <b>${percent.toFixed(2)}%</b> of 
-   <b>${total.toLocaleString()}</b>.`
-);
+  showResult(
+    resultBox,
+    `📊 Percentage: ${formattedPercent}%`
+  );
+
+  // ✅ analytics (clean)
+  trackCalculatorEvent(
+    'Percentage Calculator',
+    'Calculate',
+    `Part: ${part}, Total: ${total}`
+  );
+
+  // ✅ AI Insight (fixed wording)
+  showAIInsight(
+    `💡 <b>${part.toLocaleString()}</b> is 
+     <b>${formattedPercent}%</b> of 
+     <b>${total.toLocaleString()}</b>.`
+  );
 }
 
 /* =================================
