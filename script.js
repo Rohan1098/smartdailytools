@@ -381,6 +381,26 @@ function calculateIncomeTax() {
   resultBox.classList.add("show", "success");
    trackCalculatorEvent('Income Tax Calculator', 'Calculate', 
   `Income: ${getNumber("income")}, Regime: ${document.getElementById("taxRegime")?.value}`);
+ // ===== AI Insight: TAX =====
+
+const effectiveRate = income > 0 ? (tax / income) * 100 : 0;
+
+let insightMsg = "";
+
+if (tax === 0) {
+  insightMsg = "🎉 Your tax liability is zero under the selected regime.";
+} else if (effectiveRate < 5) {
+  insightMsg = "💡 Your effective tax rate is very low — good tax efficiency.";
+} else if (effectiveRate < 15) {
+  insightMsg = "💡 Your tax rate is moderate. Consider maximizing deductions.";
+} else {
+  insightMsg = "⚠️ Your tax outgo is high. Review deductions and regime choice.";
+}
+
+showAIInsight(
+  `${insightMsg}<br><br>
+   📊 Effective Tax Rate: <b>${effectiveRate.toFixed(2)}%</b>`
+);
 }
 /* =================================
    Dark Mode Toggle

@@ -1,91 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Income Tax Calculator (FY 2025-26) – SmartDailyTools</title>
-<meta name="description" content="Advanced Income Tax Calculator for FY 2025-26. Compare Old vs New tax regime instantly.">
-<link rel="stylesheet" href="style.css">
-<link rel="canonical" href="https://www.smartdailytools.in/income-tax-calculator.html">  
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Income Tax Calculator (FY 2025-26) – SmartDailyTools</title>
+    <meta
+      name="description"
+      content="Advanced Income Tax Calculator for FY 2025-26. Compare Old vs New tax regime instantly."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="canonical"
+      href="https://www.smartdailytools.in/income-tax-calculator.html"
+    />
+  </head>
 
-<body>
+  <body>
+    <nav class="navbar">
+      <h1 class="logo">SmartDailyTools</h1>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </div>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
 
-<nav class="navbar">
-  <h1 class="logo">SmartDailyTools</h1>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="blog.html">Blog</a>
-    <a href="about.html">About</a>
-  </div>
-  <button id="themeToggle" class="theme-btn">🌙</button>
-</nav>
+    <section class="page-container">
+      <div class="tool-card fade-in-up">
+        <h1>Income Tax Calculator</h1>
+        <p class="tool-desc">
+          FY 2025-26 (AY 2026-27) — Compare Old vs New Regime
+        </p>
 
-<section class="page-container">
-  <div class="tool-card fade-in-up">
+        <!-- Income -->
+        <input
+          type="number"
+          id="income"
+          placeholder="Enter Annual Income (₹)"
+        />
 
-    <h1>Income Tax Calculator </h1>
-    <p class="tool-desc">FY 2025-26 (AY 2026-27) — Compare Old vs New Regime</p>
+        <!-- Regime -->
+        <select id="taxRegime">
+          <option value="new">New Tax Regime (Default)</option>
+          <option value="old">Old Tax Regime</option>
+        </select>
 
-    <!-- Income -->
-    <input type="number" id="income" placeholder="Enter Annual Income (₹)">
+        <!-- Salaried -->
+        <div class="checkbox-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="isSalaried" />
+            <span>Salaried (Standard Deduction)</span>
+          </label>
+        </div>
 
-    <!-- Regime -->
-    <select id="taxRegime">
-      <option value="new">New Tax Regime (Default)</option>
-      <option value="old">Old Tax Regime</option>
-    </select>
+        <!-- OLD REGIME DEDUCTIONS -->
+        <div id="oldDeductions" style="display: none">
+          <input
+            type="number"
+            id="deduction80C"
+            placeholder="80C Investments (₹)"
+          />
+          <input
+            type="number"
+            id="deduction80D"
+            placeholder="80D Health Insurance (₹)"
+          />
+          <input
+            type="number"
+            id="homeInterest"
+            placeholder="Home Loan Interest (₹)"
+          />
+          <input
+            type="number"
+            id="hraLta"
+            placeholder="HRA / LTA Exemptions (₹)"
+          />
+        </div>
 
-    <!-- Salaried -->
-    <div class="checkbox-row">
-      <label class="checkbox-label">
-        <input type="checkbox" id="isSalaried">
-        <span>Salaried (Standard Deduction)</span>
-      </label>
-    </div>
+        <button class="primary-btn" onclick="calculateIncomeTax()">
+          Calculate Tax
+        </button>
 
-    <!-- OLD REGIME DEDUCTIONS -->
-    <div id="oldDeductions" style="display:none;">
-      <input type="number" id="deduction80C" placeholder="80C Investments (₹)">
-      <input type="number" id="deduction80D" placeholder="80D Health Insurance (₹)">
-      <input type="number" id="homeInterest" placeholder="Home Loan Interest (₹)">
-      <input type="number" id="hraLta" placeholder="HRA / LTA Exemptions (₹)">
-    </div>
+        <div id="taxResult" class="result-box"></div>
+        <div
+          id="exemptionBreakdown"
+          class="tool-content"
+          style="display: none"
+        ></div>
+        <div id="aiInsight" class="ai-insight hidden">
+          <div class="ai-icon">🤖</div>
+          <div class="ai-text" id="aiInsightText"></div>
+        </div>
 
-    <button class="primary-btn" onclick="calculateIncomeTax()">Calculate Tax</button>
+        <div class="tool-content">
+          <h2>About This Calculator</h2>
+          <p>
+            This advanced calculator uses the latest income tax slabs for FY
+            2025-26. It helps you compare both tax regimes and estimate
+            take-home income.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <div id="taxResult" class="result-box"></div>
-    <div id="exemptionBreakdown" class="tool-content" style="display:none;"></div>
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+      <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
+    </footer>
 
-    <div class="tool-content">
-      <h2>About This Calculator</h2>
-      <p>
-        This advanced calculator uses the latest income tax slabs for FY 2025-26.
-        It helps you compare both tax regimes and estimate take-home income.
-      </p>
-    </div>
+    <script src="script.js"></script>
 
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-links">
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms & Conditions</a>
-  </div>
-  <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
-</footer>
-
-<script src="script.js"></script>
-
-<script>
-/* Show old regime fields */
-document.getElementById("taxRegime").addEventListener("change", function () {
-  document.getElementById("oldDeductions").style.display =
-    this.value === "old" ? "block" : "none";
-});
-</script>
-
-</body>
+    <script>
+      /* Show old regime fields */
+      document
+        .getElementById("taxRegime")
+        .addEventListener("change", function () {
+          document.getElementById("oldDeductions").style.display =
+            this.value === "old" ? "block" : "none";
+        });
+    </script>
+  </body>
 </html>
