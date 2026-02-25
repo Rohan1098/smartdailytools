@@ -99,9 +99,9 @@ function calculateEMI() {
   `Principal: ${getNumber("loanAmount")}, Rate: ${getNumber("loanRate")}, Years: ${getNumber("loanYears")}`);
 }
 
-/* =================================
-   GST Calculator
-================================= */
+//  =================================
+//    GST Calculator
+// ================================= 
 function calculateGST() {
   const amount = getNumber("gstAmount");
   const rate = getNumber("gstRate");
@@ -115,18 +115,23 @@ function calculateGST() {
   const gst = (amount * rate) / 100;
   const total = amount + gst;
 
+  // ✅ Show result
   showResult(
     resultBox,
     `GST: ₹${gst.toFixed(2)} | Total: ₹${total.toFixed(2)}`
   );
-   trackCalculatorEvent('GST Calculator', 'Calculate', 
-  `Amount: ${getNumber("gstAmount")}, Rate: ${getNumber("gstRate")}`);
+
+  // ✅ GA tracking (optimized)
+  trackCalculatorEvent(
+    'GST Calculator',
+    'Calculate',
+    `Amount: ${amount}, Rate: ${rate}`
+  );
 
   // ===== AI Insight: GST =====
-
-showAIInsight(
-  `💡 GST at <b>${gstRate}%</b> adds <b>₹${gstAmount.toLocaleString()}</b> to your base amount.`
-);
+  showAIInsight(
+    `💡 At <b>${rate}% GST</b>, you pay <b>₹${gst.toLocaleString()}</b> tax on ₹${amount.toLocaleString()}.`
+  );
 }
 
 /* =================================
