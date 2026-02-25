@@ -27,6 +27,15 @@ function smartFormat(num) {
   // otherwise limit to 3 decimals
   return num.toFixed(3);
 }
+function switchPercentMode() {
+  const mode = document.getElementById("percentMode").value;
+
+  document.querySelectorAll(".percent-mode").forEach(el => {
+    el.style.display = "none";
+  });
+
+  document.getElementById("mode-" + mode).style.display = "block";
+}
 /* =================================
    GA Event Tracking Helper
 ================================= */
@@ -194,48 +203,141 @@ function calculateCAGR() {
    trackCalculatorEvent('CAGR Calculator', 'Calculate', 
   `Start: ${getNumber("cagrStart")}, End: ${getNumber("cagrEnd")}, Years: ${getNumber("cagrYears")}`);
 }
-/* =================================
-   Percentage Calculator (ALPHA++)
-================================= */
 function calculatePercentage() {
-  const part = getNumber("percentValue");
-  const total = getNumber("percentTotal");
-  const resultBox = document.getElementById("percentResult");
+  const mode = document.getElementById("percentMode").value;
+  const resultBox = document.getElementById("percentageResult");
 
-  // ✅ validation
-  if (total === 0) {
-    showResult(resultBox, "Total cannot be zero.");
-    return;
+  // smart formatter → max 3 decimals only if needed
+  const formatNumber = (num) => {
+    return Number.isInteger(num) ? num : parseFloat(num.toFixed(3));
+  };
+
+  // ================= BASIC =================
+  if (mode === "basic") {
+    const part = parseFloat(document.getElementById("percentValue").value);
+    const total = parseFloat(document.getElementById("percentTotal").value);
+
+    if (isNaN(part) || isNaN(total) || total === 0) {
+      showResult(resultBox, "Please enter valid values.");
+      return;
+    }
+
+    const percent = (part / total) * 100;
+
+    showResult(
+      resultBox,
+      `📊 Percentage: ${formatNumber(percent)}%`
+    );
+
+    trackCalculatorEvent(
+      "Percentage Calculator",
+      "Basic",
+      `Part: ${part}, Total: ${total}`
+    );
+
+    showAIInsight(
+      `💡 <b>${part.toLocaleString()}</b> is <b>${formatNumber(percent)}%</b> of <b>${total.toLocaleString()}</b>.`
+    );
   }
 
-  if (part < 0 || total < 0) {
-    showResult(resultBox, "Please enter valid positive numbers.");
-    return;
+  // ================= REVERSE =================
+  else if (mode === "reverse") {
+    const finalValue = parseFloat(document.getElementById("finalValue").value);
+    const percent = parseFloat(document.getElementById("revPercent").value);
+    const type = document.getElementById("revType").value;
+
+    if (isNaN(finalValue) || isNaN(percent)) {
+      showResult(resultBox, "Please enter valid values.");
+      return;
+    }
+
+    const original =
+      type === "increase"
+        ? finalValue / (1 + percent / 100)
+        : finalValue / (1 - percent / 100);
+
+    showResult(
+      resultBox,
+      `🧠 Original Value: ${formatNumber(original)}`
+    );
+
+    trackCalculatorEvent(
+      "Percentage Calculator",
+      "Reverse",
+      `Final: ${finalValue}, Percent: ${percent}`
+    );
+
+    showAIInsight(
+      `💡 Original value before ${percent}% ${type} was approximately <b>${formatNumber(original)}</b>.`
+    );
   }
 
-  const percent = (part / total) * 100;
+  // ================= CHANGE =================
+  else if (mode === "change") {
+    const oldValue = parseFloat(document.getElementById("oldValue").value);
+    const newValue = parseFloat(document.getElementById("newValue").value);
 
-  // ✅ smart formatting (exact or max 3 decimals)
-  const formattedPercent = smartFormat(percent);
+    if (isNaN(oldValue) || isNaN(newValue) || oldValue === 0) {
+      showResult(resultBox, "Please enter valid values.");
+      return;
+    }
 
-  showResult(
-    resultBox,
-    `📊 Percentage: ${formattedPercent}%`
-  );
+    const percentChange = ((newValue - oldValue) / oldValue) * 100;
 
-  // ✅ analytics (clean)
-  trackCalculatorEvent(
-    'Percentage Calculator',
-    'Calculate',
-    `Part: ${part}, Total: ${total}`
-  );
+    if (percentChange > 0) {
+      showResult(
+        resultBox,
+        `🔼 Increase: ${formatNumber(percentChange)}%`
+      );
+    } else if (percentChange < 0) {
+      showResult(
+        resultBox,
+        `🔽 Decrease: ${formatNumber(Math.abs(percentChange))}%`
+      );
+    } else {
+      showResult(resultBox, "No change.");
+    }
 
-  // ✅ AI Insight (fixed wording)
-  showAIInsight(
-    `💡 <b>${part.toLocaleString()}</b> is 
-     <b>${formattedPercent}%</b> of 
-     <b>${total.toLocaleString()}</b>.`
-  );
+    trackCalculatorEvent(
+      "Percentage Calculator",
+      "Change",
+      `Old: ${oldValue}, New: ${newValue}`
+    );
+  }
+
+  // ================= PROFIT LOSS =================
+  else if (mode === "pl") {
+    const costPrice = parseFloat(document.getElementById("costPrice").value);
+    const sellingPrice = parseFloat(document.getElementById("sellingPrice").value);
+
+    if (isNaN(costPrice) || isNaN(sellingPrice) || costPrice === 0) {
+      showResult(resultBox, "Please enter valid values.");
+      return;
+    }
+
+    const diff = sellingPrice - costPrice;
+    const percent = (Math.abs(diff) / costPrice) * 100;
+
+    if (diff > 0) {
+      showResult(
+        resultBox,
+        `📈 Profit: ₹${formatNumber(diff)} (${formatNumber(percent)}%)`
+      );
+    } else if (diff < 0) {
+      showResult(
+        resultBox,
+        `📉 Loss: ₹${formatNumber(Math.abs(diff))} (${formatNumber(percent)}%)`
+      );
+    } else {
+      showResult(resultBox, "No Profit, No Loss.");
+    }
+
+    trackCalculatorEvent(
+      "Percentage Calculator",
+      "ProfitLoss",
+      `CP: ${costPrice}, SP: ${sellingPrice}`
+    );
+  }
 }
 
 /* =================================

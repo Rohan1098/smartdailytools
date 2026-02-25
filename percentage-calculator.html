@@ -31,8 +31,41 @@
         <h1>Percentage Calculator</h1>
         <p class="tool-desc">Find percentage of any value quickly.</p>
 
-        <input type="number" id="percentValue" placeholder="Value" />
-        <input type="number" id="percentTotal" placeholder="Total" />
+       <!-- Mode selector -->
+<select id="percentMode" onchange="switchPercentMode()">
+  <option value="basic">📊 Basic Percentage</option>
+  <option value="reverse">🧠 Reverse % (Find Original)</option>
+  <option value="change">🔄 Increase / Decrease %</option>
+  <option value="pl">📈 Profit / Loss %</option>
+</select>
+
+<!-- BASIC MODE (default) -->
+<div class="percent-mode" id="mode-basic">
+  <input type="number" id="percentValue" placeholder="Value (Part)" />
+  <input type="number" id="percentTotal" placeholder="Total" />
+</div>
+
+<!-- REVERSE MODE -->
+<div class="percent-mode" id="mode-reverse" style="display:none;">
+  <input type="number" id="finalValue" placeholder="Final value" />
+  <input type="number" id="revPercent" placeholder="Percentage" />
+  <select id="revType">
+    <option value="increase">After Increase</option>
+    <option value="decrease">After Decrease</option>
+  </select>
+</div>
+
+<!-- INCREASE / DECREASE -->
+<div class="percent-mode" id="mode-change" style="display:none;">
+  <input type="number" id="oldValue" placeholder="Old value" />
+  <input type="number" id="newValue" placeholder="New value" />
+</div>
+
+<!-- PROFIT / LOSS -->
+<div class="percent-mode" id="mode-pl" style="display:none;">
+  <input type="number" id="costPrice" placeholder="Cost price" />
+  <input type="number" id="sellingPrice" placeholder="Selling price" />
+</div>
 
         <button class="primary-btn" onclick="calculatePercentage()">
           Calculate
