@@ -198,11 +198,18 @@ function calculatePercentage() {
 
   // ✅ supports decimals properly
   showResult(resultBox, `📊 Percentage: ${percent.toFixed(2)}%`);
-   trackCalculatorEvent('Percentage Calculator', 'Calculate', 
-  `Part: ${getNumber("percentPart")}, Total: ${getNumber("percentTotal")}`);
-  
-  showAIInsight(
-  `💡 ${part}% of ${total} equals <b>${percent}</b>.`
+   // analytics (cleaner)
+trackCalculatorEvent(
+  'Percentage Calculator',
+  'Calculate',
+  `Part: ${part}, Total: ${total}`
+);
+
+// ===== AI Insight: Percentage =====
+showAIInsight(
+  `💡 <b>${part.toLocaleString()}</b> is 
+   <b>${percent.toFixed(2)}%</b> of 
+   <b>${total.toLocaleString()}</b>.`
 );
 }
 
