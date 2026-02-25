@@ -532,5 +532,40 @@ padding: 28px 14px;
   color: #e5e7eb;
 }
 
+/* =========================
+   AI INSIGHT BOX
+========================= */
 
+.ai-insight {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f0f7ff, #f8fbff);
+  border: 1px solid rgba(0, 123, 255, 0.15);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  animation: fadeInUp 0.4s ease;
+}
+
+.ai-icon {
+  font-size: 1.2rem;
+}
+
+.ai-text {
+  flex: 1;
+  color: var(--text-color);
+}
+
+/* Dark mode fix */
+body.dark .ai-insight {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.hidden {
+  display: none;
+}
 

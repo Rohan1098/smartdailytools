@@ -121,6 +121,12 @@ function calculateGST() {
   );
    trackCalculatorEvent('GST Calculator', 'Calculate', 
   `Amount: ${getNumber("gstAmount")}, Rate: ${getNumber("gstRate")}`);
+
+  // ===== AI Insight: GST =====
+
+showAIInsight(
+  `💡 GST at <b>${gstRate}%</b> adds <b>₹${gstAmount.toLocaleString()}</b> to your base amount.`
+);
 }
 
 /* =================================
@@ -431,7 +437,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/* =========================
+   AI INSIGHT ENGINE
+========================= */
 
+function showAIInsight(message) {
+  const box = document.getElementById("aiInsight");
+  const text = document.getElementById("aiInsightText");
+
+  if (!box || !text) return;
+
+  text.innerHTML = message;
+  box.classList.remove("hidden");
+}
+
+/* Hide when needed */
+function hideAIInsight() {
+  const box = document.getElementById("aiInsight");
+  if (box) box.classList.add("hidden");
+}
 
 
 

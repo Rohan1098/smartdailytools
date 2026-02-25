@@ -1,52 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GST Calculator – SmartDailyTools</title>
-<meta name="description" content="Calculate GST amount online instantly for any rate in India.">
-<link rel="stylesheet" href="style.css">
-<link rel="canonical" href="https://www.smartdailytools.in/gst-calculator.html">  
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GST Calculator – SmartDailyTools</title>
+    <meta
+      name="description"
+      content="Calculate GST amount online instantly for any rate in India."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="canonical"
+      href="https://www.smartdailytools.in/gst-calculator.html"
+    />
+  </head>
 
-<body>
-<nav class="navbar">
-  <h1 class="logo">SmartDailyTools</h1>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="blog.html">Blog</a>
-    <a href="about.html">About</a>
-  </div>
-  <button id="themeToggle" class="theme-btn">🌙</button>
-</nav>
+  <body>
+    <nav class="navbar">
+      <h1 class="logo">SmartDailyTools</h1>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </div>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
 
-<section class="page-container">
-  <div class="tool-card fade-in-up">
-    <h1>GST Calculator</h1>
-    <p class="tool-desc">Calculate GST inclusive or exclusive price instantly.</p>
+    <section class="page-container">
+      <div class="tool-card fade-in-up">
+        <h1>GST Calculator</h1>
+        <p class="tool-desc">
+          Calculate GST inclusive or exclusive price instantly.
+        </p>
 
-    <input type="number" id="gstAmount" placeholder="Amount (₹)">
-    <input type="number" id="gstRate" placeholder="GST Rate (%)">
+        <input type="number" id="gstAmount" placeholder="Amount (₹)" />
+        <input type="number" id="gstRate" placeholder="GST Rate (%)" />
 
-    <button class="primary-btn" onclick="calculateGST()">Calculate GST</button>
-    <div id="gstResult" class="result-box"></div>
+        <button class="primary-btn" onclick="calculateGST()">
+          Calculate GST
+        </button>
+        <div id="gstResult" class="result-box"></div>
+        <!-- new AI insight -->
+        <div id="aiInsight" class="ai-insight hidden">
+          <div class="ai-icon">🤖</div>
+          <div class="ai-text" id="aiInsightText"></div>
+        </div>
 
-    <div class="tool-content">
-      <h2>About</h2>
-      <p>Useful for businesses and individuals to quickly compute GST on products and services.</p>
-    </div>
-  </div>
-</section>
+        <div class="tool-content">
+          <h2>About</h2>
+          <p>
+            Useful for businesses and individuals to quickly compute GST on
+            products and services.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<footer class="footer">
-  <div class="footer-links">
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html"> Privacy Policy</a>
-    <a href="terms.html"> Terms & Conditions</a>
-  </div>
-  <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
-</footer>
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html"> Privacy Policy</a>
+        <a href="terms.html"> Terms & Conditions</a>
+      </div>
+      <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
+    </footer>
 
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
