@@ -1,90 +1,180 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIP Calculator – SmartDailyTools</title>
-    <meta
-      name="description"
-      content="Free SIP Calculator India. Calculate mutual fund SIP returns, maturity value and wealth gained instantly."
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="canonical"
-      href="https://www.smartdailytools.in/sip-calculator.html"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <body>
-    <nav class="navbar">
-      <h1 class="logo">SmartDailyTools</h1>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="about.html">About</a>
+  <title>SIP Calculator – SmartDailyTools</title>
+
+  <meta name="description"
+    content="Free SIP Calculator India. Calculate mutual fund SIP returns, maturity value and wealth gained instantly with AI insights." />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="canonical"
+    href="https://www.smartdailytools.in/sip-calculator.html" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <h1 class="logo">SmartDailyTools</h1>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+    </div>
+    <button id="themeToggle" class="theme-btn">🌙</button>
+  </nav>
+
+  <!-- PAGE -->
+  <section class="page-container">
+    <div class="tool-card fade-in-up">
+
+      <h1>📈 SIP Calculator</h1>
+
+      <p class="tool-desc">
+        Calculate your mutual fund SIP returns, maturity value and wealth gained instantly.
+      </p>
+
+      <!-- TRUST BADGES -->
+      <div class="trust-badges">
+        <span>⚡ Instant Results</span>
+        <span>📊 Accurate Formula</span>
+        <span>🇮🇳 Made for India</span>
       </div>
-      <button id="themeToggle" class="theme-btn">🌙</button>
-    </nav>
 
-    <section class="page-container">
-      <div class="tool-card fade-in-up">
-        <h1>SIP Calculator</h1>
-        <p class="tool-desc">
-          Calculate your mutual fund SIP returns and maturity value instantly.
+      <!-- INPUTS -->
+      <div class="input-group">
+        <label>Monthly Investment (₹)</label>
+        <input type="number" id="sipAmount" placeholder="e.g. 5000" />
+      </div>
+
+      <div class="input-group">
+        <label>Expected Return (% p.a.)</label>
+        <input type="number" id="sipRate" placeholder="e.g. 12" />
+      </div>
+
+      <div class="input-group">
+        <label>Investment Period (Years)</label>
+        <input type="number" id="sipYears" placeholder="e.g. 10" />
+      </div>
+
+      <!-- PRIMARY CTA -->
+      <button class="primary-btn sticky-calc" onclick="calculateSIP()">
+        🚀 Calculate SIP
+      </button>
+
+      <!-- RESULT -->
+      <div id="sipResult" class="result-box"></div>
+
+      <!-- AI INSIGHT -->
+      <div id="aiInsight" class="ai-insight hidden">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-text" id="aiInsightText"></div>
+      </div>
+
+      <!-- INTERNAL LINKING -->
+      <div class="tool-cross-links">
+        <p>
+          🔗 Try also:
+          <a href="emi-calculator.html">EMI Calculator</a> •
+          <a href="gst-calculator.html">GST Calculator</a> •
+          <a href="percentage-calculator.html">Percentage Calculator</a>
+        </p>
+      </div>
+
+      <!-- CONTENT SECTION -->
+      <div class="tool-content">
+
+        <h2>About SIP Calculator</h2>
+
+        <p>
+          SIP (Systematic Investment Plan) is one of the most popular ways to
+          build long-term wealth through mutual funds in India. By investing a
+          fixed amount every month, investors benefit from rupee cost averaging
+          and the power of compounding.
         </p>
 
-        <div class="input-group">
-          <label>Monthly Investment (₹)</label>
-          <input type="number" id="sipAmount" placeholder="e.g. 5000" />
-        </div>
+        <p>
+          Our free SIP calculator helps you estimate the future value of your
+          monthly investments based on expected returns and tenure. It is useful
+          for retirement planning, wealth creation goals and disciplined investing.
+        </p>
 
-        <div class="input-group">
-          <label>Expected Return (% p.a.)</label>
-          <input type="number" id="sipRate" placeholder="e.g. 12" />
-        </div>
+        <h2>📊 Example</h2>
 
-        <div class="input-group">
-          <label>Investment Period (Years)</label>
-          <input type="number" id="sipYears" placeholder="e.g. 10" />
-        </div>
+        <p>
+          If you invest <strong>₹5,000/month</strong> for
+          <strong>10 years</strong> at <strong>12% return</strong>,
+          your investment can grow significantly due to compounding.
+        </p>
 
-        <button class="primary-btn" onclick="calculateSIP()">
-          Calculate SIP
-        </button>
+      </div>
 
-        <div id="sipResult" class="result-box"></div>
-        <div id="aiInsight" class="ai-insight hidden">
-          <div class="ai-icon">🤖</div>
-          <div class="ai-text" id="aiInsightText"></div>
-        </div>
+      <!-- VISIBLE FAQ (BIG SEO BOOST) -->
+      <div class="faq-section">
 
-        <div class="tool-content">
-          <h2>About SIP Calculator</h2>
+        <h2>❓ Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>What is a good SIP return in India?</h3>
           <p>
-            SIP (Systematic Investment Plan) is one of the best ways to build
-            wealth in mutual funds. Our free SIP calculator helps you estimate
-            the future value of your monthly investments based on expected
-            returns and tenure.
-          </p>
-
-          <p>
-            Use this tool for financial planning, retirement goals, and
-            long-term investment decisions. Results are instant, accurate and
-            mobile friendly.
+            Historically, equity mutual funds in India have delivered around
+            10–14% annual returns over the long term, though actual returns vary.
           </p>
         </div>
-      </div>
-    </section>
 
-    <footer class="footer">
-      <div class="footer-links">
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html"> Privacy Policy</a>
-        <a href="terms.html"> Terms & Conditions</a>
-      </div>
-      <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
-    </footer>
+        <div class="faq-item">
+          <h3>Is SIP better than lump sum investment?</h3>
+          <p>
+            SIP helps average market volatility through rupee cost averaging,
+            making it suitable for most retail investors.
+          </p>
+        </div>
 
-    <script src="script.js"></script>
-  </body>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+    <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- FAQ SCHEMA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a good SIP return in India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Historically, equity mutual funds in India have delivered around 10–14% annual returns over the long term."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is SIP better than lump sum investment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SIP helps average market volatility through rupee cost averaging, making it suitable for most retail investors."
+        }
+      }
+    ]
+  }
+  </script>
+
+</body>
 </html>
