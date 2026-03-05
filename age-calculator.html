@@ -3,52 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Age Calculator – SmartDailyTools</title>
-<meta name="description" content="Free Age Calculator to find your exact age in years, months and days instantly.">
+
+<meta name="description" content="Free Age Calculator to find your exact age in years, months, days and total days lived instantly.">
+
 <link rel="stylesheet" href="style.css">
 <link rel="canonical" href="https://www.smartdailytools.in/age-calculator.html">  
+
 </head>
 
 <body>
+
 <nav class="navbar">
   <h1 class="logo">SmartDailyTools</h1>
+
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="blog.html">Blog</a>
     <a href="about.html">About</a>
   </div>
+
   <button id="themeToggle" class="theme-btn">🌙</button>
 </nav>
 
+
 <section class="page-container">
-  <div class="tool-card fade-in-up">
-    <h1>Age Calculator</h1>
-    <p class="tool-desc">Calculate your exact age in years, months and days.</p>
 
-    <div class="input-group">
-      <label>Date of Birth</label>
-      <input type="date" id="dob">
-    </div>
+<div class="tool-card fade-in-up">
 
-    <button class="primary-btn" onclick="calculateAge()">Calculate Age</button>
-    <div id="ageResult" class="result-box"></div>
+<h1>Age Calculator</h1>
 
-    <div class="tool-content">
-      <h2>About</h2>
-      <p>This free age calculator gives accurate age breakdown instantly for forms, exams and personal use.</p>
-    </div>
-  </div>
+<p class="tool-desc">
+Find your exact age in <strong>years, months, and days</strong> instantly.
+You can also see the <strong>total days you have lived</strong> and how many days remain until your next birthday.
+</p>
+
+
+<label>Date of Birth</label>
+<input type="date" id="dob">
+
+
+<button class="primary-btn" onclick="calculateAge()">
+Calculate Age
+</button>
+
+
+<div id="ageResult" class="result-box"></div>
+
+
+<div class="exemption-box">
+<strong>📘 Want to understand age calculation?</strong>
+Read the full explanation and examples in our guide.<br>
+<a href="age-guide.html">Read Full Guide →</a>
+</div>
+
+
+<div class="tool-content">
+
+<h2>About This Age Calculator</h2>
+
+<p>
+This free <strong>Age Calculator</strong> instantly calculates your age using your date of birth. 
+It provides an accurate breakdown of your age in <strong>years, months, and days</strong>.
+</p>
+
+<p>
+The calculator also shows the <strong>total number of days you have lived</strong> and 
+calculates the remaining time until your <strong>next birthday</strong>.
+</p>
+
+<p>
+Many people use age calculators while filling <strong>government forms, job applications,
+insurance forms, exam registrations, and official documents</strong>.
+</p>
+
+
+<h2>Example Calculation</h2>
+
+<p>
+If your date of birth is <strong>10 March 2000</strong> and today's date is 
+<strong>10 March 2026</strong>, your age will be:
+</p>
+
+<ul>
+<li><strong>26 Years</strong></li>
+<li><strong>0 Months</strong></li>
+<li><strong>0 Days</strong></li>
+</ul>
+
+</div>
+
+</div>
+
 </section>
 
+
 <footer class="footer">
-  <div class="footer-links">
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html"> Privacy Policy</a>
-    <a href="terms.html"> Terms & Conditions</a>
-  </div>
-  <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
+
+<div class="footer-links">
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms & Conditions</a>
+</div>
+
+<p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
+
 </footer>
 
+
 <script src="script.js"></script>
+
 </body>
 </html>
