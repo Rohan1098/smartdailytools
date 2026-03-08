@@ -560,9 +560,13 @@ padding: 28px 14px;
 }
 
 /* Dark mode fix */
-body.dark .ai-insight {
-  background: rgba(255,255,255,0.04);
+.dark-mode .ai-insight {
+  background: linear-gradient(135deg, #1e293b, #020617);
   border-color: rgba(255,255,255,0.08);
+}
+
+.dark-mode .ai-text {
+  color: #e2e8f0;
 }
 
 .hidden {
