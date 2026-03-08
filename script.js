@@ -544,6 +544,7 @@ function calculateIncomeTax() {
   resultBox.classList.add("show", "success");
    trackCalculatorEvent('Income Tax Calculator', 'Calculate', 
   `Income: ${getNumber("income")}, Regime: ${document.getElementById("taxRegime")?.value}`);
+  
  // ===== AI Insight: TAX =====
 
 const effectiveRate = income > 0 ? (tax / income) * 100 : 0;
@@ -566,7 +567,7 @@ showAIInsight(
 );
 }
 
-function calculateIncomeTax(){
+function calculateSalaryTax(){
 
 const ctc = parseFloat(document.getElementById("ctcAmount").value);
 const regime = document.getElementById("taxRegime").value;
