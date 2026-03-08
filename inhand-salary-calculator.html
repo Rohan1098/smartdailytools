@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      Income Tax & In-Hand Salary Calculator India – SmartDailyTools
+    </title>
+
+    <meta
+      name="description"
+      content="Calculate income tax and monthly in-hand salary using the latest FY 2025-26 tax slabs for old and new regimes in India."
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="canonical"
+      href="https://www.smartdailytools.in/income-tax-calculator.html"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <h1 class="logo">SmartDailyTools</h1>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </div>
+
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
+
+    <section class="page-container">
+      <div class="tool-card fade-in-up">
+        <h1>Income Tax & In-Hand Salary Calculator</h1>
+
+        <p class="tool-desc">
+          Estimate your income tax and monthly take-home salary using the latest
+          FY 2025-26 tax slabs.
+        </p>
+
+        <!-- CTC Input -->
+
+        <label>Annual CTC (₹)</label>
+
+        <input type="number" id="ctcAmount" placeholder="Example: 1000000" />
+        <!-- TAX Payer Type -->
+        <label>Taxpayer Type</label>
+
+        <select id="taxpayerType">
+          <option value="salary">Salaried / Pensioner</option>
+          <option value="other">Business / Freelance</option>
+        </select>
+        <!-- Tax Regime -->
+
+        <label>Select Tax Regime</label>
+
+        <select id="taxRegime" onchange="toggleOldRegimeOptions()">
+          <option value="new">New Tax Regime</option>
+          <option value="old">Old Tax Regime</option>
+        </select>
+
+        <!-- Old Regime Options -->
+
+        <div id="oldRegimeSection" class="hidden">
+          <label>Investments / Deductions</label>
+
+          <select id="oldRegimeType" onchange="toggleInvestmentInput()">
+            <option value="none">No Investments</option>
+            <option value="custom">Enter Investments</option>
+          </select>
+
+          <!-- Custom Investment Input -->
+
+          <div id="investmentBox" class="hidden">
+            <label>Total Deductions (80C, 80D, HRA etc)</label>
+
+            <input
+              type="number"
+              id="investmentAmount"
+              placeholder="Example: 200000"
+            />
+          </div>
+        </div>
+
+        <!-- Calculate Button -->
+
+        <button class="primary-btn" onclick="calculateIncomeTax()">
+          Calculate Tax
+        </button>
+
+        <!-- Result -->
+
+        <div id="taxResult" class="result-box"></div>
+
+        <!-- Guide Link -->
+
+        <p class="guide-link">
+          <a href="inhand-salary-calculator-guide.html">
+            Learn about Old vs New Tax Regime →
+          </a>
+        </p>
+
+        <!-- Tool Content -->
+
+        <div class="tool-content">
+          <h2>About This Calculator</h2>
+
+          <p>
+            This Income Tax Calculator helps Indian taxpayers estimate their tax
+            liability and monthly in-hand salary using the latest tax slabs for
+            FY 2025-26 (Assessment Year 2026-27).
+          </p>
+
+          <p>
+            It supports both the <strong>New Tax Regime</strong> and
+            <strong>Old Tax Regime</strong> with optional investment deductions.
+          </p>
+
+          <h2>Latest Tax Slabs FY 2025-26</h2>
+
+          <h3>New Tax Regime</h3>
+
+          <ul>
+            <li>₹0 – ₹4,00,000 : 0%</li>
+            <li>₹4,00,000 – ₹8,00,000 : 5%</li>
+            <li>₹8,00,000 – ₹12,00,000 : 10%</li>
+            <li>₹12,00,000 – ₹16,00,000 : 15%</li>
+            <li>₹16,00,000 – ₹20,00,000 : 20%</li>
+            <li>₹20,00,000 – ₹24,00,000 : 25%</li>
+            <li>Above ₹24,00,000 : 30%</li>
+          </ul>
+
+          <h3>Old Tax Regime</h3>
+
+          <ul>
+            <li>₹0 – ₹2,50,000 : 0%</li>
+            <li>₹2,50,000 – ₹5,00,000 : 5%</li>
+            <li>₹5,00,000 – ₹10,00,000 : 20%</li>
+            <li>Above ₹10,00,000 : 30%</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+
+      <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

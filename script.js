@@ -565,6 +565,165 @@ showAIInsight(
    📊 Effective Tax Rate: <b>${effectiveRate.toFixed(2)}%</b>`
 );
 }
+
+function calculateIncomeTax(){
+
+const ctc = parseFloat(document.getElementById("ctcAmount").value);
+const regime = document.getElementById("taxRegime").value;
+const resultBox = document.getElementById("taxResult");
+
+if(isNaN(ctc) || ctc <= 0){
+resultBox.innerHTML = "Please enter a valid CTC.";
+return;
+}
+
+/* PF deduction */
+
+const pf = ctc * 0.048;
+
+/* deductions */
+
+let deductions = 0;
+const taxpayer = document.getElementById("taxpayerType").value;
+
+if(regime === "new"){
+
+if(taxpayer === "salary"){
+deductions = 75000;
+}else{
+deductions = 0;
+}
+
+}
+
+if(regime === "old"){
+
+const oldType = document.getElementById("oldRegimeType").value;
+
+if(taxpayer === "salary"){
+deductions = 50000;
+}else{
+deductions = 0;
+}
+
+if(oldType === "max"){
+deductions += 150000; // 80C
+deductions += 25000;  // 80D
+}
+
+}
+
+/* taxable income */
+
+let taxable = ctc - pf - deductions;
+
+if(taxable < 0) taxable = 0;
+
+let tax = 0;
+
+/* NEW REGIME */
+
+if(regime === "new"){
+
+let remaining = taxable;
+
+if(remaining > 2400000){
+tax += (remaining - 2400000) * 0.30;
+remaining = 2400000;
+}
+
+if(remaining > 2000000){
+tax += (remaining - 2000000) * 0.25;
+remaining = 2000000;
+}
+
+if(remaining > 1600000){
+tax += (remaining - 1600000) * 0.20;
+remaining = 1600000;
+}
+
+if(remaining > 1200000){
+tax += (remaining - 1200000) * 0.15;
+remaining = 1200000;
+}
+
+if(remaining > 800000){
+tax += (remaining - 800000) * 0.10;
+remaining = 800000;
+}
+
+if(remaining > 400000){
+tax += (remaining - 400000) * 0.05;
+}
+
+/* rebate */
+
+if(taxable <= 1200000){
+tax = 0;
+}
+
+}
+
+/* OLD REGIME */
+
+if(regime === "old"){
+
+let remaining = taxable;
+
+if(remaining > 1000000){
+tax += (remaining - 1000000) * 0.30;
+remaining = 1000000;
+}
+
+if(remaining > 500000){
+tax += (remaining - 500000) * 0.20;
+remaining = 500000;
+}
+
+if(remaining > 250000){
+tax += (remaining - 250000) * 0.05;
+}
+
+/* rebate */
+
+if(taxable <= 500000){
+tax = 0;
+}
+
+}
+
+/* cess */
+
+tax = tax * 1.04;
+
+/* salary calculation */
+
+const annualTakeHome = ctc - pf - tax;
+const monthlyTakeHome = annualTakeHome / 12;
+
+resultBox.innerHTML = `
+
+<h3>Salary Breakdown</h3>
+
+<p><strong>Taxable Income:</strong> ₹${Math.round(taxable).toLocaleString()}</p>
+
+<p><strong>PF Deduction:</strong> ₹${Math.round(pf).toLocaleString()}</p>
+
+<p><strong>Total Income Tax:</strong> ₹${Math.round(tax).toLocaleString()}</p>
+
+<p><strong>Annual Take Home:</strong> ₹${Math.round(annualTakeHome).toLocaleString()}</p>
+
+<p><strong>Monthly In-Hand Salary:</strong> ₹${Math.round(monthlyTakeHome).toLocaleString()}</p>
+
+`;
+
+resultBox.classList.add("show","success");
+
+}
+
+
+
+
 /* =================================
    Dark Mode Toggle
 ================================= */
@@ -611,7 +770,7 @@ window.addEventListener("load", function () {
   if (!counter) return;
 
   let count = 0;
-  const target = 7;
+  const target = 8;
 
   const interval = setInterval(() => {
     if (count < target) {
@@ -666,7 +825,33 @@ function hideAIInsight() {
   if (box) box.classList.add("hidden");
 }
 
+function toggleOldRegimeOptions(){
 
+const regime=document.getElementById("taxRegime").value
+const section=document.getElementById("oldRegimeSection")
+
+if(regime==="old"){
+section.classList.remove("hidden")
+}
+else{
+section.classList.add("hidden")
+}
+
+}
+
+function toggleInvestmentInput(){
+
+const type=document.getElementById("oldRegimeType").value
+const box=document.getElementById("investmentBox")
+
+if(type==="custom"){
+box.classList.remove("hidden")
+}
+else{
+box.classList.add("hidden")
+}
+
+}
 
 
 
