@@ -722,8 +722,133 @@ resultBox.classList.add("show","success");
 
 }
 
+// HOME LOAN ELIGIBILTY CALCULATOR
+function calculateUltraHomeLoan() {
 
+const result = document.getElementById("result");
 
+try {
+
+let income1 = parseFloat(document.getElementById("income1").value) || 0;
+let income2 = parseFloat(document.getElementById("income2").value) || 0;
+let emi = parseFloat(document.getElementById("emi").value) || 0;
+let rate = parseFloat(document.getElementById("rate").value) || 0;
+let tenure = parseFloat(document.getElementById("tenure").value) || 0;
+
+if (income1 <= 0 || rate <= 0 || tenure <= 0) {
+result.innerHTML = "⚠️ Please fill required fields correctly.";
+return;
+}
+
+let income = income1 + income2;
+
+// FOIR = 45%
+let maxEMI = income * 0.45 - emi;
+
+if (maxEMI <= 0) {
+result.innerHTML = "❌ Existing obligations too high for loan approval.";
+return;
+}
+
+// Loan calculation
+let r = rate / 12 / 100;
+let n = tenure * 12;
+
+let loan =
+maxEMI *
+((Math.pow(1 + r, n) - 1) /
+(r * Math.pow(1 + r, n)));
+
+// Property estimate
+let property = loan / 0.8;
+let down = property - loan;
+
+// Eligibility score
+let score = Math.min(100, Math.round((maxEMI / income) * 200));
+
+let status = "🟡 Moderate";
+if (score > 80) status = "🟢 Excellent";
+else if (score < 50) status = "🔴 Weak";
+
+// Tenure comparison table
+let table = "";
+
+[10,15,20,25,30].forEach(t => {
+
+let m = t * 12;
+
+let l =
+maxEMI *
+((Math.pow(1 + r, m) - 1) /
+(r * Math.pow(1 + r, m)));
+
+table += `
+<tr>
+<td>${t} yrs</td>
+<td>₹ ${Math.round(l).toLocaleString("en-IN")}</td>
+</tr>`;
+});
+
+result.innerHTML = `
+
+<div class="tool-card fade-in-up"
+     style="margin-top:20px; display:block;">
+
+<h2>${status} Eligibility (${score}/100)</h2>
+
+<p><strong>Total Income:</strong> ₹ ${income.toLocaleString("en-IN")}</p>
+<p><strong>Max EMI Allowed:</strong> ₹ ${Math.round(maxEMI).toLocaleString("en-IN")}</p>
+
+<hr>
+
+<h2>🏦 Eligible Loan Amount</h2>
+<h1>₹ ${Math.round(loan).toLocaleString("en-IN")}</h1>
+
+<p><strong>Property You Can Afford:</strong> ₹ ${Math.round(property).toLocaleString("en-IN")}</p>
+<p><strong>Minimum Down Payment:</strong> ₹ ${Math.round(down).toLocaleString("en-IN")}</p>
+
+<hr>
+
+<h3>📊 Loan by Tenure</h3>
+
+<table style="width:100%;border-collapse:collapse;">
+<tr><th>Tenure</th><th>Loan Amount</th></tr>
+${table}
+</table>
+
+<hr>
+
+<h3>💡 Planning Tools</h3>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
+
+<a class="primary-btn" href="emi-calculator.html">🧮 EMI Calculator</a>
+
+<a class="primary-btn" href="fd-calculator.html">🏦 FD Calculator</a>
+
+<a class="primary-btn" href="cagr-calculator.html">📈 Investment Planner</a>
+
+</div>
+
+</div>
+<hr>
+
+<p style="margin-top:15px; font-size:14px;">
+📘 Want to understand these numbers?
+<a href="home-loan-eligibility-calculator-guide.html">
+Read the full Home Loan Eligibility Guide →
+</a>
+</p>
+
+`;
+result.style.display = "block";
+result.scrollIntoView({ behavior: "smooth" });
+} catch (error) {
+result.innerHTML = "⚠️ Error calculating. Please refresh.";
+console.error(error);
+}
+
+}
 
 /* =================================
    Dark Mode Toggle
@@ -771,7 +896,7 @@ window.addEventListener("load", function () {
   if (!counter) return;
 
   let count = 0;
-  const target = 8;
+  const target = 9;
 
   const interval = setInterval(() => {
     if (count < target) {
