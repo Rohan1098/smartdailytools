@@ -851,6 +851,54 @@ console.error(error);
 }
 
 /* =================================
+   FD Calculator
+================================= */
+function calculateFD() {
+
+  resetAIInsight();
+
+  const P = getNumber("fdAmount");
+  const rate = getNumber("fdRate");
+  const years = getNumber("fdYears");
+  const n = getNumber("fdFrequency");
+
+  const resultBox = document.getElementById("fdResult");
+
+  if (P <= 0 || rate <= 0 || years <= 0 || n <= 0) {
+    showResult(resultBox, "Please fill all fields correctly.");
+    return;
+  }
+
+  const r = rate / 100;
+
+  // Compound Interest Formula
+  const maturity = P * Math.pow((1 + r / n), n * years);
+  const interest = maturity - P;
+
+  // Show result
+  resultBox.innerHTML = `
+    <div><strong>Invested Amount:</strong> ₹${Math.round(P).toLocaleString()}</div>
+    <div><strong>Total Interest:</strong> ₹${Math.round(interest).toLocaleString()}</div>
+    <div class="takehome-highlight">Maturity Amount: ₹${Math.round(maturity).toLocaleString()}</div>
+  `;
+
+  resultBox.classList.add("show", "success");
+
+  trackCalculatorEvent(
+    'FD Calculator',
+    'Calculate',
+    `Amount: ${P}, Rate: ${rate}, Years: ${years}`
+  );
+
+  // ===== AI Insight =====
+
+  const yearlyInterest = interest / years;
+
+  showAIInsight(
+    `💡 Your FD generates approximately <b>₹${Math.round(yearlyInterest).toLocaleString()}</b> interest per year.`
+  );
+}
+/* =================================
    Dark Mode Toggle
 ================================= */
 document.addEventListener("DOMContentLoaded", function () {
@@ -896,7 +944,7 @@ window.addEventListener("load", function () {
   if (!counter) return;
 
   let count = 0;
-  const target = 9;
+  const target = 10;
 
   const interval = setInterval(() => {
     if (count < target) {

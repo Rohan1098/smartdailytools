@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FD Calculator India – Fixed Deposit Returns Calculator 2026</title>
+
+<meta name="description" content="Calculate FD maturity amount and interest instantly. Use this fixed deposit calculator for India with monthly, quarterly and yearly compounding.">
+
+<link rel="canonical" href="https://www.smartdailytools.in/fd-calculator.html">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <h1 class="logo">SmartDailyTools</h1>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <button id="themeToggle" class="theme-btn">🌙</button>
+</nav>
+
+<section class="page-container">
+  <div class="tool-card fade-in-up">
+
+    <h1>FD Calculator (Fixed Deposit)</h1>
+
+    <p class="tool-desc">
+      Calculate your fixed deposit maturity amount and total interest earned instantly.
+    </p>
+
+    <!-- Inputs -->
+
+    <label>Investment Amount (₹)</label>
+    <input type="number" id="fdAmount" placeholder="Example: 100000">
+
+    <label>Interest Rate (% per year)</label>
+    <input type="number" id="fdRate" placeholder="Example: 7">
+
+    <label>Tenure (Years)</label>
+    <input type="number" id="fdYears" placeholder="Example: 5">
+
+    <label>Compounding Frequency</label>
+    <select id="fdFrequency">
+      <option value="1">Yearly</option>
+      <option value="2">Half-Yearly</option>
+      <option value="4">Quarterly</option>
+      <option value="12">Monthly</option>
+    </select>
+
+    <!-- Button -->
+
+    <button class="primary-btn" onclick="calculateFD()">
+      Calculate Returns
+    </button>
+
+    <!-- Result -->
+
+    <div id="fdResult" class="result-box"></div>
+
+    <!-- AI Insight -->
+    <div id="aiInsight" class="ai-insight hidden">
+      <div class="ai-icon">🤖</div>
+      <div id="aiInsightText" class="ai-text"></div>
+    </div>
+
+    <!-- Guide Link -->
+
+    <p class="guide-link">
+      <a href="fd-calculator-guide.html">
+        Learn how FD interest works →
+      </a>
+    </p>
+
+    <!-- Content -->
+
+    <div class="tool-content">
+
+      <h2>About FD Calculator</h2>
+
+      <p>
+        A Fixed Deposit (FD) is one of the safest investment options in India.
+        This calculator helps you estimate the maturity amount based on
+        investment, interest rate, tenure, and compounding frequency.
+      </p>
+
+      <h2>How FD Interest is Calculated</h2>
+
+      <p>
+        FD returns are calculated using compound interest. More frequent
+        compounding (like quarterly or monthly) results in slightly higher returns.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+  </div>
+
+  <p>© 2026 SmartDailyTools.in | Made with ❤️ in India</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
