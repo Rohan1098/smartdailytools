@@ -208,27 +208,26 @@ margin: auto;
 }
 
 .tool-card {
-background: #fff;
-padding: 28px;
-border-radius: 16px;
-text-align: center;
-text-decoration: none;
-color: #111;
-font-weight: 600;
-transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-box-shadow: 0 10px 22px rgba(0,0,0,0.07);
-border: 1px solid rgba(0,0,0,0.05);
-position: relative;
-overflow: hidden;
-will-change: transform;
+  background: #fff;
+  padding: 28px;
+  border-radius: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
 }
 
 .tool-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 18px 38px rgba(0,0,0,0.14);
-background: #eff6ff;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  background: #f8fafc;
 }
-
+.tool-list {
+  gap: 28px; /* from 24 → more breathing room */
+}
 /* =========================
 FORM ELEMENTS
 ========================= */
