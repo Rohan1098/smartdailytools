@@ -944,7 +944,7 @@ window.addEventListener("load", function () {
   if (!counter) return;
 
   let count = 0;
-  const target = 10;
+  const target = document.querySelectorAll(".tool-card").length;
 
   const interval = setInterval(() => {
     if (count < target) {

@@ -573,3 +573,98 @@ padding: 28px 14px;
   display: none;
 }
 
+/* =========================
+   HOMEPAGE CATEGORY SECTIONS
+========================= */
+
+.category-section,
+.guide-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 24px;
+}
+
+.category-section h2,
+.guide-section h2 {
+  text-align: center;
+  margin-bottom: 22px;
+  font-size: 28px;
+  color: #111827;
+}
+
+.guide-section p {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* =========================
+   HOMEPAGE PREMIUM CARD GRID
+========================= */
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* =========================
+   HOMEPAGE PREMIUM CARDS
+========================= */
+
+.home-card {
+  display: block;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #111827;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.home-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.12);
+  background: #f8fbff;
+}
+
+.home-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.home-card p {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* =========================
+   DARK MODE SUPPORT
+========================= */
+
+.dark-mode .category-section h2,
+.dark-mode .guide-section h2 {
+  color: #f8fafc;
+}
+
+.dark-mode .guide-section p {
+  color: #cbd5e1;
+}
+
+.dark-mode .home-card {
+  background: #1e293b;
+  color: #f8fafc;
+  border-color: rgba(255,255,255,0.06);
+}
+
+.dark-mode .home-card p {
+  color: #cbd5e1;
+}
+
+.dark-mode .home-card:hover {
+  background: #334155;
+}
