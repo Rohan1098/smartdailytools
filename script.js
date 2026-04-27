@@ -928,11 +928,17 @@ document.addEventListener("DOMContentLoaded", function () {
 function filterTools() {
   const input =
     document.getElementById("toolSearch")?.value.toLowerCase() || "";
-  const cards = document.querySelectorAll(".tool-card");
+
+  const cards = document.querySelectorAll(".home-card");
 
   cards.forEach(card => {
     const text = card.textContent.toLowerCase();
-    card.style.display = text.includes(input) ? "" : "none";
+
+    if (text.includes(input)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
   });
 }
 
