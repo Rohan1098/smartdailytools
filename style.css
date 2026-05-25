@@ -1167,3 +1167,43 @@ padding: 28px 14px;
   color: #60a5fa;
   transform: translateY(-3px);
 }
+/* ANALYSIS BOX */
+.analysis-box{
+  margin-top:20px;
+  padding:18px;
+  border-radius:14px;
+  background: linear-gradient(135deg,#eef2ff,#f8fafc);
+  border:1px solid #e5e7eb;
+  line-height:1.7;
+}
+
+.dark-mode .analysis-box{
+  background:#1e293b;
+  color:#e2e8f0;
+}
+
+/* AD CONTAINER */
+.ad-container{
+  max-width:1000px;
+  margin:30px auto;
+  text-align:center;
+}
+/* =========================
+   CONTENT READABILITY BOOST
+========================= */
+
+.about-card p{
+  font-size:16px;
+  line-height:1.9;
+  color:var(--text-main);
+}
+
+.about-card ul li{
+  margin-bottom:10px;
+  line-height:1.8;
+}
+
+.analysis-box{
+  overflow-x:auto;
+  font-size:15px;
+}
